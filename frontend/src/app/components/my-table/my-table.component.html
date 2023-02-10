@@ -35,7 +35,12 @@
   <tbody>
 
     <tr *ngFor="let dataItem of (filteredData || data) | slice:((currentPage - 1) * (tableConfig?.pagination?.itemPerPage || 8)):(currentPage * (tableConfig?.pagination?.itemPerPage || 8))">
-      <td *ngFor="let item of dataItem">{{item}} </td>
+      <td>{{dataItem.id}} </td>
+      <td>{{dataItem.licensePlate}} </td>
+      <td>{{dataItem.brand}} </td>
+      <td>{{dataItem.model}} </td>
+      <td>{{dataItem.year}} </td>
+      <td>{{dataItem.category}} </td>
       <td>
         <ng-container *ngFor="let action of tableConfig?.actions">
           <app-my-button *ngIf="action != 'New Row'" (click)="performActionOnDataItem({dataItem, action})" [buttonConfig]="{customCssClass: actionButton.customCssClass, text: action, icon: actionButton.icon}" #button>

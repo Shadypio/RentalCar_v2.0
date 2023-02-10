@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Car } from 'src/app/common/car/car';
 import { CarService } from 'src/app/services/car.service';
 import { MyButtonConfig } from '../my-button/config/my-button-config';
 import { MyTableConfig } from './config/my-table-config';
@@ -13,6 +14,7 @@ export class MyTableComponent implements OnInit {
   constructor(private carService: CarService) { }
 
   @Input () tableConfig? : MyTableConfig;
+
   data = this.carService.getCars();
   filteredData = this.data;
   searchTerm="";
@@ -32,6 +34,7 @@ export class MyTableComponent implements OnInit {
 
   // sort data in columns
   sortData(colName: string, orderType?: string) {
+    /*
     if (orderType == "asc"){
         this.data.sort((a, b) => a[colName] > b[colName] ? 1 : a[colName] < b[colName] ? -1 : 0)
         this.filteredData?.sort((a, b) => a[colName] > b[colName] ? 1 : a[colName] < b[colName] ? -1 : 0)
@@ -41,20 +44,20 @@ export class MyTableComponent implements OnInit {
     else if (orderType == "desc"){
         this.data.sort((a, b) => a[colName] < b[colName] ? 1 : a[colName] > b[colName] ? -1 : 0)
         this.filteredData?.sort((a, b) => a[colName] > b[colName] ? -1 : a[colName] < b[colName] ? 1 : 0)
+    }*/
     }
-      }
 
 
 
   // filter data in the table and display them
   filterData(searchTerm: string) {
-    this.filteredData = this.data.filter(item => {
-    return this.tableConfig?.search?.columns.some(column => {
-      return item[column].toLowerCase().includes(searchTerm.toLowerCase());
+    this.filteredData = this.data.filter((item: Car) => {
+      return this.tableConfig?.search?.columns.some(column => {
+        return (item as any)[column].toLowerCase().includes(searchTerm.toLowerCase());
       });
     });
-
   }
+
 
   // the following methods refer to pagination
   currentPage = 1;
