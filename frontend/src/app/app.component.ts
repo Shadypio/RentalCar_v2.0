@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'frontend';
 
   // creating buttons
-  myDefaultButton: MyButtonConfig = new MyButtonConfig("my-custom-button-class", 'Default Text', "fa-solid fa-user");
+  myDefaultButton: MyButtonConfig = new MyButtonConfig("my-custom-button-class", 'Default Text', "fa fa-solid fa-user");
 
 }
