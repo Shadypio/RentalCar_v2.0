@@ -8,4 +8,6 @@ import { MyButtonConfig } from './components/my-button/config/my-button-config';
 })
 export class AppComponent {
   title = 'frontend';
+
+  myDefaultButton: MyButtonConfig = new MyButtonConfig("my-custom-button-class", "Default text", "fa fa-icon fa-user")
 }
