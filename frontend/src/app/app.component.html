@@ -2,4 +2,6 @@
 
 <app-my-button [buttonConfig]="myDefaultButton"></app-my-button>
 
-<app-my-table [tableConfig]="carTable"></app-my-table>
+<app-my-table [tableConfig]="carTable"
+              (performActionOnData)="performActionOnDataHandler($event)">
+</app-my-table>
