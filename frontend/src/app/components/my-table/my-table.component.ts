@@ -11,14 +11,15 @@ import { MyTableConfig } from './config/my-table-config';
 export class MyTableComponent implements OnInit {
 
   constructor(private carService: CarService) { }
+
   @Input () tableConfig? : MyTableConfig;
   data = this.carService.getCars();
   filteredData = this.data;
   searchTerm="";
 
   // creating buttons
-  myNewRowButton: MyButtonConfig = new MyButtonConfig("first-custom-button-class", 'New Row', "fas fa-plus");
-  myActionButton: MyButtonConfig = new MyButtonConfig("second-custom-button-class", '', "fas fa-pencil");
+  newRowButton: MyButtonConfig = new MyButtonConfig("newrow-button-class", 'New Row', "fa fa-plus");
+  actionButton: MyButtonConfig = new MyButtonConfig("action-button-class", '', "fa fa-pencil");
 
   ngOnInit(): void {
 
