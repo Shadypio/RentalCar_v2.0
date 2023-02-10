@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MyTableConfig } from './config/my-table-config';
 
 @Component({
   selector: 'app-my-table',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class MyTableComponent implements OnInit {
 
   constructor() { }
+  @Input () tableConfig? : MyTableConfig;
 
   ngOnInit(): void {
   }
