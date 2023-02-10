@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CarService } from 'src/app/services/car.service';
+import { MyButtonConfig } from '../my-button/config/my-button-config';
 import { MyTableConfig } from './config/my-table-config';
 
 @Component({
@@ -8,10 +10,89 @@ import { MyTableConfig } from './config/my-table-config';
 })
 export class MyTableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private carService: CarService) { }
   @Input () tableConfig? : MyTableConfig;
+  data = this.carService.getCars();
+  filteredData = this.data;
+  searchTerm="";
+
+  // creating buttons
+  myNewRowButton: MyButtonConfig = new MyButtonConfig("first-custom-button-class", 'New Row', "fas fa-plus");
+  myActionButton: MyButtonConfig = new MyButtonConfig("second-custom-button-class", '', "fas fa-pencil");
 
   ngOnInit(): void {
+
+    if(this.tableConfig)
+      if(this.tableConfig.order)
+        this.sortData(this.tableConfig?.order.defaultColumn,this.tableConfig?.order.orderType );
+
+  }
+
+
+  // sort data in columns
+  sortData(colName: string, orderType?: string) {
+    if (orderType == "asc"){
+        this.data.sort((a, b) => a[colName] > b[colName] ? 1 : a[colName] < b[colName] ? -1 : 0)
+        this.filteredData?.sort((a, b) => a[colName] > b[colName] ? 1 : a[colName] < b[colName] ? -1 : 0)
+
+
+    }
+    else if (orderType == "desc"){
+        this.data.sort((a, b) => a[colName] < b[colName] ? 1 : a[colName] > b[colName] ? -1 : 0)
+        this.filteredData?.sort((a, b) => a[colName] > b[colName] ? -1 : a[colName] < b[colName] ? 1 : 0)
+    }
+      }
+
+
+
+  // filter data in the table and display them
+  filterData(searchTerm: string) {
+    this.filteredData = this.data.filter(item => {
+    return this.tableConfig?.search?.columns.some(column => {
+      return item[column].toLowerCase().includes(searchTerm.toLowerCase());
+      });
+    });
+
+  }
+
+  // the following methods refer to pagination
+  currentPage = 1;
+
+  setItemPerPage(itemPerPage: number) {
+    if(this.tableConfig?.pagination){
+      this.tableConfig.pagination.itemPerPage = itemPerPage;
+      this.currentPage = 1;
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.getTotalPages()) {
+      this.currentPage++;
+    }
+  }
+
+  getTotalPages() {
+    if(this.tableConfig?.pagination)
+      return Math.ceil(this.data.length / this.tableConfig?.pagination.itemPerPage);
+    return(1);
+  }
+
+  // the following methods are referred to actions to perform on the table
+  newRow() {
+    console.log("New Row Clicked")
+  }
+
+  // sending data from child to parent
+  @Output() performActionOnData: EventEmitter<any> = new EventEmitter();
+
+  performActionOnDataItem(event: {dataItem: any, action: any}) {
+    this.performActionOnData.emit(event);
   }
 
 }

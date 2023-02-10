@@ -1,1 +1,58 @@
 <p>my-table works!</p>
+<div *ngIf="tableConfig?.search">
+  <form (ngSubmit)="filterData(searchInput.value); " name="searchForm">
+    <div class="col-md-4 mb-3">
+      <input class="form-control" type="text" [(ngModel)]="searchTerm" #searchInput>
+      <button type="submit" class="button btn btn-primary">Search</button>
+    </div>
+  </form>
+</div>
+
+<table class="table table-hover table-dark sortable">
+
+  <thead>
+    <ng-container *ngFor="let action of tableConfig?.actions">
+      <app-my-button *ngIf="action == 'New Row'" (click)="newRow()" [buttonConfig]="myNewRowButton" #button>
+      </app-my-button>
+    </ng-container>
+
+    <tr>
+      <th *ngFor="let header of tableConfig?.headers">
+        <a>
+          {{ header.key }}-{{ header.label }}
+          <div *ngIf="tableConfig?.order">
+            <i (click)="sortData(header.key, 'asc')" class="fas fa-arrow-up"> </i>
+            <i (click)="sortData(header.key, 'desc')" class="fas fa-arrow-down"> </i>
+          </div>
+        </a>
+      </th>
+      <ng-container *ngIf="tableConfig?.actions">
+        <th>Action</th>
+      </ng-container>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr *ngFor="let dataItem of (filteredData || data) | slice:((currentPage - 1) * (tableConfig?.pagination?.itemPerPage || 8)):(currentPage * (tableConfig?.pagination?.itemPerPage || 8))">
+      <td *ngFor="let item of dataItem">{{item}} </td>
+      <td>
+        <ng-container *ngFor="let action of tableConfig?.actions">
+          <app-my-button *ngIf="action != 'New Row'" (click)="performActionOnDataItem({dataItem, action})" [buttonConfig]="{customCssClass: myActionButton.customCssClass, text: action, icon: myActionButton.icon}" #button>
+          </app-my-button>
+        </ng-container>
+      </td>
+    </tr>
+
+  </tbody>
+
+</table>
+
+<div *ngIf="tableConfig?.pagination">
+  <div>
+    <button class="btn btn-sm btn-dark" *ngFor="let itemPerPage of tableConfig?.pagination?.itemPerPageOptions" (click)="setItemPerPage(itemPerPage)">{{ itemPerPage }}</button>
+    <br>
+    <button class="btn btn-sm btn-dark" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <button class="btn btn-sm btn-dark" (click)="nextPage()" [disabled]="currentPage === getTotalPages()">Next</button>
+  </div>
+</div >
