@@ -1,4 +1,4 @@
-<p>my-table works!</p>
+
 <div *ngIf="tableConfig?.search">
   <form (ngSubmit)="filterData(searchInput.value); " name="searchForm">
     <div class="col-md-4 mb-3">
@@ -12,7 +12,7 @@
 
   <thead>
     <ng-container *ngFor="let action of tableConfig?.actions">
-      <app-my-button *ngIf="action == 'New Row'" (click)="newRow()" [buttonConfig]="myNewRowButton" #button>
+      <app-my-button *ngIf="action == 'New Row'" (click)="newRow()" [buttonConfig]="newRowButton" #button>
       </app-my-button>
     </ng-container>
 
@@ -21,8 +21,8 @@
         <a>
           {{ header.key }}-{{ header.label }}
           <div *ngIf="tableConfig?.order">
-            <i (click)="sortData(header.key, 'asc')" class="fas fa-arrow-up"> </i>
-            <i (click)="sortData(header.key, 'desc')" class="fas fa-arrow-down"> </i>
+            <i (click)="sortData(header.key, 'asc')" class="fa fa-arrow-up"> </i>
+            <i (click)="sortData(header.key, 'desc')" class="fa fa-arrow-down"> </i>
           </div>
         </a>
       </th>
@@ -38,7 +38,7 @@
       <td *ngFor="let item of dataItem">{{item}} </td>
       <td>
         <ng-container *ngFor="let action of tableConfig?.actions">
-          <app-my-button *ngIf="action != 'New Row'" (click)="performActionOnDataItem({dataItem, action})" [buttonConfig]="{customCssClass: myActionButton.customCssClass, text: action, icon: myActionButton.icon}" #button>
+          <app-my-button *ngIf="action != 'New Row'" (click)="performActionOnDataItem({dataItem, action})" [buttonConfig]="{customCssClass: actionButton.customCssClass, text: action, icon: actionButton.icon}" #button>
           </app-my-button>
         </ng-container>
       </td>
@@ -52,7 +52,7 @@
   <div>
     <button class="btn btn-sm btn-dark" *ngFor="let itemPerPage of tableConfig?.pagination?.itemPerPageOptions" (click)="setItemPerPage(itemPerPage)">{{ itemPerPage }}</button>
     <br>
-    <button class="btn btn-sm btn-dark" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-    <button class="btn btn-sm btn-dark" (click)="nextPage()" [disabled]="currentPage === getTotalPages()">Next</button>
+    <button class="btn btn-sm btn-dark" (click)="previousPage()" [disabled]="currentPage === 1"><i class="fa fa-arrow-left"></i> Previous</button>
+    <button class="btn btn-sm btn-dark" (click)="nextPage()" [disabled]="currentPage === getTotalPages()">Next <i class="fa fa-arrow-right"></i></button>
   </div>
 </div >
