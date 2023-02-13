@@ -71,9 +71,11 @@
         <h1 class="mt-3 mb-3">Cars</h1>
       </div>
 
+      <router-outlet>
       <app-my-table [tableConfig]="carTable"
                     (performActionOnData)="performActionOnDataHandler($event)">
       </app-my-table>
+    </router-outlet>
       </div>
     </div>
   </div>

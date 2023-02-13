@@ -53,8 +53,13 @@
             : currentPage * (tableConfig?.pagination?.itemPerPage || 8)
       "
     >
+
       <td>{{ dataItem.id }}</td>
-      <td>{{ dataItem.licensePlate }}</td>
+
+      <a routerLink="/cars/{{ dataItem.id }}">
+        <td>{{ dataItem.licensePlate }}</td>
+      </a>
+
       <td>{{ dataItem.brand }}</td>
       <td>{{ dataItem.model }}</td>
       <td>{{ dataItem.year }}</td>

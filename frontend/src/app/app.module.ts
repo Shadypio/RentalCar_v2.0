@@ -7,15 +7,22 @@ import { AppComponent } from './app.component';
 import { MyButtonComponent } from './components/my-button/my-button.component';
 import { MyTableComponent } from './components/my-table/my-table.component';
 import { CarService } from './services/car.service';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { CarDetailsComponent } from './components/car-details/car-details.component'
+import { Routes, RouterModule} from '@angular/router';
 
+const routes: Routes = [
+  {path: 'cars/:id', component: CarDetailsComponent}
+]
 @NgModule({
   declarations: [
     AppComponent,
     MyButtonComponent,
-    MyTableComponent
+    MyTableComponent,
+    CarDetailsComponent
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
