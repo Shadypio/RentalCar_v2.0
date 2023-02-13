@@ -1,18 +1,26 @@
-
 <div *ngIf="tableConfig?.search">
-  <form (ngSubmit)="filterData(searchInput.value); " name="searchForm">
+  <form (ngSubmit)="filterData(searchInput.value)" name="searchForm">
     <div class="col-md-4 mb-3">
-      <input class="form-control" type="text" [(ngModel)]="searchTerm" #searchInput>
+      <input
+        class="form-control"
+        type="text"
+        [(ngModel)]="searchTerm"
+        #searchInput
+      />
       <button type="submit" class="button btn btn-primary">Search</button>
     </div>
   </form>
 </div>
 
 <table class="table table-hover table-dark sortable">
-
   <thead>
     <ng-container *ngFor="let action of tableConfig?.actions">
-      <app-my-button *ngIf="action == 'New Row'" (click)="newRow()" [buttonConfig]="newRowButton" #button>
+      <app-my-button
+        *ngIf="action == 'New Row'"
+        (click)="newRow()"
+        [buttonConfig]="newRowButton"
+        #button
+      >
       </app-my-button>
     </ng-container>
 
@@ -21,8 +29,12 @@
         <a>
           {{ header.key }}-{{ header.label }}
           <div *ngIf="tableConfig?.order">
-            <i (click)="sortData(header.key, 'asc')" class="fa fa-arrow-up"> </i>
-            <i (click)="sortData(header.key, 'desc')" class="fa fa-arrow-down"> </i>
+            <i (click)="sortData(header.key, 'asc')" class="fa fa-arrow-up">
+            </i>
+            <i
+              (click)="sortData(header.key, 'desc')" class="fa fa-arrow-down"
+            >
+            </i>
           </div>
         </a>
       </th>
@@ -33,31 +45,62 @@
   </thead>
 
   <tbody>
-
-    <tr *ngFor="let dataItem of (filteredData || data) | slice:((currentPage - 1) * (tableConfig?.pagination?.itemPerPage || 8)):(currentPage * (tableConfig?.pagination?.itemPerPage || 8))">
-      <td>{{dataItem.id}} </td>
-      <td>{{dataItem.licensePlate}} </td>
-      <td>{{dataItem.brand}} </td>
-      <td>{{dataItem.model}} </td>
-      <td>{{dataItem.year}} </td>
-      <td>{{dataItem.category}} </td>
+    <tr
+      *ngFor="
+        let dataItem of filteredData || data
+          | slice
+            : (currentPage - 1) * (tableConfig?.pagination?.itemPerPage || 8)
+            : currentPage * (tableConfig?.pagination?.itemPerPage || 8)
+      "
+    >
+      <td>{{ dataItem.id }}</td>
+      <td>{{ dataItem.licensePlate }}</td>
+      <td>{{ dataItem.brand }}</td>
+      <td>{{ dataItem.model }}</td>
+      <td>{{ dataItem.year }}</td>
+      <td>{{ dataItem.category }}</td>
       <td>
         <ng-container *ngFor="let action of tableConfig?.actions">
-          <app-my-button *ngIf="action != 'New Row'" (click)="performActionOnDataItem({dataItem, action})" [buttonConfig]="{customCssClass: actionButton.customCssClass, text: action, icon: actionButton.icon}" #button>
+          <app-my-button
+            *ngIf="action != 'New Row'"
+            (click)="performActionOnDataItem({dataItem, action})"
+            [buttonConfig]="{
+              customCssClass: actionButton.customCssClass,
+              text: action,
+              icon: actionButton.icon
+            }"
+            #button
+          >
           </app-my-button>
         </ng-container>
       </td>
     </tr>
-
   </tbody>
-
 </table>
 
 <div *ngIf="tableConfig?.pagination">
   <div>
-    <button class="btn btn-sm btn-dark" *ngFor="let itemPerPage of tableConfig?.pagination?.itemPerPageOptions" (click)="setItemPerPage(itemPerPage)">{{ itemPerPage }}</button>
-    <br>
-    <button class="btn btn-sm btn-dark" (click)="previousPage()" [disabled]="currentPage === 1"><i class="fa fa-arrow-left"></i> Previous</button>
-    <button class="btn btn-sm btn-dark" (click)="nextPage()" [disabled]="currentPage === getTotalPages()">Next <i class="fa fa-arrow-right"></i></button>
+    <button
+      class="btn btn-sm btn-dark"
+      *ngFor="let itemPerPage of tableConfig?.pagination?.itemPerPageOptions"
+      (click)="setItemPerPage(itemPerPage)"
+    >
+      {{ itemPerPage }}
+    </button>
+    <br />
+    <button
+      class="btn btn-sm btn-dark"
+      (click)="previousPage()"
+      [disabled]="currentPage === 1"
+    >
+      <i class="fa fa-arrow-left"></i> Previous
+    </button>
+    <button
+      class="btn btn-sm btn-dark"
+      (click)="nextPage()"
+      [disabled]="currentPage === getTotalPages()"
+    >
+      Next <i class="fa fa-arrow-right"></i>
+    </button>
   </div>
-</div >
+</div>
