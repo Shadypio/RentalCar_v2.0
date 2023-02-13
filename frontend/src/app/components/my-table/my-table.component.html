@@ -27,7 +27,7 @@
     <tr>
       <th *ngFor="let header of tableConfig?.headers">
         <a>
-          {{ header.key }}-{{ header.label }}
+          {{ header.label }}
           <div *ngIf="tableConfig?.order">
             <i (click)="sortData(header.key, 'asc')" class="fa fa-arrow-up">
             </i>

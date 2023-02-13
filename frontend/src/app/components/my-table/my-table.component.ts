@@ -68,6 +68,16 @@ export class MyTableComponent implements OnInit {
         return 0;
       }
     });
+
+    this.filteredData.sort((a, b) => {
+      if (a[headerIndex] < b[headerIndex]) {
+        return orderType === 'asc' ? -1 : 1;
+      } else if (a[headerIndex] > b[headerIndex]) {
+        return orderType === 'asc' ? 1 : -1;
+      } else {
+        return 0;
+      }
+    });
   }
 
   // filter data in the table and display them
