@@ -47,7 +47,7 @@
   <tbody>
     <tr
       *ngFor="
-        let dataItem of filteredData || data
+        let dataItem of cars
           | slice
             : (currentPage - 1) * (tableConfig?.pagination?.itemPerPage || 8)
             : currentPage * (tableConfig?.pagination?.itemPerPage || 8)

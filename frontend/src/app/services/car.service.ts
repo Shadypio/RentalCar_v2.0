@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { Car } from '../common/car/car';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CarService {
+
   // private baseUrl = "http://localhost:8080/api/cars"
 
-  constructor(private httpClient: HttpClient) {}
+  // constructor(private httpClient: HttpClient) {}
+  constructor() {}
 
   // a simple car has ID, license plate, brand, model, year, category
   carsData: Car[] = [
@@ -33,8 +35,15 @@ export class CarService {
     new Car(16, 'JA000AK', 'Toyota', 'Yaris', 2010, 'Autocarro'),
   ];
 
+  /*
   getCars() {
     // use pipe, map response and observable product
     return this.carsData;
+  }*/
+
+  getCars() : Observable<Car[]> {
+    return of(this.carsData);
   }
 }
+
+
