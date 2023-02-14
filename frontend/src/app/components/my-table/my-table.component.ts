@@ -37,9 +37,7 @@ export class MyTableComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.paramMap.subscribe(() => {
-      this.listCars();
-    })
+    this.listCars();
 
 
     if (this.tableConfig)
@@ -53,10 +51,9 @@ export class MyTableComponent implements OnInit {
 
   listCars() {
 
-
     this.carService.getCars().subscribe(
       data => {
-        this.cars = data
+        this.cars = data;
       }
     )
   }

@@ -16,7 +16,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 const routes: Routes = [
   {path: 'cars/:id', component: CarDetailsComponent},
   {path: 'cars', component: MyTableComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', component: HomeComponent},
   {path: '**', component: PageNotFoundComponent}
 ]
 @NgModule({

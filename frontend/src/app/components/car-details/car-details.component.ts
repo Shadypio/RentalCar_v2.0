@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Car } from 'src/app/common/car/car';
+import { CarService } from 'src/app/services/car.service';
 
 @Component({
   selector: 'app-car-details',
@@ -9,18 +11,19 @@ import { ActivatedRoute } from '@angular/router';
 export class CarDetailsComponent implements OnInit {
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private carService: CarService
   ) { }
 
   ngOnInit(): void {
-    console.log("gnam")
     this.loadCar();
   }
 
+  carFound : Car;
+
   loadCar() {
-    const carId = this.route.snapshot.paramMap.get('id');
-    console.log(carId);
-    console.log("we");
+    //const carId = this.route.snapshot.paramMap.get('id');
+    this.carFound = this.carService.getCarById();
   }
 
 }

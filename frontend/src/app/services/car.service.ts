@@ -8,12 +8,22 @@ import { Car } from '../common/car/car';
 })
 export class CarService {
 
+  private _jsonURL = '../assets/cars.json';
+  carsData: Car[];
   // private baseUrl = "http://localhost:8080/api/cars"
 
-  // constructor(private httpClient: HttpClient) {}
-  constructor() {}
+  constructor(private httpClient: HttpClient) {
+    this.getJSON().subscribe(data => {
+      this.carsData = data;
+     });
+  }
+
+  public getJSON(): Observable<any> {
+    return this.httpClient.get(this._jsonURL);
+  }
 
   // a simple car has ID, license plate, brand, model, year, category
+  /*
   carsData: Car[] = [
     new Car(1, 'AT161FL', 'Panda', '2 serie', 2014, 'Automobile'),
     new Car(3, 'CG272GM', 'Renault', 'Turbo', 2010, 'Autocarro'),
@@ -33,16 +43,16 @@ export class CarService {
     new Car(18, 'HC888IU', 'Audi', 'A3', 2012, 'Automobile'),
     new Car(17, 'IB999JI', 'Nissan', 'Qashqai', 2013, 'Camper'),
     new Car(16, 'JA000AK', 'Toyota', 'Yaris', 2010, 'Autocarro'),
-  ];
-
-  /*
-  getCars() {
-    // use pipe, map response and observable product
-    return this.carsData;
-  }*/
+  ];*/
 
   getCars() : Observable<Car[]> {
-    return of(this.carsData);
+    return this.httpClient.get(this._jsonURL).pipe(
+      map(response => this.carsData)
+    )
+  }
+
+  getCarById() {
+    return this.carsData[0];
   }
 }
 

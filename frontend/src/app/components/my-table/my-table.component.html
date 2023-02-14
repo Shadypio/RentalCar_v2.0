@@ -55,8 +55,7 @@
     >
 
       <td>{{ dataItem.id }}</td>
-      <td>{{ dataItem.licensePlate }}</td>
-
+      <td routerLink="/cars/{{dataItem.id}}">{{ dataItem.licensePlate }}</td>
       <td>{{ dataItem.brand }}</td>
       <td>{{ dataItem.model }}</td>
       <td>{{ dataItem.year }}</td>

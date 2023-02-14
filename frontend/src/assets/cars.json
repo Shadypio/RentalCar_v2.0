@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "license_plate": "AW256YT",
+    "licensePlate": "AW256YT",
     "brand": "Fiat",
     "model": "Panda",
     "year": 2000,
@@ -9,7 +9,7 @@
   },
   {
     "id": 2,
-    "license_plate": "XD573PP",
+    "licensePlate": "XD573PP",
     "brand": "BMW",
     "model": "Serie1",
     "year": 2005,
@@ -17,7 +17,7 @@
   },
   {
     "id": 3,
-    "license_plate": "BG000LA",
+    "licensePlate": "BG000LA",
     "brand": "Jaguar",
     "model": "XE",
     "year": 2004,
@@ -25,7 +25,7 @@
   },
   {
     "id": 4,
-    "license_plate": "FG765VF",
+    "licensePlate": "FG765VF",
     "brand": "Chevrolet",
     "model": "Corbette",
     "year": 2010,
@@ -33,7 +33,7 @@
   },
   {
     "id": 5,
-    "license_plate": "HA689SF",
+    "licensePlate": "HA689SF",
     "brand": "Volkswagen",
     "model": "Polo",
     "year": 2012,
@@ -41,7 +41,7 @@
   },
   {
     "id": 6,
-    "license_plate": "LD257EW",
+    "licensePlate": "LD257EW",
     "brand": "Toyota",
     "model": "Corolla",
     "year": 2015,
@@ -49,7 +49,7 @@
   },
   {
     "id": 7,
-    "license_plate": "PQ143JT",
+    "licensePlate": "PQ143JT",
     "brand": "Fiat",
     "model": "Ducato",
     "year": 2008,
@@ -57,7 +57,7 @@
   },
   {
     "id": 8,
-    "license_plate": "QR112FE",
+    "licensePlate": "QR112FE",
     "brand": "Toyota",
     "model": "Hiace",
     "year": 2013,
@@ -65,7 +65,7 @@
   },
   {
     "id": 9,
-    "license_plate": "VG666AA",
+    "licensePlate": "VG666AA",
     "brand": "Roller Team",
     "model": "Kronos",
     "year": 2017,
@@ -73,7 +73,7 @@
   },
   {
     "id": 10,
-    "license_plate": "KJ789MJ",
+    "licensePlate": "KJ789MJ",
     "brand": "Dodge",
     "model": "Revolux",
     "year": 2018,
@@ -81,7 +81,7 @@
   },
   {
     "id": 11,
-    "license_plate": "AX673CA",
+    "licensePlate": "AX673CA",
     "brand": "Damon",
     "model": "Daybreak",
     "year": 2016,
@@ -89,7 +89,7 @@
   },
   {
     "id": 12,
-    "license_plate": "ZL111DB",
+    "licensePlate": "ZL111DB",
     "brand": "Silver",
     "model": "Trend",
     "year": 2010,
@@ -97,7 +97,7 @@
   },
   {
     "id": 13,
-    "license_plate": "ZX957LF",
+    "licensePlate": "ZX957LF",
     "brand": "Peugeot",
     "model": "307",
     "year": 2009,
@@ -105,7 +105,7 @@
   },
   {
     "id": 14,
-    "license_plate": "ZM369WX",
+    "licensePlate": "ZM369WX",
     "brand": "Audi",
     "model": "A3",
     "year": 2007,
@@ -113,7 +113,7 @@
   },
   {
     "id": 15,
-    "license_plate": "LF745MC",
+    "licensePlate": "LF745MC",
     "brand": "Ford",
     "model": "Focus",
     "year": 2011,
@@ -121,7 +121,7 @@
   },
   {
     "id": 16,
-    "license_plate": "KH624SW",
+    "licensePlate": "KH624SW",
     "brand": "Mercedes-Benz",
     "model": "Classe A",
     "year": 2014,
@@ -129,7 +129,7 @@
   },
   {
     "id": 17,
-    "license_plate": "WB147RT",
+    "licensePlate": "WB147RT",
     "brand": "Opel",
     "model": "Corsa",
     "year": 2003,
@@ -137,7 +137,7 @@
   },
   {
     "id": 18,
-    "license_plate": "AH379DR",
+    "licensePlate": "AH379DR",
     "brand": "Renault",
     "model": "Megane",
     "year": 2006,
@@ -145,7 +145,7 @@
   },
   {
     "id": 19,
-    "license_plate": "TP827BH",
+    "licensePlate": "TP827BH",
     "brand": "Fiat",
     "model": "Scudo",
     "year": 2002,
@@ -153,7 +153,7 @@
   },
   {
     "id": 20,
-    "license_plate": "PM974XL",
+    "licensePlate": "PM974XL",
     "brand": "Nissan",
     "model": "Navara",
     "year": 2012,

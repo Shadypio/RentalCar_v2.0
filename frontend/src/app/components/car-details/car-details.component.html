@@ -1,5 +1,16 @@
 <div class="detail-section">
   <div class="container-fluid">
-    <p style="margin-top: 100px">car-details works!</p>
+
+
+    <h3> {{ carFound.licensePlate }} </h3>
+
+
+    <hr>
+    <h4>Description</h4>
+    <p> {{ carFound.brand }} {{ carFound.model }} - {{ carFound.year }} </p>
+
+    <button class="btn btn-primary btn-sm">Rent now</button>
+    <br>
+    <a routerLink="/cars" class="mt-5">Back to Cars</a>
   </div>
 </div>
