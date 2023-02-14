@@ -10,19 +10,21 @@ import { CarService } from './services/car.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CarDetailsComponent } from './components/car-details/car-details.component'
 import { Routes, RouterModule} from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {path: 'cars/:id', component: CarDetailsComponent},
-  //{path: 'cars', component: MyTableComponent},
-  {path: '', redirectTo: '/cars', pathMatch: 'full'},
-  {path: '**', redirectTo: '/cars', pathMatch: 'full'}
+  {path: 'cars', component: MyTableComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ]
 @NgModule({
   declarations: [
     AppComponent,
     MyButtonComponent,
     MyTableComponent,
-    CarDetailsComponent
+    CarDetailsComponent,
+    HomeComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
