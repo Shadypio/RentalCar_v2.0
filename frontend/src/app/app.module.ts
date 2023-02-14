@@ -12,7 +12,10 @@ import { CarDetailsComponent } from './components/car-details/car-details.compon
 import { Routes, RouterModule} from '@angular/router';
 
 const routes: Routes = [
-  {path: 'cars/:id', component: CarDetailsComponent}
+  {path: 'cars/:id', component: CarDetailsComponent},
+  //{path: 'cars', component: MyTableComponent},
+  {path: '', redirectTo: '/cars', pathMatch: 'full'},
+  {path: '**', redirectTo: '/cars', pathMatch: 'full'}
 ]
 @NgModule({
   declarations: [

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { Car } from 'src/app/common/car/car';
 import { CarService } from 'src/app/services/car.service';
@@ -14,7 +15,8 @@ export class MyTableComponent implements OnInit {
 
   cars: Car[] = [];
 
-  constructor(private carService: CarService) {}
+  constructor(private carService: CarService,
+              private route: ActivatedRoute) {}
 
   @Input() tableConfig?: MyTableConfig;
 
@@ -34,7 +36,11 @@ export class MyTableComponent implements OnInit {
   );
 
   ngOnInit(): void {
-    this.listCars();
+
+    this.route.paramMap.subscribe(() => {
+      this.listCars();
+    })
+
 
     if (this.tableConfig)
       if (this.tableConfig.order)
@@ -46,6 +52,8 @@ export class MyTableComponent implements OnInit {
   }
 
   listCars() {
+
+
     this.carService.getCars().subscribe(
       data => {
         this.cars = data

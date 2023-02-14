@@ -6,6 +6,7 @@ import { MyTableConfig } from './components/my-table/config/my-table-config';
 import { MyOrder } from './components/my-table/config/order/my-order';
 import { MyPagination } from './components/my-table/config/pagination/my-pagination';
 import { MySearch } from './components/my-table/config/search/my-search';
+import { MyTableComponent } from './components/my-table/my-table.component';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { MySearch } from './components/my-table/config/search/my-search';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'frontend';
 
   myDefaultButton: MyButtonConfig = new MyButtonConfig("my-custom-button-class", "Default text", "fa fa-icon fa-user");
