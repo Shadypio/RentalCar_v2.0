@@ -142,13 +142,13 @@ export class MyTableComponent implements OnInit {
   }
 
   getTotalPages() {
-    /*
+
     if (this.tableConfig?.pagination)
       return Math.ceil(
-        this.data.length / this.tableConfig?.pagination.itemPerPage
+        this.cars.length / this.tableConfig?.pagination.itemPerPage
       );
     return 1;
-    */
+
    return 1;
   }
 
