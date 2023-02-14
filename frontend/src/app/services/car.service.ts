@@ -8,6 +8,7 @@ import { Car } from '../common/car/car';
 })
 export class CarService {
 
+
   private _jsonURL = '../assets/cars.json';
   carsData: Car[];
   // private baseUrl = "http://localhost:8080/api/cars"
@@ -51,9 +52,13 @@ export class CarService {
     )
   }
 
-  getCarById() {
-    return this.carsData[0];
+  getCarById(carId: number) {
+
+    const car = this.carsData.find(car => car.id === carId);
+    return of(car);
   }
+
+
 }
 
 

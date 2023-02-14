@@ -10,20 +10,33 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarDetailsComponent implements OnInit {
 
+  carFound : Car;
+
   constructor(
     private route: ActivatedRoute,
     private carService: CarService
   ) { }
 
   ngOnInit(): void {
-    this.loadCar();
+    // this.loadCar();
+    this.route.paramMap.subscribe(() => {
+      this.loadCar();
+    })
   }
 
-  carFound : Car;
 
   loadCar() {
-    //const carId = this.route.snapshot.paramMap.get('id');
-    this.carFound = this.carService.getCarById();
+    const carId = +this.route.snapshot.paramMap.get('id')!;
+
+
+    this.carService.getCarById(carId).subscribe(
+      data => {
+        if(data)
+          this.carFound = data;
+      }
+
+    )
+
   }
 
 }
