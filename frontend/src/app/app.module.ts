@@ -11,12 +11,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { CarDetailsComponent } from './components/car-details/car-details.component'
 import { Routes, RouterModule} from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {path: 'cars/:id', component: CarDetailsComponent},
   {path: 'cars', component: MyTableComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: '**', redirectTo: '/home', pathMatch: 'full'}
+  {path: '**', component: PageNotFoundComponent}
 ]
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ const routes: Routes = [
     MyButtonComponent,
     MyTableComponent,
     CarDetailsComponent,
-    HomeComponent
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

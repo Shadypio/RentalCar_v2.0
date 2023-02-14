@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { Car } from 'src/app/common/car/car';
 import { CarService } from 'src/app/services/car.service';
