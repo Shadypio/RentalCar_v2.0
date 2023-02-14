@@ -35,14 +35,14 @@ export class MyTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.listCars();
-    /*
+
     if (this.tableConfig)
       if (this.tableConfig.order)
         this.sortData(
           this.tableConfig?.order.defaultColumn,
           this.tableConfig?.order.orderType
         );
-        */
+
   }
 
   listCars() {
@@ -67,14 +67,14 @@ export class MyTableComponent implements OnInit {
   sortData(headerKey: string, orderType: string) {
 
     console.log(`${headerKey} - ${orderType} `);
-    /*
+
     let headerIndex: string = this.columnPropertyMap.has(headerKey)
       ? this.columnPropertyMap.get(headerKey)!
       : '';
 
     console.log(`${headerIndex} `);
 
-    this.data.sort((a, b) => {
+    this.cars.sort((a, b) => {
       if (a[headerIndex] < b[headerIndex]) {
         return orderType === 'asc' ? -1 : 1;
       } else if (a[headerIndex] > b[headerIndex]) {
@@ -93,12 +93,13 @@ export class MyTableComponent implements OnInit {
         return 0;
       }
     });
-    */
+
   }
 
 
   /*
   filterData(searchTerm: string): Observable<Car[]> {
+
 
     return this.cars.pipe(
       map(carsData => {
@@ -113,11 +114,13 @@ export class MyTableComponent implements OnInit {
       })
     );
 
+
   }*/
 
-  filterData(searchTerm: string)  {
-    console.log("a");
+  filterData(searchTerm: string) {
+    console.log("a")
   }
+
 
   // the following methods refer to pagination
   currentPage = 1;
@@ -149,7 +152,6 @@ export class MyTableComponent implements OnInit {
       );
     return 1;
 
-   return 1;
   }
 
   // the following methods are referred to actions to perform on the table
