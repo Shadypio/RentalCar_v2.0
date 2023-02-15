@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": 2,
     "licensePlate": "AW256YT",
     "brand": "Fiat",
     "model": "Panda",
@@ -8,7 +8,7 @@
     "category": "Automobile"
   },
   {
-    "id": 2,
+    "id": 1,
     "licensePlate": "XD573PP",
     "brand": "BMW",
     "model": "Serie1",
@@ -16,7 +16,7 @@
     "category": "Automobile"
   },
   {
-    "id": 3,
+    "id": 4,
     "licensePlate": "BG000LA",
     "brand": "Jaguar",
     "model": "XE",
@@ -24,7 +24,7 @@
     "category": "Automobile"
   },
   {
-    "id": 4,
+    "id": 3,
     "licensePlate": "FG765VF",
     "brand": "Chevrolet",
     "model": "Corbette",
@@ -32,7 +32,7 @@
     "category": "Automobile"
   },
   {
-    "id": 5,
+    "id": 6,
     "licensePlate": "HA689SF",
     "brand": "Volkswagen",
     "model": "Polo",
@@ -40,7 +40,7 @@
     "category": "Automobile"
   },
   {
-    "id": 6,
+    "id": 5,
     "licensePlate": "LD257EW",
     "brand": "Toyota",
     "model": "Corolla",
