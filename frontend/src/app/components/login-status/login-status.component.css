@@ -35,7 +35,7 @@
   - remove 'solid', 'font-size', 'color'
 */
 
-.login-status-info{
+.login-status-user-info{
   line-height:43px;
   border:1px;
   padding:0 17px;
