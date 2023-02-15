@@ -13,9 +13,28 @@ import { Routes, RouterModule} from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TableParentComponent } from './components/table-parent/table-parent.component';
+import { LoginComponent } from './components/login/login.component';
+import { LoginStatusComponent } from './components/login-status/login-status.component';
 
+import {
+  OktaAuthModule,
+  OktaCallbackComponent,
+  OKTA_CONFIG
+} from '@okta/okta-angular'
+
+import { OktaAuth } from '@okta/okta-auth-js'
+
+import myAppConfig from './config/my-app-config';
+
+const oktaConfig = myAppConfig.oidc;
+
+const oktaAuth = new OktaAuth(oktaConfig);
 
 const routes: Routes = [
+
+  {path: 'login/callback', component: OktaCallbackComponent},
+  {path: 'login', component: LoginComponent},
+
   {path: 'cars/:id', component: CarDetailsComponent},
   {path: 'cars', component: TableParentComponent},
   {path: '', component: HomeComponent},
@@ -29,17 +48,20 @@ const routes: Routes = [
     CarDetailsComponent,
     HomeComponent,
     PageNotFoundComponent,
-    TableParentComponent
+    TableParentComponent,
+    LoginComponent,
+    LoginStatusComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    OktaAuthModule
 
   ],
-  providers: [CarService],
+  providers: [CarService, { provide: OKTA_CONFIG, useValue: {oktaAuth}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
