@@ -4,7 +4,12 @@ import { map, Observable } from 'rxjs';
 import { Car } from 'src/app/common/car/car';
 import { CarService } from 'src/app/services/car.service';
 import { MyButtonConfig } from '../my-button/config/my-button-config';
+import { MyTableActions } from './config/actions/my-table-actions';
+import { MyHeaders } from './config/header/my-headers';
 import { MyTableConfig } from './config/my-table-config';
+import { MyOrder } from './config/order/my-order';
+import { MyPagination } from './config/pagination/my-pagination';
+import { MySearch } from './config/search/my-search';
 
 @Component({
   selector: 'app-my-table',
@@ -23,6 +28,7 @@ export class MyTableComponent implements OnInit {
   filteredData = this.cars;
   searchTerm = '';
 
+
   // creating buttons
   newRowButton: MyButtonConfig = new MyButtonConfig(
     'newrow-button-class',
@@ -40,6 +46,7 @@ export class MyTableComponent implements OnInit {
     this.listCars();
 
 
+
     if (this.tableConfig)
       if (this.tableConfig.order)
         this.sortData(
@@ -47,7 +54,11 @@ export class MyTableComponent implements OnInit {
           this.tableConfig?.order.orderType
         );
 
+
+
   }
+
+
 
   listCars() {
 

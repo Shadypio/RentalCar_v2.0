@@ -12,10 +12,12 @@ import { CarDetailsComponent } from './components/car-details/car-details.compon
 import { Routes, RouterModule} from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { TableParentComponent } from './components/table-parent/table-parent.component';
+
 
 const routes: Routes = [
   {path: 'cars/:id', component: CarDetailsComponent},
-  {path: 'cars', component: MyTableComponent},
+  {path: 'cars', component: TableParentComponent},
   {path: '', component: HomeComponent},
   {path: '**', component: PageNotFoundComponent}
 ]
@@ -26,7 +28,8 @@ const routes: Routes = [
     MyTableComponent,
     CarDetailsComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TableParentComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
