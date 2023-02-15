@@ -58,6 +58,18 @@ export class CarService {
     return of(car);
   }
 
+  getCarsByBrand(carBrand: string) {
+
+    this.carsData = this.carsData.filter(car => car.brand === carBrand);
+    // return of(cars);
+  }
+
+  getCarsByModel(carModel: string) {
+
+    this.carsData = this.carsData.filter(car => car.model === carModel);
+    // return of(car);
+  }
+
 
 }
 
