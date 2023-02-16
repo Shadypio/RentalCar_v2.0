@@ -4,7 +4,7 @@
     "startDate": "12-01-2023",
     "endDate": "13-03-2023",
     "referredCustomer": 1,
-    "rentedCar": 2
+    "rentedCar": 5
   },
   {
     "id": 2,
@@ -34,5 +34,19 @@
     "endDate": "25-08-2023",
     "referredCustomer": 5,
     "rentedCar": 1
+  },
+  {
+    "id": 6,
+    "startDate": "10-06-2023",
+    "endDate": "15-07-2023",
+    "referredCustomer": 2,
+    "rentedCar": 7
+  },
+  {
+    "id": 7,
+    "startDate": "20-07-2023",
+    "endDate": "25-08-2023",
+    "referredCustomer": 1,
+    "rentedCar": 6
   }
 ]

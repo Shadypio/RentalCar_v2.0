@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Rental } from 'src/app/common/rental/rental';
 import { RentalService } from 'src/app/services/rental/rental.service';
@@ -13,12 +13,26 @@ import { MySearch } from '../my-table/config/search/my-search';
 @Component({
   selector: 'app-rental-table',
   templateUrl: './rental-table.component.html',
-  styleUrls: ['./rental-table.component.css']
+  styleUrls: ['./rental-table.component.css'],
 })
 export class RentalTableComponent implements OnInit {
+  constructor(
+    private rentalService: RentalService,
+    private route: ActivatedRoute
+  ) {}
 
-  constructor(private rentalService: RentalService,
-              private route: ActivatedRoute) { }
+  // creating buttons
+  newRowButton: MyButtonConfig = new MyButtonConfig(
+    'newrow-button-class',
+    'New Row',
+    'fa fa-plus'
+  );
+
+  actionButton: MyButtonConfig = new MyButtonConfig(
+    'action-button-class',
+    '',
+    'fa fa-pencil'
+  );
 
   myDefaultButton: MyButtonConfig;
 
@@ -38,7 +52,9 @@ export class RentalTableComponent implements OnInit {
 
   filteredData = this.rentals;
 
+  currentPage = 1;
 
+  searchTerm = '';
 
   ngOnInit(): void {
     // creating headers for table
@@ -53,8 +69,8 @@ export class RentalTableComponent implements OnInit {
       this.startDateHeader,
       this.endDateHeader,
       this.referredCustomerHeader,
-      this.rentedCarHeader
-    ]
+      this.rentedCarHeader,
+    ];
 
     // declaring order criteria
     this.orderByID = new MyOrder('0', 'asc');
@@ -74,7 +90,6 @@ export class RentalTableComponent implements OnInit {
     );
 
     this.listRentals();
-
   }
 
   listRentals() {
@@ -87,6 +102,113 @@ export class RentalTableComponent implements OnInit {
     console.log(event.dataItem, event.action);
   }
 
+  // sort data in columns
+  columnPropertyMap = new Map<string, string>([
+    ['0', 'id'],
+    ['1', 'startDate'],
+    ['2', 'endDate'],
+    ['3', 'referredCustomer'],
+    ['4', 'rentedCar'],
+  ]);
 
 
+  sortData(headerKey: string, orderType: string) {
+    /*
+
+    console.log(`${headerKey} - ${orderType} `);
+
+    let headerIndex: string = this.columnPropertyMap.has(headerKey)
+      ? this.columnPropertyMap.get(headerKey)!
+      : '';
+
+    console.log(`${headerIndex} `);
+
+    this.rentals.sort((a, b) => {
+      if (a[headerIndex] < b[headerIndex]) {
+        return orderType === 'asc' ? -1 : 1;
+      } else if (a[headerIndex] > b[headerIndex]) {
+        return orderType === 'asc' ? 1 : -1;
+      } else {
+        return 0;
+      }
+    });
+
+    /*
+    this.filteredData.sort((a, b) => {
+      if (a[headerIndex] < b[headerIndex]) {
+        return orderType === 'asc' ? -1 : 1;
+      } else if (a[headerIndex] > b[headerIndex]) {
+        return orderType === 'asc' ? 1 : -1;
+      } else {
+        return 0;
+      }
+    });*/
+
+  }
+
+
+  /*
+  filterData(searchTerm: string): Observable<Car[]> {
+
+
+    return this.cars.pipe(
+      map(carsData => {
+        return carsData.filter((item: Car) => {
+          return Object.values(item).some((value) => {
+            return value
+              .toString()
+              .toLowerCase()
+              .includes(searchTerm.toLowerCase());
+          });
+        });
+      })
+    );
+
+
+  }*/
+
+  filterData(searchTerm: string) {
+    console.log("a")
+  }
+
+  setItemPerPage(itemPerPage: number) {
+    if (this.rentalTable?.pagination) {
+      this.rentalTable.pagination.itemPerPage = itemPerPage;
+      this.currentPage = 1;
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.getTotalPages()) {
+      this.currentPage++;
+    }
+  }
+
+  getTotalPages() {
+
+    if (this.rentalTable?.pagination)
+      return Math.ceil(
+        this.rentals.length / this.rentalTable?.pagination.itemPerPage
+      );
+    return 1;
+
+  }
+
+  // the following methods are referred to actions to perform on the table
+  newRow() {
+    console.log('New Row Clicked');
+  }
+
+  // sending data from child to parent
+  @Output() performActionOnData: EventEmitter<any> = new EventEmitter();
+
+  performActionOnDataItem(event: { dataItem: any; action: any }) {
+    this.performActionOnData.emit(event);
+  }
 }
