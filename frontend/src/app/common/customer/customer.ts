@@ -11,7 +11,7 @@ export class Customer {
     public password: number,
     public dateOfBirth: string,
     public enabled: boolean,
-    public role: Role,
-    public rentalMade: Rental
+    public role: number,
+    public rentalMade: number
   ) {}
 }

@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MyButtonComponent } from './components/my-button/my-button.component';
 import { MyTableComponent } from './components/my-table/my-table.component';
-import { CarService } from './services/car.service';
+import { CarService } from './services/car/car.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CarDetailsComponent } from './components/car-details/car-details.component'
 import { Routes, RouterModule, Router} from '@angular/router';
@@ -27,6 +27,11 @@ import { OktaAuth } from '@okta/okta-auth-js'
 
 import myAppConfig from './config/my-app-config';
 import { MembersPageComponent } from './components/members-page/members-page.component';
+import { TableRentalComponent } from './components/table-rental/table-rental.component';
+import { RentalDetailsComponent } from './components/rental-details/rental-details.component';
+import { RentalService } from './services/rental/rental.service';
+import { CustomerService } from './services/customer/customer.service';
+import { RoleService } from './services/role/role.service';
 
 const oktaConfig = myAppConfig.oidc;
 
@@ -48,8 +53,9 @@ const routes: Routes = [
 
   {path: 'login/callback', component: OktaCallbackComponent},
   {path: 'login', component: LoginComponent},
-
+  {path: 'rentals/:id', component: RentalDetailsComponent},
   {path: 'cars/:id', component: CarDetailsComponent},
+  // {path: 'rentals', component: RentalComponent},,
   {path: 'cars', component: TableParentComponent},
   {path: '', component: HomeComponent},
   {path: '**', component: PageNotFoundComponent}
@@ -66,6 +72,8 @@ const routes: Routes = [
     LoginComponent,
     LoginStatusComponent,
     MembersPageComponent,
+    TableRentalComponent,
+    RentalDetailsComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -76,7 +84,7 @@ const routes: Routes = [
     OktaAuthModule
 
   ],
-  providers: [CarService, { provide: OKTA_CONFIG, useValue: {oktaAuth}}],
+  providers: [CarService, RentalService, CustomerService, RoleService, { provide: OKTA_CONFIG, useValue: {oktaAuth}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

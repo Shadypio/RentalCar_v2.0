@@ -30,12 +30,13 @@ export class RentalService {
 
   getRentalById(rentalId: number) {
     const rental = this.rentalsData.find(rental => rental.id === rentalId);
+    console.log(`trovata ${rental?.id}, ${rental?.startDate}`)
     return of(rental);
   }
 
   getRentalsByCustomer(customerId: number) {
     // need to adjust
-    const rentals = this.rentalsData.find(rental => rental.referredCustomer.id === customerId);
+    const rentals = this.rentalsData.find(rental => rental.referredCustomer === customerId);
     return of(rentals);
   }
 }

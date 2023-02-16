@@ -79,18 +79,18 @@ export class MyTableComponent implements OnInit {
 
   listRentalsByCustomer() {
 
-    /*
+
 
     const customerId: number = 1;
 
 
     this.rentalService.getRentalsByCustomer(customerId).subscribe(
       data => {
-        this.rentalsByCustomer = data;
+        if(data)
+          this.rentalsByCustomer = data;
       }
-    )*/
+    )
 
-    console.log("Need to adjust")
   }
 
   // sort data in columns
