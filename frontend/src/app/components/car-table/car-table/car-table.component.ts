@@ -36,14 +36,10 @@ export class CarTableComponent implements OnInit {
   cars: Car[] = [];
 
   filteredData = this.cars;
-  searchTerm = '';
+
+  currentPage = 1;
 
   ngOnInit(): void {
-    this.myDefaultButton = new MyButtonConfig(
-      'my-custom-button-class',
-      'Default text',
-      'fa fa-icon fa-user'
-    );
 
     // creating headers for table
     // declaring some headers
@@ -89,6 +85,7 @@ export class CarTableComponent implements OnInit {
           this.carTable?.order.orderType
         );
   }
+
   sortData(defaultColumn: string, orderType: string) {
     throw new Error('Method not implemented.');
   }

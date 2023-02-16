@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Rental } from 'src/app/common/rental/rental';
 import { MyButtonConfig } from '../my-button/config/my-button-config';
 
 import { MyTableConfig } from './config/my-table-config';
@@ -26,6 +25,7 @@ export class MyTableComponent implements OnInit {
     'New Row',
     'fa fa-plus'
   );
+
   actionButton: MyButtonConfig = new MyButtonConfig(
     'action-button-class',
     '',
@@ -36,35 +36,6 @@ export class MyTableComponent implements OnInit {
 
 
   }
-
-  /*
-
-  listRentals() {
-
-    this.rentalService.getRentals().subscribe(
-      data => {
-        this.allRentals = data;
-      }
-    )
-
-  }
-
-  listRentalsByCustomer() {
-
-
-
-    const customerId: number = 1;
-
-
-    this.rentalService.getRentalsByCustomer(customerId).subscribe(
-      data => {
-        if(data)
-          this.rentalsByCustomer = data;
-      }
-    )
-
-  }
-  */
 
   // sort data in columns
   columnPropertyMap = new Map<string, string>([

@@ -9,7 +9,7 @@ import { Rental } from 'src/app/common/rental/rental';
 export class RentalService {
 
 
-  private _jsonURL = '../assets/rental.json';
+  private _jsonURL = '../assets/rentals.json';
   rentalsData: Rental[];
 
   constructor(private httpClient: HttpClient) {

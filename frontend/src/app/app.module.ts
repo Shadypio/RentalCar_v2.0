@@ -27,11 +27,11 @@ import { OktaAuth } from '@okta/okta-auth-js'
 
 import myAppConfig from './config/my-app-config';
 import { MembersPageComponent } from './components/members-page/members-page.component';
-import { TableRentalComponent } from './components/table-rental/table-rental.component';
 import { RentalDetailsComponent } from './components/rental-details/rental-details.component';
 import { RentalService } from './services/rental/rental.service';
 import { CustomerService } from './services/customer/customer.service';
 import { RoleService } from './services/role/role.service';
+import { RentalTableComponent } from './components/rental-table/rental-table.component';
 
 const oktaConfig = myAppConfig.oidc;
 
@@ -55,7 +55,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'rentals/:id', component: RentalDetailsComponent},
   {path: 'cars/:id', component: CarDetailsComponent},
-  // {path: 'rentals', component: RentalComponent},,
+  {path: 'rentals', component: RentalTableComponent},
   {path: 'cars', component: CarTableComponent},
   {path: '', component: HomeComponent},
   {path: '**', component: PageNotFoundComponent}
@@ -72,8 +72,8 @@ const routes: Routes = [
     LoginComponent,
     LoginStatusComponent,
     MembersPageComponent,
-    TableRentalComponent,
     RentalDetailsComponent,
+    RentalTableComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
