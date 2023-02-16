@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MyButtonConfig } from '../my-button/config/my-button-config';
-import { MyTableActions } from '../my-table/config/actions/my-table-actions';
-import { MyHeaders } from '../my-table/config/header/my-headers';
-import { MyTableConfig } from '../my-table/config/my-table-config';
-import { MyOrder } from '../my-table/config/order/my-order';
-import { MyPagination } from '../my-table/config/pagination/my-pagination';
-import { MySearch } from '../my-table/config/search/my-search';
+import { Car } from 'src/app/common/car/car';
+import { CarService } from 'src/app/services/car/car.service';
+import { MyButtonConfig } from '../../my-button/config/my-button-config';
+import { MyTableActions } from '../../my-table/config/actions/my-table-actions';
+import { MyHeaders } from '../../my-table/config/header/my-headers';
+import { MyTableConfig } from '../../my-table/config/my-table-config';
+import { MyOrder } from '../../my-table/config/order/my-order';
+import { MyPagination } from '../../my-table/config/pagination/my-pagination';
+import { MySearch } from '../../my-table/config/search/my-search';
 
 @Component({
-  selector: 'app-table-parent',
-  templateUrl: './table-parent.component.html',
-  styleUrls: ['./table-parent.component.css'],
+  selector: 'app-car-table',
+  templateUrl: './car-table.component.html',
+  styleUrls: ['./car-table.component.css'],
 })
-
-export class TableParentComponent implements OnInit {
-
-  constructor(private route: ActivatedRoute) {}
+export class CarTableComponent implements OnInit {
+  constructor(private carService: CarService, private route: ActivatedRoute) {}
 
   myDefaultButton: MyButtonConfig;
 
@@ -29,9 +29,14 @@ export class TableParentComponent implements OnInit {
   myHeaders: MyHeaders[];
 
   orderByID: MyOrder;
-  searchByBrandAndModel: MySearch
-  pagination: MyPagination
-  carTable: MyTableConfig
+  searchByBrandAndModel: MySearch;
+  pagination: MyPagination;
+  carTable: MyTableConfig;
+
+  cars: Car[] = [];
+
+  filteredData = this.cars;
+  searchTerm = '';
 
   ngOnInit(): void {
     this.myDefaultButton = new MyButtonConfig(
@@ -74,6 +79,24 @@ export class TableParentComponent implements OnInit {
       this.pagination,
       [MyTableActions.NEW_ROW, MyTableActions.EDIT, MyTableActions.DELETE]
     );
+
+    this.listCars();
+
+    if (this.carTable)
+      if (this.carTable.order)
+        this.sortData(
+          this.carTable?.order.defaultColumn,
+          this.carTable?.order.orderType
+        );
+  }
+  sortData(defaultColumn: string, orderType: string) {
+    throw new Error('Method not implemented.');
+  }
+
+  listCars() {
+    this.carService.getCars().subscribe((data) => {
+      this.cars = data;
+    });
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {

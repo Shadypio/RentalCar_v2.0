@@ -12,7 +12,7 @@ import { CarDetailsComponent } from './components/car-details/car-details.compon
 import { Routes, RouterModule, Router} from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { TableParentComponent } from './components/table-parent/table-parent.component';
+import { CarTableComponent } from './components/car-table/car-table/car-table.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginStatusComponent } from './components/login-status/login-status.component';
 
@@ -56,7 +56,7 @@ const routes: Routes = [
   {path: 'rentals/:id', component: RentalDetailsComponent},
   {path: 'cars/:id', component: CarDetailsComponent},
   // {path: 'rentals', component: RentalComponent},,
-  {path: 'cars', component: TableParentComponent},
+  {path: 'cars', component: CarTableComponent},
   {path: '', component: HomeComponent},
   {path: '**', component: PageNotFoundComponent}
 ]
@@ -68,7 +68,7 @@ const routes: Routes = [
     CarDetailsComponent,
     HomeComponent,
     PageNotFoundComponent,
-    TableParentComponent,
+    CarTableComponent,
     LoginComponent,
     LoginStatusComponent,
     MembersPageComponent,

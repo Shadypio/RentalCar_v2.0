@@ -1,9 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Car } from 'src/app/common/car/car';
+import { ActivatedRoute } from '@angular/router';
 import { Rental } from 'src/app/common/rental/rental';
-import { CarService } from 'src/app/services/car/car.service';
-import { RentalService } from 'src/app/services/rental/rental.service';
 import { MyButtonConfig } from '../my-button/config/my-button-config';
 
 import { MyTableConfig } from './config/my-table-config';
@@ -16,19 +13,12 @@ import { MyTableConfig } from './config/my-table-config';
 })
 export class MyTableComponent implements OnInit {
 
-  cars: Car[] = [];
-  allRentals: Rental[] = [];
-  rentalsByCustomer: Rental;
-
-  constructor(private carService: CarService,
-              private rentalService: RentalService,
-              private route: ActivatedRoute) {}
-
-  @Input() tableConfig?: MyTableConfig;
-
-  filteredData = this.cars;
   searchTerm = '';
 
+  constructor(private route: ActivatedRoute) {}
+
+  @Input() tableConfig?: MyTableConfig;
+  @Input() data : any[];
 
   // creating buttons
   newRowButton: MyButtonConfig = new MyButtonConfig(
@@ -44,28 +34,10 @@ export class MyTableComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.listCars();
-    this.listRentals();
-    this.listRentalsByCustomer();
-
-    if (this.tableConfig)
-      if (this.tableConfig.order)
-        this.sortData(
-          this.tableConfig?.order.defaultColumn,
-          this.tableConfig?.order.orderType
-        );
 
   }
 
-
-  listCars() {
-
-    this.carService.getCars().subscribe(
-      data => {
-        this.cars = data;
-      }
-    )
-  }
+  /*
 
   listRentals() {
 
@@ -92,6 +64,7 @@ export class MyTableComponent implements OnInit {
     )
 
   }
+  */
 
   // sort data in columns
   columnPropertyMap = new Map<string, string>([
@@ -114,7 +87,7 @@ export class MyTableComponent implements OnInit {
 
     console.log(`${headerIndex} `);
 
-    this.cars.sort((a, b) => {
+    this.data.sort((a, b) => {
       if (a[headerIndex] < b[headerIndex]) {
         return orderType === 'asc' ? -1 : 1;
       } else if (a[headerIndex] > b[headerIndex]) {
@@ -124,6 +97,7 @@ export class MyTableComponent implements OnInit {
       }
     });
 
+    /*
     this.filteredData.sort((a, b) => {
       if (a[headerIndex] < b[headerIndex]) {
         return orderType === 'asc' ? -1 : 1;
@@ -132,7 +106,7 @@ export class MyTableComponent implements OnInit {
       } else {
         return 0;
       }
-    });
+    });*/
 
   }
 
@@ -188,7 +162,7 @@ export class MyTableComponent implements OnInit {
 
     if (this.tableConfig?.pagination)
       return Math.ceil(
-        this.cars.length / this.tableConfig?.pagination.itemPerPage
+        this.data.length / this.tableConfig?.pagination.itemPerPage
       );
     return 1;
 
