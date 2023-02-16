@@ -8,6 +8,7 @@ import { Rental } from 'src/app/common/rental/rental';
 })
 export class RentalService {
 
+
   private _jsonURL = '../assets/rental.json';
   rentalsData: Rental[];
 
@@ -30,5 +31,11 @@ export class RentalService {
   getRentalById(rentalId: number) {
     const rental = this.rentalsData.find(rental => rental.id === rentalId);
     return of(rental);
+  }
+
+  getRentalsByCustomer(customerId: number) {
+    // need to adjust
+    const rentals = this.rentalsData.find(rental => rental.referredCustomer.id === customerId);
+    return of(rentals);
   }
 }

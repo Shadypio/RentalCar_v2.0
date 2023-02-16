@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Car } from 'src/app/common/car/car';
+import { Rental } from 'src/app/common/rental/rental';
 import { CarService } from 'src/app/services/car/car.service';
+import { RentalService } from 'src/app/services/rental/rental.service';
 import { MyButtonConfig } from '../my-button/config/my-button-config';
 
 import { MyTableConfig } from './config/my-table-config';
@@ -15,8 +17,11 @@ import { MyTableConfig } from './config/my-table-config';
 export class MyTableComponent implements OnInit {
 
   cars: Car[] = [];
+  allRentals: Rental[] = [];
+  rentalsByCustomer: Rental;
 
   constructor(private carService: CarService,
+              private rentalService: RentalService,
               private route: ActivatedRoute) {}
 
   @Input() tableConfig?: MyTableConfig;
@@ -40,8 +45,8 @@ export class MyTableComponent implements OnInit {
   ngOnInit(): void {
 
     this.listCars();
-
-
+    this.listRentals();
+    this.listRentalsByCustomer();
 
     if (this.tableConfig)
       if (this.tableConfig.order)
@@ -50,10 +55,7 @@ export class MyTableComponent implements OnInit {
           this.tableConfig?.order.orderType
         );
 
-
-
   }
-
 
 
   listCars() {
@@ -63,6 +65,32 @@ export class MyTableComponent implements OnInit {
         this.cars = data;
       }
     )
+  }
+
+  listRentals() {
+
+    this.rentalService.getRentals().subscribe(
+      data => {
+        this.allRentals = data;
+      }
+    )
+
+  }
+
+  listRentalsByCustomer() {
+
+    /*
+
+    const customerId: number = 1;
+
+
+    this.rentalService.getRentalsByCustomer(customerId).subscribe(
+      data => {
+        this.rentalsByCustomer = data;
+      }
+    )*/
+
+    console.log("Need to adjust")
   }
 
   // sort data in columns
