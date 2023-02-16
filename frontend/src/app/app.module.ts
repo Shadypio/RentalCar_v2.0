@@ -32,6 +32,7 @@ import { RentalService } from './services/rental/rental.service';
 import { CustomerService } from './services/customer/customer.service';
 import { RoleService } from './services/role/role.service';
 import { RentalTableComponent } from './components/rental-table/rental-table.component';
+import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
 
 const oktaConfig = myAppConfig.oidc;
 
@@ -53,6 +54,7 @@ const routes: Routes = [
 
   {path: 'login/callback', component: OktaCallbackComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'profile', component: CustomerDetailsComponent},
   {path: 'rentals/:id', component: RentalDetailsComponent},
   {path: 'cars/:id', component: CarDetailsComponent},
   {path: 'rentals', component: RentalTableComponent},
@@ -74,6 +76,7 @@ const routes: Routes = [
     MembersPageComponent,
     RentalDetailsComponent,
     RentalTableComponent,
+    CustomerDetailsComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
