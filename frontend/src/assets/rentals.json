@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "startDate": "12-01-2023",
+    "endDate": "13-03-2023",
+    "referredCustomer": "1",
+    "rentedCar": "2"
+  },
+  {
+    "id": 2,
+    "startDate": "21-03-2023",
+    "endDate": "3-04-2023",
+    "referredCustomer": "2",
+    "rentedCar": "3"
+  },
+
+  {
+    "id": 3,
+    "startDate": "05-05-2023",
+    "endDate": "07-06-2023",
+    "referredCustomer": "3",
+    "rentedCar": "4"
+  },
+  {
+    "id": 4,
+    "startDate": "10-06-2023",
+    "endDate": "15-07-2023",
+    "referredCustomer": "4",
+    "rentedCar": "2"
+  },
+  {
+    "id": 5,
+    "startDate": "20-07-2023",
+    "endDate": "25-08-2023",
+    "referredCustomer": "5",
+    "rentedCar": "1"
+  }
+]
