@@ -111,7 +111,6 @@ export class RentalTableComponent implements OnInit {
     ['4', 'rentedCar'],
   ]);
 
-
   sortData(headerKey: string, orderType: string) {
     /*
 
@@ -143,9 +142,7 @@ export class RentalTableComponent implements OnInit {
         return 0;
       }
     });*/
-
   }
-
 
   /*
   filterData(searchTerm: string): Observable<Car[]> {
@@ -168,7 +165,7 @@ export class RentalTableComponent implements OnInit {
   }*/
 
   filterData(searchTerm: string) {
-    console.log("a")
+    console.log('a');
   }
 
   setItemPerPage(itemPerPage: number) {
@@ -191,13 +188,11 @@ export class RentalTableComponent implements OnInit {
   }
 
   getTotalPages() {
-
     if (this.rentalTable?.pagination)
       return Math.ceil(
         this.rentals.length / this.rentalTable?.pagination.itemPerPage
       );
     return 1;
-
   }
 
   // the following methods are referred to actions to perform on the table
