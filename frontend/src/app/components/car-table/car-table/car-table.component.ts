@@ -19,21 +19,6 @@ import { MySearch } from '../../my-table/config/search/my-search';
 export class CarTableComponent implements OnInit {
   constructor(private carService: CarService, private route: ActivatedRoute) {}
 
-  // creating buttons
-  newRowButton: MyButtonConfig = new MyButtonConfig(
-    'newrow-button-class',
-    'New Row',
-    'fa fa-plus'
-  );
-
-  actionButton: MyButtonConfig = new MyButtonConfig(
-    'action-button-class',
-    '',
-    'fa fa-pencil'
-  );
-
-  myDefaultButton: MyButtonConfig;
-
   idHeader: MyHeaders;
   licensePlateHeader: MyHeaders;
   brandHeader: MyHeaders;
@@ -49,13 +34,16 @@ export class CarTableComponent implements OnInit {
 
   cars: Car[] = [];
 
-  filteredData = this.cars;
+  detailsButton: MyButtonConfig = new MyButtonConfig(
+    'action-button-class',
+    'Details',
+    'fa fa-plus'
+  );
 
-  currentPage = 1;
-
-  searchTerm = '';
 
   ngOnInit(): void {
+
+
 
     // creating headers for table
     // declaring some headers
@@ -94,12 +82,7 @@ export class CarTableComponent implements OnInit {
 
     this.listCars();
 
-    if (this.carTable)
-      if (this.carTable.order)
-        this.sortData(
-          this.carTable?.order.defaultColumn,
-          this.carTable?.order.orderType
-        );
+
   }
 
   listCars() {
@@ -112,113 +95,5 @@ export class CarTableComponent implements OnInit {
     console.log(event.dataItem, event.action);
   }
 
-  // sort data in columns
-  columnPropertyMap = new Map<string, string>([
-    ['0', 'id'],
-    ['1', 'licensePlate'],
-    ['2', 'brand'],
-    ['3', 'model'],
-    ['4', 'year'],
-    ['5', 'category'],
-  ]);
 
-
-  sortData(headerKey: string, orderType: string) {
-
-    console.log(`${headerKey} - ${orderType} `);
-
-    let headerIndex: string = this.columnPropertyMap.has(headerKey)
-      ? this.columnPropertyMap.get(headerKey)!
-      : '';
-
-    console.log(`${headerIndex} `);
-
-    this.cars.sort((a, b) => {
-      if (a[headerIndex] < b[headerIndex]) {
-        return orderType === 'asc' ? -1 : 1;
-      } else if (a[headerIndex] > b[headerIndex]) {
-        return orderType === 'asc' ? 1 : -1;
-      } else {
-        return 0;
-      }
-    });
-
-    /*
-    this.filteredData.sort((a, b) => {
-      if (a[headerIndex] < b[headerIndex]) {
-        return orderType === 'asc' ? -1 : 1;
-      } else if (a[headerIndex] > b[headerIndex]) {
-        return orderType === 'asc' ? 1 : -1;
-      } else {
-        return 0;
-      }
-    });*/
-
-  }
-
-
-  /*
-  filterData(searchTerm: string): Observable<Car[]> {
-
-
-    return this.cars.pipe(
-      map(carsData => {
-        return carsData.filter((item: Car) => {
-          return Object.values(item).some((value) => {
-            return value
-              .toString()
-              .toLowerCase()
-              .includes(searchTerm.toLowerCase());
-          });
-        });
-      })
-    );
-
-
-  }*/
-
-  filterData(searchTerm: string) {
-    console.log("a")
-  }
-
-  setItemPerPage(itemPerPage: number) {
-    if (this.carTable?.pagination) {
-      this.carTable.pagination.itemPerPage = itemPerPage;
-      this.currentPage = 1;
-    }
-  }
-
-  previousPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-    }
-  }
-
-  nextPage() {
-    if (this.currentPage < this.getTotalPages()) {
-      this.currentPage++;
-    }
-  }
-
-  getTotalPages() {
-
-    if (this.carTable?.pagination)
-      return Math.ceil(
-        this.cars.length / this.carTable?.pagination.itemPerPage
-      );
-    return 1;
-
-  }
-
-  // the following methods are referred to actions to perform on the table
-  newRow() {
-    console.log('New Row Clicked');
-  }
-
-  // sending data from child to parent
-  @Output() performActionOnData: EventEmitter<any> = new EventEmitter();
-
-  performActionOnDataItem(event: { dataItem: any; action: any }) {
-    this.performActionOnData.emit(event);
-  }
 }
