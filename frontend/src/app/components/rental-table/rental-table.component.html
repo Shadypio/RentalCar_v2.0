@@ -1,4 +1,5 @@
 <app-my-table [tableConfig]="rentalTable"
               [data]="rentals"
-              (performActionOnData)="performActionOnDataHandler($event)">
+              (performActionOnData)="performActionOnDataHandler($event)"
+              (viewDetailsOnData)="viewDetailsOnDataHandler($event)">
             </app-my-table>

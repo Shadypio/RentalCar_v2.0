@@ -66,6 +66,17 @@
         </app-my-button>
 
       </ng-container>
+      <app-my-button
+
+          (click)="viewDetails({dataItem})"
+          [buttonConfig]="{
+            customCssClass: 'detailsButton',
+            text: 'View Details',
+            icon: 'fa fa-arrow-right'
+          }"
+          #buttonDetails
+        >
+        </app-my-button>
     </td>
 
 

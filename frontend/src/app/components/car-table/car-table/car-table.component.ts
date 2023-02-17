@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/common/car/car';
 import { CarService } from 'src/app/services/car/car.service';
 import { MyButtonConfig } from '../../my-button/config/my-button-config';
@@ -17,7 +17,7 @@ import { MySearch } from '../../my-table/config/search/my-search';
 })
 
 export class CarTableComponent implements OnInit {
-  constructor(private carService: CarService, private route: ActivatedRoute) {}
+  constructor(private carService: CarService, private route: ActivatedRoute, private _router: Router) {}
 
   idHeader: MyHeaders;
   licensePlateHeader: MyHeaders;
@@ -94,6 +94,13 @@ export class CarTableComponent implements OnInit {
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
     console.log(event.dataItem, event.action);
   }
+
+  viewDetailsOnDataHandler(event: {dataItem: any}) {
+    // view details of selected row
+    this._router.navigateByUrl(`cars/${event.dataItem.id}`)
+  }
+
+
 
 
 }

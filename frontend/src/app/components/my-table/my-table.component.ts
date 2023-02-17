@@ -156,12 +156,9 @@ export class MyTableComponent implements OnInit {
     console.log('New Row Clicked');
   }
 
-  viewDetails() {
-    console.log('view details')
-  }
-
   // sending data from child to parent
   @Output() performActionOnData: EventEmitter<any> = new EventEmitter();
+  @Output() viewDetailsOnData: EventEmitter<any> = new EventEmitter();
 
 
   performActionOnDataItem(event: { dataItem: any; action: any }) {
@@ -170,6 +167,10 @@ export class MyTableComponent implements OnInit {
 
   objectKeys(obj: {}) {
     return Object.keys(obj);
+  }
+
+  viewDetails(event: { dataItem: any}) {
+    this.viewDetailsOnData.emit(event);
   }
 
 }

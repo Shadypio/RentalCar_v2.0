@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Rental } from 'src/app/common/rental/rental';
 import { RentalService } from 'src/app/services/rental/rental.service';
 import { MyButtonConfig } from '../my-button/config/my-button-config';
@@ -18,7 +18,8 @@ import { MySearch } from '../my-table/config/search/my-search';
 export class RentalTableComponent implements OnInit {
   constructor(
     private rentalService: RentalService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _router: Router
   ) {}
 
   // creating buttons
@@ -104,6 +105,11 @@ export class RentalTableComponent implements OnInit {
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
     console.log(event.dataItem, event.action);
+  }
+
+  viewDetailsOnDataHandler(event: {dataItem: any}) {
+    // view details of selected row
+    this._router.navigateByUrl(`rentals/${event.dataItem.id}`)
   }
 
 
