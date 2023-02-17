@@ -1,0 +1,150 @@
+{
+  "cars": [
+    {
+      "id": 6,
+      "licensePlate": "HA689SF",
+      "brand": "Volkswagen",
+      "model": "Polo",
+      "year": 2012,
+      "category": "Automobile"
+    },
+    {
+      "id": 5,
+      "licensePlate": "LD257EW",
+      "brand": "Toyota",
+      "model": "Corolla",
+      "year": 2015,
+      "category": "Automobile"
+    },
+    {
+      "id": 7,
+      "licensePlate": "PQ143JT",
+      "brand": "Fiat",
+      "model": "Ducato",
+      "year": 2008,
+      "category": "Commerciale"
+    },
+    {
+      "id": 8,
+      "licensePlate": "QR112FE",
+      "brand": "Toyota",
+      "model": "Hiace",
+      "year": 2013,
+      "category": "Commerciale"
+    },
+    {
+      "id": 9,
+      "licensePlate": "VG666AA",
+      "brand": "Roller Team",
+      "model": "Kronos",
+      "year": 2017,
+      "category": "Camper"
+    },
+    {
+      "id": 10,
+      "licensePlate": "KJ789MJ",
+      "brand": "Dodge",
+      "model": "Revolux",
+      "year": 2018,
+      "category": "Camper"
+    },
+    {
+      "id": 11,
+      "licensePlate": "AX673CA",
+      "brand": "Damon",
+      "model": "Daybreak",
+      "year": 2016,
+      "category": "Camper"
+    },
+    {
+      "id": 12,
+      "licensePlate": "ZL111DB",
+      "brand": "Silver",
+      "model": "Trend",
+      "year": 2010,
+      "category": "Camper"
+    },
+    {
+      "id": 13,
+      "licensePlate": "ZX957LF",
+      "brand": "Peugeot",
+      "model": "307",
+      "year": 2009,
+      "category": "Automobile"
+    },
+    {
+      "id": 14,
+      "licensePlate": "ZM369WX",
+      "brand": "Audi",
+      "model": "A3",
+      "year": 2007,
+      "category": "Automobile"
+    },
+    {
+      "id": 15,
+      "licensePlate": "LF745MC",
+      "brand": "Ford",
+      "model": "Focus",
+      "year": 2011,
+      "category": "Automobile"
+    },
+    {
+      "id": 16,
+      "licensePlate": "KH624SW",
+      "brand": "Mercedes-Benz",
+      "model": "Classe A",
+      "year": 2014,
+      "category": "Automobile"
+    },
+    {
+      "id": 17,
+      "licensePlate": "WB147RT",
+      "brand": "Opel",
+      "model": "Corsa",
+      "year": 2003,
+      "category": "Automobile"
+    },
+    {
+      "id": 18,
+      "licensePlate": "AH379DR",
+      "brand": "Renault",
+      "model": "Megane",
+      "year": 2006,
+      "category": "Automobile"
+    },
+    {
+      "id": 19,
+      "licensePlate": "TP827BH",
+      "brand": "Fiat",
+      "model": "Scudo",
+      "year": 2002,
+      "category": "Commerciale"
+    },
+    {
+      "id": 20,
+      "licensePlate": "PM974XL",
+      "brand": "Nissan",
+      "model": "Navara",
+      "year": 2012,
+      "category": "Commerciale"
+    },
+    {
+      "id": 100,
+      "licensePlate": "newlicenseplate",
+      "brand": "newbrand",
+      "model": "newmodel",
+      "year": 2,
+      "category": "newcategory",
+      "rental": 1
+    }
+  ],
+  "rentals": [
+    {
+      "id": 10,
+      "startDate": "sss",
+      "endDate": "sss",
+      "referredCustomer": 1,
+      "rentedCar": 2
+    }
+  ]
+}

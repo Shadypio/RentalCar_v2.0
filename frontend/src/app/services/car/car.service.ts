@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
-import { map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { Car } from 'src/app/common/car/car';
 
 @Injectable({
@@ -9,43 +9,67 @@ import { Car } from 'src/app/common/car/car';
 export class CarService {
 
 
-  private _jsonURL = '../assets/cars.json';
+  apiUrl: string = 'http://localhost:3000/cars';
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
   carsData: Car[];
   // private baseUrl = "http://localhost:8080/api/cars"
 
-  constructor(private httpClient: HttpClient) {
-    this.getJSON().subscribe(data => {
-      this.carsData = data;
-     });
+  constructor(private httpClient: HttpClient) { }
+
+  // Show lists of item
+  getCars(): Observable<any> {
+    return this.httpClient.get(this.apiUrl).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  public getJSON(): Observable<any> {
-    return this.httpClient.get(this._jsonURL);
+  // Create new item
+  getCarById(id: any): Observable<any> {
+    return this.httpClient.get(`${this.apiUrl}/${id}`).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  getCars() : Observable<Car[]> {
-    return this.httpClient.get(this._jsonURL).pipe(
-      map(response => this.carsData)
-    )
+  create(data: any): Observable<any> {
+    console.log(`${data.id}    ${data.startDate}`)
+    return this.httpClient.post(this.apiUrl, data).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  getCarById(carId: number) {
-
-    const car = this.carsData.find(car => car.id === carId);
-    return of(car);
+  // Edit/ Update
+  editCar(id: any, data: any): Observable<any> {
+    return this.httpClient.put(`${this.apiUrl}/${id}`, data).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  getCarsByBrand(carBrand: string) {
-
-    this.carsData = this.carsData.filter(car => car.brand === carBrand);
-    // return of(cars);
+  // Delete
+  deleteCar(id: any): Observable<any> {
+    return this.httpClient.delete(`${this.apiUrl}/${id}`).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  getCarsByModel(carModel: string) {
-
-    this.carsData = this.carsData.filter(car => car.model === carModel);
-    // return of(car);
+  // Search By Name
+  filterByTitle(title: any): Observable<any> {
+    return this.httpClient.get(`${this.apiUrl}?title_like=${title}`).pipe(
+      catchError(this.handleError)
+    );
   }
+
+  // Handle API errors
+  handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    return throwError(
+      'Something bad happened; please try again later.');
+  };
 
 
 }

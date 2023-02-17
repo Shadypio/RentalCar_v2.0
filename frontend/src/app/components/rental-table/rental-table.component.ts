@@ -107,20 +107,22 @@ export class RentalTableComponent implements OnInit {
   newRowHandler($event: { dataItem: any; action: any }) {
 
     const newRental = new Rental(10, 'sss', 'sss', 1, 2)
-    this.rentalService.create(newRental)
-
-    console.log(`new row ${newRental.id}` )
-
-    return this.listRentals();
+    this.rentalService.create(newRental).subscribe(
+      response => {}
+    )
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
     console.log(event.dataItem, event.action);
     if (event.action === "Edit") {
-      this.rentalService.editRental(event.dataItem.id)
+      this.rentalService.editRental(event.dataItem.id, event.dataItem)
     }
     else if (event.action === "Delete") {
-      this.rentalService.deleteRental(event.dataItem.id)
+      this.rentalService.deleteRental(event.dataItem.id).subscribe(
+        response => {
+          this.listRentals();
+        }
+      )
     }
   }
 

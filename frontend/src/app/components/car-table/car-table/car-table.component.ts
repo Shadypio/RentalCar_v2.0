@@ -91,8 +91,26 @@ export class CarTableComponent implements OnInit {
     });
   }
 
+  newRowHandler($event: { dataItem: any; action: any }) {
+
+    const newRental = new Car(100, 'newlicenseplate', 'newbrand', "newmodel", 2, 'newcategory', 2)
+    this.carService.create(newRental).subscribe(
+      response => {}
+    )
+  }
+
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
     console.log(event.dataItem, event.action);
+    if (event.action === "Edit") {
+      this.carService.editCar(event.dataItem.id, event.dataItem)
+    }
+    else if (event.action === "Delete") {
+      this.carService.deleteCar(event.dataItem.id).subscribe(
+        response => {
+          this.listCars();
+        }
+      )
+    }
   }
 
   viewDetailsOnDataHandler(event: {dataItem: any}) {

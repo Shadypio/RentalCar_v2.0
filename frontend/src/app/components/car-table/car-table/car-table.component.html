@@ -1,4 +1,5 @@
 <app-my-table [tableConfig]="carTable"
               [data]="cars"
+              (newRowOnData)="newRowHandler($event)"
               (performActionOnData)="performActionOnDataHandler($event)"
               (viewDetailsOnData)="viewDetailsOnDataHandler($event)"></app-my-table>

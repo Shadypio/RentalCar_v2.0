@@ -87,6 +87,7 @@ const routes: Routes = [
     OktaAuthModule
 
   ],
+  exports: [RouterModule],
   providers: [CarService, RentalService, CustomerService, RoleService, { provide: OKTA_CONFIG, useValue: {oktaAuth}}],
   bootstrap: [AppComponent]
 })
