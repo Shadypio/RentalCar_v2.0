@@ -134,8 +134,7 @@
       "brand": "newbrand",
       "model": "newmodel",
       "year": 2,
-      "category": "newcategory",
-      "rental": 1
+      "category": "newcategory"
     }
   ],
   "rentals": [

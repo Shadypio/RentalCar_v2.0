@@ -11,6 +11,5 @@ export class Car {
     public model: string,
     public year: number,
     public category: string,
-    public rental: number
   ) {}
 }

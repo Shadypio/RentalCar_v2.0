@@ -93,7 +93,7 @@ export class CarTableComponent implements OnInit {
 
   newRowHandler($event: { dataItem: any; action: any }) {
 
-    const newRental = new Car(100, 'newlicenseplate', 'newbrand', "newmodel", 2, 'newcategory', 2)
+    const newRental = new Car(100, 'newlicenseplate', 'newbrand', "newmodel", 2, 'newcategory')
     this.carService.create(newRental).subscribe(
       response => {}
     )
