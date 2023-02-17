@@ -152,14 +152,17 @@ export class MyTableComponent implements OnInit {
   }
 
   // the following methods are referred to actions to perform on the table
-  newRow() {
-    console.log('New Row Clicked');
-  }
+
 
   // sending data from child to parent
   @Output() performActionOnData: EventEmitter<any> = new EventEmitter();
+  @Output() newRowOnData: EventEmitter<any> = new EventEmitter();
   @Output() viewDetailsOnData: EventEmitter<any> = new EventEmitter();
 
+  newRow() {
+    console.log('New Row Clicked');
+    this.newRowOnData.emit()
+  }
 
   performActionOnDataItem(event: { dataItem: any; action: any }) {
     this.performActionOnData.emit(event);

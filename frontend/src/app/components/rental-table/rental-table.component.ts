@@ -98,18 +98,35 @@ export class RentalTableComponent implements OnInit {
   }
 
   listRentals() {
+
     this.rentalService.getRentals().subscribe((data) => {
       this.rentals = data;
     });
   }
 
+  newRowHandler($event: { dataItem: any; action: any }) {
+
+    const newRental = new Rental(10, 'sss', 'sss', 1, 2)
+    this.rentalService.create(newRental)
+
+    console.log(`new row ${newRental.id}` )
+
+    return this.listRentals();
+  }
+
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
     console.log(event.dataItem, event.action);
+    if (event.action === "Edit") {
+      this.rentalService.editRental(event.dataItem.id)
+    }
+    else if (event.action === "Delete") {
+      this.rentalService.deleteRental(event.dataItem.id)
+    }
   }
 
   viewDetailsOnDataHandler(event: {dataItem: any}) {
     // view details of selected row
-    this._router.navigateByUrl(`rentals/${event.dataItem.id}`)
+    this._router.navigateByUrl(`rental/${event.dataItem.id}`)
   }
 
 

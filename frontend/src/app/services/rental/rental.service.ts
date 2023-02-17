@@ -1,13 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { Rental } from 'src/app/common/rental/rental';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RentalService {
-
 
   private _jsonURL = '../assets/rentals.json';
   rentalsData: Rental[];
@@ -39,4 +38,43 @@ export class RentalService {
     const rentals = this.rentalsData.find(rental => rental.referredCustomer === customerId);
     return of(rentals);
   }
+
+  create(newRental: Rental): Observable<any> {
+
+    // to fix
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+
+
+    };
+
+
+    return this.httpClient.post<Rental>(this._jsonURL, newRental, httpOptions).pipe(
+
+      map(response => {
+        console.log(`rentals ${this.rentalsData[0].id}`)
+        this.rentalsData.push(response);
+        console.log(`rentals ${this.rentalsData}`)
+        return response;
+      }),
+      catchError((error: HttpErrorResponse) => {
+        return throwError(error);
+      })
+    );
+  }
+
+
+  deleteRental(id: any): Observable<any> {
+    return this.httpClient.delete(`${this._jsonURL}/${id}`).pipe(
+      map(response => this.rentalsData)
+    );
+  }
+
+  editRental(id: any) {
+    throw new Error('Method not implemented.');
+  }
+
+
 }

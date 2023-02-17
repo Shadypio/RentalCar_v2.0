@@ -55,7 +55,7 @@ const routes: Routes = [
   {path: 'login/callback', component: OktaCallbackComponent},
   {path: 'login', component: LoginComponent},
   {path: 'profile', component: CustomerDetailsComponent},
-  {path: 'rentals/:id', component: RentalDetailsComponent},
+  {path: 'rental/:id', component: RentalDetailsComponent},
   {path: 'cars/:id', component: CarDetailsComponent},
   {path: 'rentals', component: RentalTableComponent},
   {path: 'cars', component: CarTableComponent},
