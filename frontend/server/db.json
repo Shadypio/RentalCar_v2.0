@@ -127,30 +127,6 @@
       "model": "Navara",
       "year": 2012,
       "category": "Commerciale"
-    },
-    {
-      "id": 100,
-      "licensePlate": "newlicenseplate",
-      "brand": "newbrand",
-      "model": "newmodel",
-      "year": 2,
-      "category": "newcategory"
-    },
-    {
-      "id": 101,
-      "licensePlate": "license",
-      "brand": "brand",
-      "model": "model",
-      "year": 3,
-      "category": "aaaaa"
-    },
-    {
-      "id": 102,
-      "licensePlate": "dewfwef",
-      "brand": "fwwfwefwe",
-      "model": "fwefwefwe",
-      "year": 3232,
-      "category": "fefe"
     }
   ],
   "rentals": [
@@ -162,11 +138,11 @@
       "rentedCar": 2
     },
     {
-      "id": 11,
-      "startDate": "inizio",
-      "endDate": "fine",
+      "id": 101,
+      "startDate": "2023-02-22",
+      "endDate": "2023-02-24",
       "referredCustomer": 1,
-      "rentedCar": 5
+      "rentedCar": 1
     }
   ]
 }

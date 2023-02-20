@@ -12,6 +12,7 @@ export class CarService {
   apiUrl: string = 'http://localhost:3000/cars';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   carsData: Car[];
+  static id: number = 100;
   // private baseUrl = "http://localhost:8080/api/cars"
 
   constructor(private httpClient: HttpClient) { }

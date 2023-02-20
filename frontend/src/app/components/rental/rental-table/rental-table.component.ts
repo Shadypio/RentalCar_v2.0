@@ -106,10 +106,13 @@ export class RentalTableComponent implements OnInit {
 
   newRowHandler($event: { dataItem: any; action: any }) {
 
+    /*
     const newRental = new Rental(10, 'sss', 'sss', 1, 2)
     this.rentalService.create(newRental).subscribe(
       response => {}
-    )
+    )*/
+
+    this._router.navigateByUrl(`rental/create`)
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {

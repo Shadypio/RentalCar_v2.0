@@ -87,6 +87,10 @@ export class RentalService {
   apiUrl: string = 'http://localhost:3000/rentals';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
+  static id: number = 100;
+
+
+
   rentalsData: Rental[];
 
   constructor(private httpClient: HttpClient) { }
@@ -114,7 +118,7 @@ export class RentalService {
 
   createWithRentedCar(rentedCarId: number) : Observable<any> {
 
-    const newRental = new Rental(11, "inizio","fine", 1, rentedCarId);
+    const newRental = new Rental(RentalService.id++, "inizio","fine", 1, rentedCarId);
     return this.httpClient.post(this.apiUrl, newRental).pipe(
       catchError(this.handleError)
 

@@ -9,8 +9,8 @@ import { CarService } from 'src/app/services/car/car.service';
 })
 export class CarCreateComponent implements OnInit {
 
-  private static id: number = 101;
-  car: Car = new Car(CarCreateComponent.id++, "", "", "", 0, "");
+
+  car: Car = new Car(CarService.id++, "", "", "", 0, "");
   isCarAdded = false;
 
   constructor(private carService: CarService) { }
@@ -53,7 +53,7 @@ export class CarCreateComponent implements OnInit {
   // Reset on adding new
   newCar(): void {
     this.isCarAdded = false;
-    this.car = new Car(CarCreateComponent.id++, "", "", "", 0, "");
+    this.car = new Car(CarService.id++, "", "", "", 0, "");
   }
 
 }
