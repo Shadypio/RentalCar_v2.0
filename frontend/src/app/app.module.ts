@@ -60,6 +60,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'profile', component: CustomerDetailsComponent},
   {path: 'rental/:id', component: RentalDetailsComponent},
+  {path: 'cars/create', component: CarCreateComponent},
   {path: 'cars/:id', component: CarDetailsComponent},
   {path: 'rentals', component: RentalTableComponent},
   {path: 'cars', component: CarTableComponent},

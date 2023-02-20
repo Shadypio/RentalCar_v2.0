@@ -135,6 +135,22 @@
       "model": "newmodel",
       "year": 2,
       "category": "newcategory"
+    },
+    {
+      "id": 101,
+      "licensePlate": "license",
+      "brand": "brand",
+      "model": "model",
+      "year": 3,
+      "category": "aaaaa"
+    },
+    {
+      "id": 102,
+      "licensePlate": "dewfwef",
+      "brand": "fwwfwefwe",
+      "model": "fwefwefwe",
+      "year": 3232,
+      "category": "fefe"
     }
   ],
   "rentals": [

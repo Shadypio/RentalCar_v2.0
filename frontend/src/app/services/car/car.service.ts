@@ -31,7 +31,6 @@ export class CarService {
   }
 
   create(data: any): Observable<any> {
-    console.log(`${data.id}    ${data.startDate}`)
     return this.httpClient.post(this.apiUrl, data).pipe(
       catchError(this.handleError)
     );
@@ -47,13 +46,6 @@ export class CarService {
   // Delete
   deleteCar(id: any): Observable<any> {
     return this.httpClient.delete(`${this.apiUrl}/${id}`).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-  // Search By Name
-  filterByTitle(title: any): Observable<any> {
-    return this.httpClient.get(`${this.apiUrl}?title_like=${title}`).pipe(
       catchError(this.handleError)
     );
   }
