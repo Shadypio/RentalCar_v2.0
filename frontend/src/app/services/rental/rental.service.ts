@@ -10,6 +10,7 @@ import { Rental } from 'src/app/common/rental/rental';
 export class RentalService {
 
 
+
   //private _jsonURL = '../assets/rentals.json';
   /*
   private _jsonURL = 'http://localhost:3000/rentals'
@@ -109,6 +110,16 @@ export class RentalService {
     return this.httpClient.post(this.apiUrl, data).pipe(
       catchError(this.handleError)
     );
+  }
+
+  createWithRentedCar(rentedCarId: number) : Observable<any> {
+
+    const newRental = new Rental(11, "inizio","fine", 1, rentedCarId);
+    return this.httpClient.post(this.apiUrl, newRental).pipe(
+      catchError(this.handleError)
+
+    );
+
   }
 
   // Edit/ Update

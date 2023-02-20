@@ -9,7 +9,7 @@
     <h4>Description</h4>
     <p> {{ carFound.brand }} {{ carFound.model }} - {{ carFound.year }} </p>
 
-    <button class="btn btn-primary btn-sm">Rent now</button>
+    <button (click)="rentCar(carFound.id)" class="btn btn-primary btn-sm">Rent now</button>
     <br>
     <a routerLink="/cars" class="mt-5">Back to Cars</a>
   </div>

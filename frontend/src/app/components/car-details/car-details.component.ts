@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/common/car/car';
 import { CarService } from 'src/app/services/car/car.service';
+import { RentalService } from 'src/app/services/rental/rental.service';
 
 @Component({
   selector: 'app-car-details',
@@ -14,7 +15,8 @@ export class CarDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private carService: CarService
+    private carService: CarService,
+    private rentalService: RentalService
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +39,13 @@ export class CarDetailsComponent implements OnInit {
 
     )
 
+  }
+
+  rentCar(rentedCarId: number) {
+    console.log("ciao button")
+    this.rentalService.createWithRentedCar(rentedCarId).subscribe(
+      response => {}
+    );
   }
 
 }
