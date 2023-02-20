@@ -127,6 +127,14 @@
       "model": "Navara",
       "year": 2012,
       "category": "Commerciale"
+    },
+    {
+      "id": 100,
+      "licensePlate": "newlicenseplate",
+      "brand": "newbrand",
+      "model": "newmodel",
+      "year": 2,
+      "category": "newcategory"
     }
   ],
   "rentals": [

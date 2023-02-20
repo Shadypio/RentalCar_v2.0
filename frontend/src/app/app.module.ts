@@ -33,6 +33,8 @@ import { CustomerService } from './services/customer/customer.service';
 import { RoleService } from './services/role/role.service';
 import { RentalTableComponent } from './components/rental-table/rental-table.component';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 const oktaConfig = myAppConfig.oidc;
 
@@ -77,6 +79,8 @@ const routes: Routes = [
     RentalDetailsComponent,
     RentalTableComponent,
     CustomerDetailsComponent,
+    FilterPipe,
+    SortPipe,
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -37,15 +37,19 @@ export class MyTableComponent implements OnInit {
   currentPage = 1;
 
   searchTerm = '';
+  term = '';
 
   ngOnInit(): void {
 
+    /*
     if (this.tableConfig)
       if (this.tableConfig.order)
+
         this.sortData(
           this.tableConfig?.order.defaultColumn,
           this.tableConfig?.order.orderType
         );
+        */
 
   }
 
@@ -120,6 +124,15 @@ export class MyTableComponent implements OnInit {
 
   filterData(searchTerm: string) {
     console.log("a")
+  }
+
+  onSearchTermFilter() {
+    this.term = this.searchTerm;
+  }
+
+  clearSearch() {
+    this.term = '';
+    this.searchTerm = '';
   }
 
   setItemPerPage(itemPerPage: number) {
