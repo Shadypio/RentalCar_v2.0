@@ -39,6 +39,9 @@ export class MyTableComponent implements OnInit {
   searchTerm = '';
   term = '';
 
+  sortByParam = '';
+  sortDirection = 'asc'
+
   ngOnInit(): void {
 
     /*
@@ -66,6 +69,14 @@ export class MyTableComponent implements OnInit {
     ['4', 'year'],
     ['5', 'category'],
   ]);
+
+  onSortSelection() {
+    console.log(`sort by param: ${this.sortByParam}`)
+    if (this.sortDirection === 'desc') {
+      this.sortDirection = 'asc';
+    } else
+      this.sortDirection = 'desc';
+  }
 
 
   sortData(headerKey: string, orderType: string) {
