@@ -8,7 +8,8 @@ export class SortPipe implements PipeTransform {
   // orderType
   transform(value: Array<any>, args: any[]): any {
 
-    const sortField = args[0];
+    const sortFieldFromArgs = args[0];
+    const sortField = sortFieldFromArgs.toLowerCase();
     const sortDirection = args[1];
 
     let multiplier = 1;
@@ -17,16 +18,13 @@ export class SortPipe implements PipeTransform {
       multiplier = -1
     }
 
-    console.log(`${sortField} ${sortDirection}`);
+    console.log(`prima stampa ${sortField} ${sortDirection}`);
     value.sort((a: any, b: any) => {
       if (a[sortField] < b[sortField]) {
-        console.log(`ret -1`);
         return -1 * multiplier;
       } else if (a[sortField] > b[sortField]){
-        console.log(`ret 1`);
         return 1 * multiplier;
       } else
-        console.log(`${a[sortField]} ${b[sortField]} ret 0`);
         return 0;
     })
 
