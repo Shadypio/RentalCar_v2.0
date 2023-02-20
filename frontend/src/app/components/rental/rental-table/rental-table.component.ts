@@ -2,13 +2,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Rental } from 'src/app/common/rental/rental';
 import { RentalService } from 'src/app/services/rental/rental.service';
-import { MyButtonConfig } from '../my-button/config/my-button-config';
-import { MyTableActions } from '../my-table/config/actions/my-table-actions';
-import { MyHeaders } from '../my-table/config/header/my-headers';
-import { MyTableConfig } from '../my-table/config/my-table-config';
-import { MyOrder } from '../my-table/config/order/my-order';
-import { MyPagination } from '../my-table/config/pagination/my-pagination';
-import { MySearch } from '../my-table/config/search/my-search';
+import { MyButtonConfig } from '../../my-button/config/my-button-config';
+import { MyTableActions } from '../../my-table/config/actions/my-table-actions';
+import { MyHeaders } from '../../my-table/config/header/my-headers';
+import { MyTableConfig } from '../../my-table/config/my-table-config';
+import { MyOrder } from '../../my-table/config/order/my-order';
+import { MyPagination } from '../../my-table/config/pagination/my-pagination';
+import { MySearch } from '../../my-table/config/search/my-search';
 
 @Component({
   selector: 'app-rental-table',
