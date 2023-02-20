@@ -81,7 +81,7 @@ export class RentalTableComponent implements OnInit {
     this.orderByID = new MyOrder('0', 'asc');
 
     // declaring search option
-    this.searchByPeriod = new MySearch(['2']);
+    this.searchByPeriod = new MySearch(['startDate']);
 
     // declaring MyPagination object
     this.pagination = new MyPagination(5, [5, 10, 15, 20]);

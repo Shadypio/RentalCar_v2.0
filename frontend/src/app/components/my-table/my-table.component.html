@@ -54,7 +54,7 @@
       *ngFor="
         let dataItem of data
         | sort: [sortByParam, sortDirection]
-        | filter: term : 'brand'
+        | filter: term : tableConfig?.search?.columns!
           | slice
             : (currentPage - 1) * (tableConfig?.pagination?.itemPerPage || 8)
             : currentPage * (tableConfig?.pagination?.itemPerPage || 8)

@@ -66,7 +66,7 @@ export class CarTableComponent implements OnInit {
     this.orderByID = new MyOrder('0', 'asc');
 
     // declaring search option
-    this.searchByBrandAndModel = new MySearch(['2', '3']);
+    this.searchByBrandAndModel = new MySearch(['brand', 'model']);
 
     // declaring MyPagination object
     this.pagination = new MyPagination(5, [5, 10, 15, 20]);
