@@ -197,7 +197,7 @@
       "password": "PasswordRossi1.",
       "dateOfBirth": "2000-02-10",
       "enabled": true,
-      "role": 1,
+      "role": 0,
       "rentalMade": 1
     },
     {
@@ -213,17 +213,6 @@
     },
     {
       "id": 3,
-      "firstName": "Giovanna",
-      "lastName": "Bianchi",
-      "username": "giovannabianchi",
-      "password": "PasswordBianchi1.",
-      "dateOfBirth": "2000-12-02",
-      "enabled": true,
-      "role": 1,
-      "rentalMade": 1
-    },
-    {
-      "id": 4,
       "firstName": "Maria",
       "lastName": "Neri",
       "username": "marianeri",
@@ -233,6 +222,5 @@
       "role": 1,
       "rentalMade": 1
     }
-
   ]
 }

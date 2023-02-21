@@ -8,7 +8,7 @@ export class Customer {
     public firstName: string,
     public lastName: string,
     public username: string,
-    public password: number,
+    public password: string,
     public dateOfBirth: string,
     public enabled: boolean,
     public role: number,
