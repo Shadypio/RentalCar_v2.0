@@ -99,7 +99,7 @@ export class CarTableComponent implements OnInit {
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
     console.log(event.dataItem, event.action);
     if (event.action === "Edit") {
-      this.carService.editCar(event.dataItem.id, event.dataItem)
+      this._router.navigateByUrl(`cars/edit/${event.dataItem.id}`)
     }
     else if (event.action === "Delete") {
       this.carService.deleteCar(event.dataItem.id).subscribe(

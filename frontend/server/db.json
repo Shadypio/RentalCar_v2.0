@@ -5,7 +5,7 @@
       "licensePlate": "HA689SF",
       "brand": "Volkswagen",
       "model": "Polo",
-      "year": 2012,
+      "year": 2000,
       "category": "Automobile"
     },
     {
@@ -30,7 +30,7 @@
       "brand": "Toyota",
       "model": "Hiace",
       "year": 2013,
-      "category": "Commerciale"
+      "category": "Automobile"
     },
     {
       "id": 9,
@@ -132,17 +132,31 @@
   "rentals": [
     {
       "id": 10,
-      "startDate": "sss",
-      "endDate": "sss",
+      "startDate": "2023-03-22",
+      "endDate": "2023-04-02",
       "referredCustomer": 1,
-      "rentedCar": 2
+      "rentedCar": 6
     },
     {
-      "id": 101,
+      "id": 11,
       "startDate": "2023-02-22",
       "endDate": "2023-02-24",
       "referredCustomer": 1,
-      "rentedCar": 1
+      "rentedCar": 7
+    },
+    {
+      "id": 12,
+      "startDate": "2023-03-22",
+      "endDate": "2023-04-02",
+      "referredCustomer": 2,
+      "rentedCar": 5
+    },
+    {
+      "id": 13,
+      "startDate": "2023-02-22",
+      "endDate": "2023-02-24",
+      "referredCustomer": 3,
+      "rentedCar": 8
     }
   ]
 }

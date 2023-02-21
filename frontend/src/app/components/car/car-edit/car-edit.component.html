@@ -1,0 +1,39 @@
+<h2>Edit Car</h2>
+
+<div style="width: 500px; margin: auto;">
+  <div class="submit-form">
+    <div *ngIf="!isCarEdited">
+
+      <div class="form-group">
+        <label for="licensePlate">License Plate</label>
+        <input type="text" class="form-control" id="licensePlate" required [(ngModel)]="carFound.licensePlate" name="licensePlate" />
+      </div>
+
+      <div class="form-group">
+        <label for="brand">Brand</label>
+        <input type="text" class="form-control" id="brand" required [(ngModel)]="carFound.brand" name="brand" />
+      </div>
+
+      <div class="form-group">
+        <label for="model">Model</label>
+        <input type="text" class="form-control" id="model" required [(ngModel)]="carFound.model" name="model" />
+      </div>
+
+      <div class="form-group">
+        <label for="year">Registration Year</label>
+        <input type="number" class="form-control" id="year" required [(ngModel)]="carFound.year" name="year" />
+      </div>
+
+      <div class="form-group">
+        <label for="category">Category</label>
+        <input class="form-control" id="category" required [(ngModel)]="carFound.category" name="category" />
+      </div>
+
+      <button (click)="editCar()" class="btn btn-success">Edit</button>
+    </div>
+
+    <div *ngIf="isCarEdited">
+      <h3>Car updated successfully</h3>
+    </div>
+  </div>
+</div>

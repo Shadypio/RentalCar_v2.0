@@ -37,7 +37,7 @@ export class CarService {
     );
   }
 
-  // Edit/ Update
+  // Edit / Update
   editCar(id: any, data: any): Observable<any> {
     return this.httpClient.put(`${this.apiUrl}/${id}`, data).pipe(
       catchError(this.handleError)
