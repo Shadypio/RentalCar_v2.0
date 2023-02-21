@@ -118,7 +118,8 @@ export class RentalTableComponent implements OnInit {
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
     console.log(event.dataItem, event.action);
     if (event.action === "Edit") {
-      this.rentalService.editRental(event.dataItem.id, event.dataItem)
+      //this.rentalService.editRental(event.dataItem.id, event.dataItem)
+      this._router.navigateByUrl(`rental/edit/${event.dataItem.id}`)
     }
     else if (event.action === "Delete") {
       this.rentalService.deleteRental(event.dataItem.id).subscribe(
