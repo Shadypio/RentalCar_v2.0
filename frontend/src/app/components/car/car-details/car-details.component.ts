@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/common/car/car';
 import { CarService } from 'src/app/services/car/car.service';
 import { RentalService } from 'src/app/services/rental/rental.service';
+import { MyButtonConfig } from '../../my-button/config/my-button-config';
 
 @Component({
   selector: 'app-car-details',
@@ -12,6 +13,11 @@ import { RentalService } from 'src/app/services/rental/rental.service';
 export class CarDetailsComponent implements OnInit {
 
   carFound : Car;
+  rentButton: MyButtonConfig = new MyButtonConfig(
+    'button-53',
+    'Rent now',
+    ''
+  )
 
   constructor(
     private route: ActivatedRoute,

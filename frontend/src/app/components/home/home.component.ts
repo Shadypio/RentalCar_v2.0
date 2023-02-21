@@ -13,6 +13,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  gettingStartedButton: MyButtonConfig = new MyButtonConfig("btn btn-primary", "Rent your car", "fa fa-icon fa-car");
+  gettingStartedButton: MyButtonConfig = new MyButtonConfig("button-53", "Rent your car", "");
 
 }

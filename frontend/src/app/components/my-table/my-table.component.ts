@@ -25,6 +25,18 @@ export class MyTableComponent implements OnInit {
     'fa fa-pencil'
   );
 
+  searchButton: MyButtonConfig = new MyButtonConfig(
+    'search-button-class',
+    'Search',
+    'fas fa-search'
+  )
+
+  clearButton: MyButtonConfig = new MyButtonConfig(
+    'clear-button-class',
+    'Clear search ',
+    'fas fa-trash'
+  )
+
 
 
   constructor(private route: ActivatedRoute) {}

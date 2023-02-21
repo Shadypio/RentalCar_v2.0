@@ -2,8 +2,17 @@
 
     <div class="col-md-4 mb-3">
       <input class="form-control" type="text" [(ngModel)]="searchTerm" #searchInput>
-      <button type="submit" class="button btn btn-primary" (click)='onSearchTermFilter()'>Search</button>
-      <button class="button btn btn-primary" (click)='clearSearch()'>Clear</button>
+      <app-my-button
+        [buttonConfig]="searchButton"
+        (click)="onSearchTermFilter()"
+        type="submit">
+      </app-my-button>
+
+      <app-my-button
+        [buttonConfig]="clearButton"
+        (click)="clearSearch()"
+        type="submit">
+      </app-my-button>
     </div>
 
 </div>
