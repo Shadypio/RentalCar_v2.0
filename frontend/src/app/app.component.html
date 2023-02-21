@@ -69,12 +69,26 @@
               <li class="nav-item">
                 <a class="nav-link" routerLink="/profile">Account</a>
               </li>
-              <app-login-status></app-login-status>
-            </ul>
 
+
+              <!--app-login-status></app-login-status-->
+            </ul>
+            <div class="button-div">
+
+              <app-my-button
+              [buttonConfig]="signUpButton"
+              routerLink="customers/create"></app-my-button>
+              <app-my-button
+              [buttonConfig]="signInButton"></app-my-button>
+
+            </div>
           </div>
         </nav>
+
+
         <!-- END HEADER DESKTOP-->
+
+
 
         <!-- MAIN CONTENT-->
         <router-outlet></router-outlet>

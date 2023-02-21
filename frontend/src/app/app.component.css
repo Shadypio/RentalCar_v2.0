@@ -1,0 +1,12 @@
+.button-div{
+
+  width:350px;
+  height:60px;
+  border:2px solid #eee;
+  background-color:#b6bdc9;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:7px;
+  padding:7px;
+}

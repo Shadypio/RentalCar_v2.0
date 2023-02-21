@@ -77,6 +77,42 @@
   touch-action: manipulation;
 }
 
+.signup-button{
+  width:100%;
+  height:55px;
+  margin-right:70px;
+  border:none;
+  border-radius:5px;
+  background-color:#e9ecf0;
+  font-size:17px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.login-button{
+  width:300%;
+  height:55px;
+  border:none;
+  border-radius:5px;
+  font-size:17px;
+  font-weight:600;
+  color:#fff;
+  background-color:#1859c9;
+  cursor:pointer;
+}
+
+
+.login-button:hover{
+
+  background-color:#1859c9db;
+}
+
+
+.signup-button:hover{
+
+  background-color:#e9ecf0d1;
+}
+
 .button-53 {
   background-color: #3DD1E7;
   border: 0 solid #E5E7EB;

@@ -39,6 +39,7 @@ import { RentalCreateComponent } from './components/rental/rental-create/rental-
 import { CarEditComponent } from './components/car/car-edit/car-edit.component';
 import { RentalEditComponent } from './components/rental/rental-edit/rental-edit.component';
 import { CustomerTableComponent } from './components/customer/customer-table/customer-table.component';
+import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
 
 const oktaConfig = myAppConfig.oidc;
 
@@ -68,6 +69,7 @@ const routes: Routes = [
   {path: 'cars/create', component: CarCreateComponent},
   {path: 'cars/edit/:id', component: CarEditComponent},
   {path: 'cars/:id', component: CarDetailsComponent},
+  {path: 'customers/create', component: CustomerCreateComponent},
   {path: 'customers', component: CustomerTableComponent},
   {path: 'rentals', component: RentalTableComponent},
   {path: 'cars', component: CarTableComponent},
@@ -95,6 +97,7 @@ const routes: Routes = [
     CarEditComponent,
     RentalEditComponent,
     CustomerTableComponent,
+    CustomerCreateComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -17,5 +17,18 @@ export class AppComponent {
 
   title = 'frontend';
 
+  signUpButton: MyButtonConfig = new MyButtonConfig(
+    'signup-button',
+    'Sign Up',
+    ''
+  );
+
+  signInButton: MyButtonConfig = new MyButtonConfig(
+    'login-button',
+    'Login',
+    ''
+  );
+
+
 
 }
