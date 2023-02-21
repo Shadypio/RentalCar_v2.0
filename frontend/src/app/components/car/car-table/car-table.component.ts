@@ -15,9 +15,12 @@ import { MySearch } from '../../my-table/config/search/my-search';
   templateUrl: './car-table.component.html',
   styleUrls: ['./car-table.component.css'],
 })
-
 export class CarTableComponent implements OnInit {
-  constructor(private carService: CarService, private route: ActivatedRoute, private _router: Router) {}
+  constructor(
+    private carService: CarService,
+    private route: ActivatedRoute,
+    private _router: Router
+  ) {}
 
   idHeader: MyHeaders;
   licensePlateHeader: MyHeaders;
@@ -40,11 +43,7 @@ export class CarTableComponent implements OnInit {
     'fa fa-plus'
   );
 
-
   ngOnInit(): void {
-
-
-
     // creating headers for table
     // declaring some headers
     this.idHeader = new MyHeaders('id', 'ID');
@@ -81,8 +80,6 @@ export class CarTableComponent implements OnInit {
     );
 
     this.listCars();
-
-
   }
 
   listCars() {
@@ -92,30 +89,22 @@ export class CarTableComponent implements OnInit {
   }
 
   newRowHandler($event: { dataItem: any; action: any }) {
-
-    this._router.navigateByUrl(`cars/create`)
+    this._router.navigateByUrl(`cars/create`);
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
     console.log(event.dataItem, event.action);
-    if (event.action === "Edit") {
-      this._router.navigateByUrl(`cars/edit/${event.dataItem.id}`)
-    }
-    else if (event.action === "Delete") {
-      this.carService.deleteCar(event.dataItem.id).subscribe(
-        response => {
-          this.listCars();
-        }
-      )
+    if (event.action === 'Edit') {
+      this._router.navigateByUrl(`cars/edit/${event.dataItem.id}`);
+    } else if (event.action === 'Delete') {
+      this.carService.deleteCar(event.dataItem.id).subscribe((response) => {
+        this.listCars();
+      });
     }
   }
 
-  viewDetailsOnDataHandler(event: {dataItem: any}) {
+  viewDetailsOnDataHandler(event: { dataItem: any }) {
     // view details of selected row
-    this._router.navigateByUrl(`cars/${event.dataItem.id}`)
+    this._router.navigateByUrl(`cars/${event.dataItem.id}`);
   }
-
-
-
-
 }

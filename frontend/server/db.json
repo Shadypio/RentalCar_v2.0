@@ -187,5 +187,52 @@
       "referredCustomer": 1,
       "rentedCar": "5"
     }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "firstName": "Mario",
+      "lastName": "Rossi",
+      "username": "mariorossi",
+      "password": "PasswordRossi1.",
+      "dateOfBirth": "2000-02-10",
+      "enabled": true,
+      "role": 1,
+      "rentalMade": 1
+    },
+    {
+      "id": 2,
+      "firstName": "Luca",
+      "lastName": "Verdi",
+      "username": "lucaverdi",
+      "password": "PasswordVerdi1.",
+      "dateOfBirth": "2000-05-11",
+      "enabled": true,
+      "role": 1,
+      "rentalMade": 2
+    },
+    {
+      "id": 3,
+      "firstName": "Giovanna",
+      "lastName": "Bianchi",
+      "username": "giovannabianchi",
+      "password": "PasswordBianchi1.",
+      "dateOfBirth": "2000-12-02",
+      "enabled": true,
+      "role": 1,
+      "rentalMade": 1
+    },
+    {
+      "id": 4,
+      "firstName": "Maria",
+      "lastName": "Neri",
+      "username": "marianeri",
+      "password": "PasswordNeri1.",
+      "dateOfBirth": "2000-10-01",
+      "enabled": true,
+      "role": 1,
+      "rentalMade": 1
+    }
+
   ]
 }
