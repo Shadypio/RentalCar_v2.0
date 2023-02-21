@@ -116,6 +116,7 @@ export class RentalService {
     );
   }
 
+  /*
   createWithRentedCar(rentedCarId: number) : Observable<any> {
 
     const newRental = new Rental(RentalService.id++, "inizio","fine", 1, rentedCarId);
@@ -124,7 +125,7 @@ export class RentalService {
 
     );
 
-  }
+  }*/
 
   // Edit/ Update
   editRental(id: any, data: any): Observable<any> {

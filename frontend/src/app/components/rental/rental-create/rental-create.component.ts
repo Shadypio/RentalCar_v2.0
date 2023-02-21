@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Car } from 'src/app/common/car/car';
 import { Rental } from 'src/app/common/rental/rental';
+import { CarService } from 'src/app/services/car/car.service';
 import { RentalService } from 'src/app/services/rental/rental.service';
 
 @Component({
@@ -8,15 +11,60 @@ import { RentalService } from 'src/app/services/rental/rental.service';
   styleUrls: ['./rental-create.component.css'],
 })
 export class RentalCreateComponent implements OnInit {
-  constructor(private rentalService: RentalService) {}
+
+  carFound: Car;
+
+  constructor(private rentalService: RentalService,
+              private carService: CarService,
+              private route: ActivatedRoute) {}
 
   rental: Rental = new Rental(RentalService.id++, '', '', 0, 0);
   isRentalAdded = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(() => {
+      this.loadCar();
+      this.updateRentedCar();
+    })
+
+
+    console.log(`prenotata ${this.rental.rentedCar}`)
+  }
+
+  updateRentedCar() {
+    if(this.carFound)
+        this.rental.rentedCar = this.carFound.id
+    else
+        this.rental.rentedCar = 0;
+
+  }
+
+  loadCar() {
+    const carId = +this.route.snapshot.paramMap.get('id')!;
+
+
+    this.carService.getCarById(carId).subscribe(
+      data => {
+        if(data){
+          this.carFound = data;
+          this.rental.rentedCar = this.carFound.id
+          console.log(`${this.carFound.licensePlate}`)
+        }
+      }
+
+    )
+
+
+
+  }
 
   addRental(): void {
+
+
+
+
     const data = {
+
       id: this.rental.id,
       startDate: this.rental.startDate,
       endDate: this.rental.endDate,

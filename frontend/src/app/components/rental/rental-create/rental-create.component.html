@@ -21,7 +21,12 @@
 
       <div class="form-group">
         <label for="rentedCar">ID Car</label>
-        <input type="number" class="form-control" id="rentedCar" required [(ngModel)]="rental.rentedCar" name="rentedCar" />
+        <ng-container *ngIf="rental.rentedCar === 0; else not_blocked">
+          <input type="number" class="form-control" id="rentedCar" required [(ngModel)]="rental.rentedCar" name="rentedCar" />
+        </ng-container>
+        <ng-template #not_blocked>
+          <input type="number" class="form-control" id="rentedCar" required [(ngModel)]="rental.rentedCar" name="rentedCar" disabled/>
+        </ng-template>
       </div>
 
       <button (click)="addRental()" class="btn btn-success">Create</button>

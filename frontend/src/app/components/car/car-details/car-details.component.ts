@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/common/car/car';
 import { CarService } from 'src/app/services/car/car.service';
 import { RentalService } from 'src/app/services/rental/rental.service';
@@ -15,6 +15,7 @@ export class CarDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private _router: Router,
     private carService: CarService,
     private rentalService: RentalService
   ) { }
@@ -42,10 +43,12 @@ export class CarDetailsComponent implements OnInit {
   }
 
   rentCar(rentedCarId: number) {
+    /*
     console.log("ciao button")
     this.rentalService.createWithRentedCar(rentedCarId).subscribe(
       response => {}
-    );
+    );*/
+    this._router.navigateByUrl(`cars/rent/${rentedCarId}`)
   }
 
 }
