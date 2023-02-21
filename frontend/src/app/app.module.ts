@@ -34,7 +34,6 @@ import { RoleService } from './services/role/role.service';
 import { RentalTableComponent } from './components/rental/rental-table/rental-table.component';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
 import { FilterPipe } from './pipes/filter.pipe';
-import { SortPipe } from './pipes/sort.pipe';
 import { CarCreateComponent } from './components/car/car-create/car-create.component';
 import { RentalCreateComponent } from './components/rental/rental-create/rental-create.component';
 import { CarEditComponent } from './components/car/car-edit/car-edit.component';
@@ -88,7 +87,6 @@ const routes: Routes = [
     RentalTableComponent,
     CustomerDetailsComponent,
     FilterPipe,
-    SortPipe,
     CarCreateComponent,
     RentalCreateComponent,
     CarEditComponent,

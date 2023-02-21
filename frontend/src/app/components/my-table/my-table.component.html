@@ -8,13 +8,7 @@
 
 </div>
 
-<label>Sort by: </label>
-<select [(ngModel)] = 'sortByParam'>
-<option *ngFor="let headerOption of tableConfig?.headers"> {{ headerOption.label }}</option>
 
-
-</select>
-<button class="button btn btn-primary" (click)='onSortSelection()'>Sort</button>
 
 <table class="table table-hover table-dark sortable">
   <thead>
@@ -53,7 +47,6 @@
     <tr
       *ngFor="
         let dataItem of data
-        | sort: [sortByParam, sortDirection]
         | filter: term : tableConfig?.search?.columns!
           | slice
             : (currentPage - 1) * (tableConfig?.pagination?.itemPerPage || 8)

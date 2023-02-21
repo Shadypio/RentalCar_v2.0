@@ -90,9 +90,9 @@ export class MyTableComponent implements OnInit {
     console.log(`${headerIndex} `);
 
     this.data.sort((a, b) => {
-      if (a[headerIndex] < b[headerIndex]) {
+      if (a[headerKey] < b[headerKey]) {
         return orderType === 'asc' ? -1 : 1;
-      } else if (a[headerIndex] > b[headerIndex]) {
+      } else if (a[headerKey] > b[headerKey]) {
         return orderType === 'asc' ? 1 : -1;
       } else {
         return 0;
