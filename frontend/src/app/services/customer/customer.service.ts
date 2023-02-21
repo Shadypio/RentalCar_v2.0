@@ -8,6 +8,7 @@ import { Customer } from 'src/app/common/customer/customer';
 })
 export class CustomerService {
 
+
   apiUrl: string = 'http://localhost:3000/customers';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   customersData: Customer[];
@@ -22,11 +23,17 @@ export class CustomerService {
     );
   }
 
-  // Create new item
   getCustomerById(id: any): Observable<any> {
     return this.httpClient.get(`${this.apiUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
+  }
+
+  getCustomerByUsernamePassword(username: string, password: string): Observable<any> {
+    const body = { username: username, password: password };
+    return this.httpClient.get(`${this.apiUrl}?username=${username}&password=${password}`).pipe(
+      catchError(this.handleError)
+  );
   }
 
   create(data: any): Observable<any> {

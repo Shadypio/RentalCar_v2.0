@@ -5,6 +5,8 @@ import { Inject } from '@angular/core';
 import OktaSignIn from '@okta/okta-signin-widget'
 
 import myAppConfig from '../../config/my-app-config'
+import { CustomerService } from 'src/app/services/customer/customer.service';
+import { Customer } from 'src/app/common/customer/customer';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +14,8 @@ import myAppConfig from '../../config/my-app-config'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  /*
 
   oktaSignin: any;
 
@@ -45,5 +49,34 @@ export class LoginComponent implements OnInit {
       }
       );
   }
+  */
+
+  username = '';
+  password = '';
+  customerLogged: Customer = new Customer(0, "", "", "", "", "", true, 0, 0 )
+
+  constructor(private customerService: CustomerService) {}
+
+  ngOnInit(): void {
+
+
+
+  }
+
+  login() {
+
+    console.log()
+
+    this.customerService.getCustomerByUsernamePassword(this.username, this.password).subscribe(
+      data => {
+        if(data)
+          this.customerLogged = data;
+      }
+
+
+    )
+
+  }
+
 
 }
