@@ -61,7 +61,7 @@
       "
     >
 
-    <td *ngFor="let prop of objectKeys(dataItem) "> {{ dataItem[prop] || 'N/D' }} </td>
+    <td *ngFor="let header of tableConfig?.headers "> {{ dataItem[header.key] || 'N/D' }} </td>
     <td>
       <ng-container *ngFor="let action of tableConfig?.actions">
         <app-my-button

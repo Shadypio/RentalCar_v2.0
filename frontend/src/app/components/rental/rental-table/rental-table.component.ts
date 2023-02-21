@@ -64,11 +64,11 @@ export class RentalTableComponent implements OnInit {
   ngOnInit(): void {
     // creating headers for table
     // declaring some headers
-    this.idHeader = new MyHeaders('0', 'ID');
-    this.startDateHeader = new MyHeaders('1', 'StartDate');
-    this.endDateHeader = new MyHeaders('2', 'End Date');
-    this.referredCustomerHeader = new MyHeaders('3', 'Referred Customer');
-    this.rentedCarHeader = new MyHeaders('4', 'Rented Car');
+    this.idHeader = new MyHeaders('id', 'ID');
+    this.startDateHeader = new MyHeaders('startDate', 'Start Period');
+    this.endDateHeader = new MyHeaders('endDate', 'End Period');
+    this.referredCustomerHeader = new MyHeaders('referredCustomer', 'Referred Customer');
+    this.rentedCarHeader = new MyHeaders('rentedCar', 'Rented Car');
     this.myHeaders = [
       this.idHeader,
       this.startDateHeader,

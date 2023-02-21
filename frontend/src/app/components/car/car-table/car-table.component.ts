@@ -47,12 +47,12 @@ export class CarTableComponent implements OnInit {
 
     // creating headers for table
     // declaring some headers
-    this.idHeader = new MyHeaders('0', 'ID');
-    this.licensePlateHeader = new MyHeaders('1', 'License Plate');
-    this.brandHeader = new MyHeaders('2', 'Brand');
-    this.modelHeader = new MyHeaders('3', 'Model');
-    this.yearHeader = new MyHeaders('4', 'Registration Year');
-    this.categoryHeader = new MyHeaders('5', 'Category');
+    this.idHeader = new MyHeaders('id', 'ID');
+    this.licensePlateHeader = new MyHeaders('licensePlate', 'License Plate');
+    this.brandHeader = new MyHeaders('brand', 'Brand');
+    this.modelHeader = new MyHeaders('model', 'Model');
+    this.yearHeader = new MyHeaders('year', 'Registration Year');
+    this.categoryHeader = new MyHeaders('category', 'Category');
     this.myHeaders = [
       this.idHeader,
       this.licensePlateHeader,
