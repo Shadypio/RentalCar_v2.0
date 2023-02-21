@@ -127,6 +127,14 @@
       "model": "Navara",
       "year": 2012,
       "category": "Commerciale"
+    },
+    {
+      "id": 100,
+      "licensePlate": "HA689SF",
+      "brand": "Volkswagen",
+      "model": "Polo",
+      "year": "2002",
+      "category": "Automobile"
     }
   ],
   "rentals": [
@@ -160,10 +168,24 @@
     },
     {
       "id": 100,
-      "startDate": "inizio",
-      "endDate": "fine",
+      "startDate": "2023-02-15",
+      "endDate": "2023-02-16",
+      "referredCustomer": 2,
+      "rentedCar": "8"
+    },
+    {
+      "id": 101,
+      "startDate": "2023-02-26",
+      "endDate": "2023-02-17",
       "referredCustomer": 1,
-      "rentedCar": 6
+      "rentedCar": "7"
+    },
+    {
+      "id": 102,
+      "startDate": "2023-02-26",
+      "endDate": "2023-02-16",
+      "referredCustomer": 1,
+      "rentedCar": "5"
     }
   ]
 }

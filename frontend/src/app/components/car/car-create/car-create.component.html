@@ -20,8 +20,12 @@
       </div>
 
       <div class="form-group">
-        <label for="year">Registration Year</label>
-        <input type="number" class="form-control" id="year" required [(ngModel)]="car.year" name="year" />
+        <label for="year">Registration Year</label><br>
+        <select [(ngModel)]="car.year" type="number">
+          <option *ngFor="let yearToSelect of years" type="number" >
+            {{+yearToSelect}}
+          </option>
+        </select>
       </div>
 
       <div class="form-group">

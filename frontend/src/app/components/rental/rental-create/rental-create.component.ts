@@ -13,6 +13,7 @@ import { RentalService } from 'src/app/services/rental/rental.service';
 export class RentalCreateComponent implements OnInit {
 
   carFound: Car;
+  carsFound: Car[];
 
   constructor(private rentalService: RentalService,
               private carService: CarService,
@@ -24,20 +25,14 @@ export class RentalCreateComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.loadCar();
-      this.updateRentedCar();
+      this.loadCars();
+
     })
 
 
     console.log(`prenotata ${this.rental.rentedCar}`)
   }
 
-  updateRentedCar() {
-    if(this.carFound)
-        this.rental.rentedCar = this.carFound.id
-    else
-        this.rental.rentedCar = 0;
-
-  }
 
   loadCar() {
     const carId = +this.route.snapshot.paramMap.get('id')!;
@@ -54,14 +49,18 @@ export class RentalCreateComponent implements OnInit {
 
     )
 
+  }
 
-
+  loadCars() {
+    this.carService.getCars().subscribe(
+      data => {
+        if(data)
+          this.carsFound = data;
+      }
+    )
   }
 
   addRental(): void {
-
-
-
 
     const data = {
 
