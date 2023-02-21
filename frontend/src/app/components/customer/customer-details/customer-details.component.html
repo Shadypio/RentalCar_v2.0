@@ -1,20 +1,16 @@
-<div class="login-status-header">
+<div class="detail-section">
+  <div class="container-fluid">
 
-  <div *ngIf="isAuthenticated && userFullName; else redirect_login" class="login-status-user-info">
-    <h3> Welcome back {{ userFullName }} </h3>
+
+
     <img src="../../../assets/images/avatar.png" class="detail-img">
-    <p></p>
-    <p>Email: {{ userEmail }}</p>
-    <p>Zone Info: {{ zoneinfo }}</p>
 
+    <hr>
+    <h4>User Info: {{customerFound.username}} </h4>
+    <p> {{customerFound.firstName}} {{customerFound.lastName }} - {{customerFound.dateOfBirth }}</p>
+
+
+    <br>
+    <a routerLink="/customers" class="mt-5">Back to customers</a>
   </div>
-
-  <ng-template #redirect_login>
-    <app-login></app-login>
-  </ng-template>
-
-
-
-
 </div>
-

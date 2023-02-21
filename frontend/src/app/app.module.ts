@@ -70,6 +70,8 @@ const routes: Routes = [
   {path: 'cars/edit/:id', component: CarEditComponent},
   {path: 'cars/:id', component: CarDetailsComponent},
   {path: 'customers/create', component: CustomerCreateComponent},
+  {path: 'customers/:id', component: CustomerDetailsComponent},
+
   {path: 'customers', component: CustomerTableComponent},
   {path: 'rentals', component: RentalTableComponent},
   {path: 'cars', component: CarTableComponent},
