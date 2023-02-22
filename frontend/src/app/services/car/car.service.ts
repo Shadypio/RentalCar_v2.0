@@ -10,6 +10,7 @@ export class CarService {
 
 
   apiUrl: string = 'http://localhost:3000/cars';
+  baseUrl = 'http://localhost:8080/api/cars';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   carsData: Car[];
   static id: number = 100;
@@ -19,8 +20,12 @@ export class CarService {
 
   // Show lists of item
   getCars(): Observable<any> {
+    /*
     return this.httpClient.get(this.apiUrl).pipe(
       catchError(this.handleError)
+    );*/
+    return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
+      map(response => response._embedded.cars)
     );
   }
 
@@ -65,6 +70,12 @@ export class CarService {
   };
 
 
+
 }
 
+interface GetResponse {
+  _embedded: {
+    cars: Car[]
+  }
+}
 

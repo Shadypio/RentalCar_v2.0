@@ -63,8 +63,8 @@
       "
     >
 
-    <td *ngFor="let header of tableConfig?.headers "> {{ dataItem[header.key] || 'N/D' }} </td>
-    <td>
+    <td *ngFor="let header of tableConfig?.headers"> {{ dataItem[header.key] || 'N/D' }} </td>
+    <td >
       <ng-container *ngFor="let action of tableConfig?.actions">
         <app-my-button
           *ngIf="action != 'New Row'"

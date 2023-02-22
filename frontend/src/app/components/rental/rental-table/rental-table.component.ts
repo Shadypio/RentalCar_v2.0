@@ -72,7 +72,7 @@ export class RentalTableComponent implements OnInit {
     this.referredCustomerHeader = new MyHeaders('referredCustomer', 'Referred Customer');
     this.rentedCarHeader = new MyHeaders('rentedCar', 'Rented Car');
     this.myHeaders = [
-      this.idHeader,
+      //this.idHeader,
       this.startDateHeader,
       this.endDateHeader,
       this.referredCustomerHeader,
