@@ -91,29 +91,23 @@ export class CarTableComponent implements OnInit {
   }
 
   newRowHandler($event: { dataItem: any; action: any }) {
-    if(!this.authService.getIsAuthenticated()) {
-      this._router.navigateByUrl("/login")
+
+    if(!this.authService.isAdmin()){
+      alert('Not authorized')
     }
-    else {
-      if(!this.authService.isAdmin()){
-        alert('Not authorized')
-      }
-      else
-        this._router.navigateByUrl(`cars/create`);
-    }
+    else
+      this._router.navigateByUrl(`cars/create`);
+
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
 
-    if(!this.authService.getIsAuthenticated()) {
-      this._router.navigateByUrl("/login")
-    }
-    else {
       if(!this.authService.isAdmin()){
         alert('Not authorized')
       }
+
       else {
-        if(this.authService.getIsAuthenticated()){
+
           console.log(event.dataItem, event.action);
           if (event.action === 'Edit') {
             this._router.navigateByUrl(`cars/edit/${event.dataItem.id}`);
@@ -122,8 +116,8 @@ export class CarTableComponent implements OnInit {
               this.listCars();
             });
           }
-        }
-      }
+
+
     }
   }
 

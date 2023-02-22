@@ -42,6 +42,7 @@ import { CustomerTableComponent } from './components/customer/customer-table/cus
 import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
 import { CustomerEditComponent } from './components/customer/customer-edit/customer-edit.component';
 import { AuthService } from './services/authentication/auth.service';
+import { AuthGuard } from './services/authentication/authguard';
 
 const oktaConfig = myAppConfig.oidc;
 
@@ -58,21 +59,17 @@ function sendToLoginPage(oktaAuth: OktaAuth, injector: Injector) {
 
 const routes: Routes = [
 
-  {path: 'members', component: MembersPageComponent, canActivate: [OktaAuthGuard],
-                    data: {onAuthRequired: sendToLoginPage} },
-
-  {path: 'login/callback', component: OktaCallbackComponent},
   {path: 'login', component: LoginComponent},
   {path: 'profile', component: CustomerDetailsComponent},
-  {path: 'rental/create', component: RentalCreateComponent},
-  {path: 'rental/edit/:id', component: RentalEditComponent},
+  {path: 'rental/create', component: RentalCreateComponent, canActivate: [AuthGuard]},
+  {path: 'rental/edit/:id', component: RentalEditComponent, canActivate: [AuthGuard]},
   {path: 'rental/:id', component: RentalDetailsComponent},
-  {path: 'cars/rent/:idCar/:idCustomer', component: RentalCreateComponent},
-  {path: 'cars/create', component: CarCreateComponent},
-  {path: 'cars/edit/:id', component: CarEditComponent},
+  {path: 'cars/rent/:idCar/:idCustomer', component: RentalCreateComponent, canActivate: [AuthGuard]},
+  {path: 'cars/create', component: CarCreateComponent, canActivate: [AuthGuard]},
+  {path: 'cars/edit/:id', component: CarEditComponent, canActivate: [AuthGuard]},
   {path: 'cars/:id', component: CarDetailsComponent},
-  {path: 'customers/create', component: CustomerCreateComponent},
-  {path: 'customers/edit/:id', component: CustomerEditComponent},
+  {path: 'customers/create', component: CustomerCreateComponent, canActivate: [AuthGuard]},
+  {path: 'customers/edit/:id', component: CustomerEditComponent, canActivate: [AuthGuard]},
   {path: 'customers/:id', component: CustomerDetailsComponent},
   {path: 'customers', component: CustomerTableComponent},
   {path: 'rentals', component: RentalTableComponent},
@@ -114,7 +111,7 @@ const routes: Routes = [
 
   ],
   exports: [RouterModule],
-  providers: [CarService, RentalService, CustomerService, RoleService, AuthService, { provide: OKTA_CONFIG, useValue: {oktaAuth}}],
+  providers: [CarService, RentalService, CustomerService, RoleService, AuthService, AuthGuard, { provide: OKTA_CONFIG, useValue: {oktaAuth}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

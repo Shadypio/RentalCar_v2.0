@@ -14,7 +14,7 @@ export class AuthService {
   login(customerLogged: Customer) {
     this.customerInSession = customerLogged;
     this.isAuthenticated = true;
-    localStorage.setItem('currentUser', JSON.stringify(this.customerInSession))
+    // localStorage.setItem('currentUser', JSON.stringify(this.customerInSession))
   }
 
   logout() {
@@ -24,6 +24,14 @@ export class AuthService {
 
   getIsAuthenticated() {
     return this.isAuthenticated;
+  }
+
+
+  isAdmin() {
+    if (this.customerInSession.role === 1)
+      return true;
+    else
+      return false;
   }
 
   getCurrentUserUsername() {
@@ -44,11 +52,5 @@ export class AuthService {
     return
   }
 
-  isAdmin() {
-    if (this.customerInSession.role === 1)
-      return true;
-    else
-      return false;
-  }
 
 }
