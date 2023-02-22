@@ -31,8 +31,8 @@ public class Car {
     @Column(name = "category")
     private String category;
 
-    /*
+
     @OneToOne(mappedBy = "rentedCar", orphanRemoval = true)
-    private Rental rental;*/
+    private Rental rental;
 
 }
