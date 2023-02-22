@@ -35,15 +35,19 @@ export class RentalCreateComponent implements OnInit {
 
 
   loadCar() {
-    const carId = +this.route.snapshot.paramMap.get('id')!;
+    const carId = +this.route.snapshot.paramMap.get('idCar')!;
+    const customerId = +this.route.snapshot.paramMap.get('idCustomer')!;
 
 
     this.carService.getCarById(carId).subscribe(
       data => {
         if(data){
           this.carFound = data;
-          this.rental.rentedCar = this.carFound.id
-          console.log(`${this.carFound.licensePlate}`)
+          if(this.carFound.id)
+            this.rental.rentedCar = this.carFound.id
+          if(customerId)
+            this.rental.referredCustomer = customerId
+
         }
       }
 
@@ -61,6 +65,8 @@ export class RentalCreateComponent implements OnInit {
   }
 
   addRental(): void {
+
+
 
     const data = {
 

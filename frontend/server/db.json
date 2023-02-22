@@ -165,27 +165,6 @@
       "endDate": "2023-02-24",
       "referredCustomer": 3,
       "rentedCar": 8
-    },
-    {
-      "id": 100,
-      "startDate": "2023-02-15",
-      "endDate": "2023-02-16",
-      "referredCustomer": 2,
-      "rentedCar": "8"
-    },
-    {
-      "id": 101,
-      "startDate": "2023-02-26",
-      "endDate": "2023-02-17",
-      "referredCustomer": 1,
-      "rentedCar": "7"
-    },
-    {
-      "id": 102,
-      "startDate": "2023-02-26",
-      "endDate": "2023-02-16",
-      "referredCustomer": 1,
-      "rentedCar": "5"
     }
   ],
   "customers": [

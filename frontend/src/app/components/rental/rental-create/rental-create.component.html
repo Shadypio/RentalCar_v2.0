@@ -16,7 +16,12 @@
 
       <div class="form-group">
         <label for="referredCustomer">ID Customer</label>
-        <input type="number" class="form-control" id="referredCustomer" required [(ngModel)]="rental.referredCustomer" name="referredCustomer" />
+        <ng-container *ngIf="rental.referredCustomer === 0; else not_blocked_customer">
+          <input type="number" class="form-control" id="referredCustomer" required [(ngModel)]="rental.referredCustomer" name="referredCustomer"/>
+        </ng-container>
+        <ng-template #not_blocked_customer>
+          <input type="number" class="form-control" id="referredCustomer" required [(ngModel)]="rental.referredCustomer" name="referredCustomer" disabled/>
+        </ng-template>
       </div>
 
       <div class="form-group">
