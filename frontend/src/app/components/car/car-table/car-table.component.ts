@@ -55,7 +55,7 @@ export class CarTableComponent implements OnInit {
     this.yearHeader = new MyHeaders('year', 'Registration Year');
     this.categoryHeader = new MyHeaders('category', 'Category');
     this.myHeaders = [
-      //this.idHeader,
+      this.idHeader,
       this.licensePlateHeader,
       this.brandHeader,
       this.modelHeader,

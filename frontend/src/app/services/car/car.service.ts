@@ -31,9 +31,13 @@ export class CarService {
 
   // Create new item
   getCarById(id: any): Observable<any> {
+    /*
     return this.httpClient.get(`${this.apiUrl}/${id}`).pipe(
       catchError(this.handleError)
-    );
+    );*/
+    const carUrl = `${this.baseUrl}/${id}`
+    console.log(`${carUrl}`)
+    return this.httpClient.get<Car>(carUrl)
   }
 
   create(data: any): Observable<any> {

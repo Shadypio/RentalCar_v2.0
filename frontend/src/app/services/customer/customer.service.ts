@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { Customer } from 'src/app/common/customer/customer';
 
 @Injectable({
@@ -10,6 +10,7 @@ export class CustomerService {
 
 
   apiUrl: string = 'http://localhost:3000/customers';
+  baseUrl = 'http://localhost:8080/api/customers';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   customersData: Customer[];
   static id: number = 100;
@@ -18,8 +19,12 @@ export class CustomerService {
 
   // Show lists of item
   getCustomers(): Observable<any> {
+    /*
     return this.httpClient.get(this.apiUrl).pipe(
       catchError(this.handleError)
+    );*/
+    return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
+      map(response => response._embedded.customers)
     );
   }
 
@@ -69,4 +74,10 @@ export class CustomerService {
       'Something bad happened; please try again later.');
   };
 
+}
+
+interface GetResponse {
+  _embedded: {
+    customers: Customer[]
+  }
 }
