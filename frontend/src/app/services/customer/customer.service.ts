@@ -30,10 +30,10 @@ export class CustomerService {
   }
 
   getCustomerByUsernamePassword(username: string, password: string): Observable<any> {
-    const body = { username: username, password: password };
+    console.log(`${this.apiUrl}?username=${username}&password=${password}`)
     return this.httpClient.get(`${this.apiUrl}?username=${username}&password=${password}`).pipe(
       catchError(this.handleError)
-  );
+    );
   }
 
   create(data: any): Observable<any> {

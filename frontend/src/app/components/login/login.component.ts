@@ -7,6 +7,7 @@ import OktaSignIn from '@okta/okta-signin-widget'
 import myAppConfig from '../../config/my-app-config'
 import { CustomerService } from 'src/app/services/customer/customer.service';
 import { Customer } from 'src/app/common/customer/customer';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -53,9 +54,11 @@ export class LoginComponent implements OnInit {
 
   username = '';
   password = '';
-  customerLogged: Customer = new Customer(0, "", "", "", "", "", true, 0, 0 )
+  customerLoggedArray: Customer[];
+  customerLogged: Customer;
 
-  constructor(private customerService: CustomerService) {}
+  constructor(private router: Router,
+              private customerService: CustomerService) {}
 
   ngOnInit(): void {
 
@@ -64,18 +67,27 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
-    console.log()
+    console.log(`${this.username} and ${this.password}`)
 
     this.customerService.getCustomerByUsernamePassword(this.username, this.password).subscribe(
       data => {
-        if(data)
-          this.customerLogged = data;
-      }
+        if(data){
+          this.customerLoggedArray = data;
+          this.customerLogged = this.customerLoggedArray[0];
+          if(this.customerLogged!=undefined)
+            this.redirectAccount(this.customerLogged.id)
+        }
 
+
+      }
 
     )
 
+
+  }
+
+  redirectAccount(id: number) {
+    this.router.navigateByUrl(`/customers/${id}`)
   }
 
 

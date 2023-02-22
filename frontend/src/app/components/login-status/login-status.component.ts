@@ -9,6 +9,8 @@ import { OktaAuth } from '@okta/okta-auth-js';
 })
 export class LoginStatusComponent implements OnInit {
 
+  /*
+
   isAuthenticated: boolean = false;
   userFullName: string = '';
 
@@ -43,6 +45,10 @@ export class LoginStatusComponent implements OnInit {
   logout() {
     // Terminates the session with Okta and removes current tokens
     this.oktaAuth.signOut();
-  }
+  }*/
 
+  constructor() {}
+
+
+  ngOnInit(): void {}
 }
