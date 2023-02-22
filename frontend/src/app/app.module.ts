@@ -41,6 +41,7 @@ import { RentalEditComponent } from './components/rental/rental-edit/rental-edit
 import { CustomerTableComponent } from './components/customer/customer-table/customer-table.component';
 import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
 import { CustomerEditComponent } from './components/customer/customer-edit/customer-edit.component';
+import { AuthService } from './services/authentication/auth.service';
 
 const oktaConfig = myAppConfig.oidc;
 
@@ -113,7 +114,7 @@ const routes: Routes = [
 
   ],
   exports: [RouterModule],
-  providers: [CarService, RentalService, CustomerService, RoleService, { provide: OKTA_CONFIG, useValue: {oktaAuth}}],
+  providers: [CarService, RentalService, CustomerService, RoleService, AuthService, { provide: OKTA_CONFIG, useValue: {oktaAuth}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

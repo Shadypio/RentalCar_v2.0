@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Injectable, OnInit } from '@angular/core';
 import { OktaAuthStateService, OKTA_AUTH } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
 
@@ -7,6 +7,7 @@ import { OktaAuth } from '@okta/okta-auth-js';
   templateUrl: './login-status.component.html',
   styleUrls: ['./login-status.component.css']
 })
+
 export class LoginStatusComponent implements OnInit {
 
   /*
@@ -51,4 +52,18 @@ export class LoginStatusComponent implements OnInit {
 
 
   ngOnInit(): void {}
+
+  private isAuthenticated = false;
+
+  login() {
+    this.isAuthenticated = true;
+  }
+
+  logout() {
+    this.isAuthenticated = false;
+  }
+
+  getIsAuthenticated() {
+    return this.isAuthenticated;
+  }
 }

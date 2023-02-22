@@ -7,6 +7,7 @@ import { MyOrder } from './components/my-table/config/order/my-order';
 import { MyPagination } from './components/my-table/config/pagination/my-pagination';
 import { MySearch } from './components/my-table/config/search/my-search';
 import { MyTableComponent } from './components/my-table/my-table.component';
+import { AuthService } from './services/authentication/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,11 @@ import { MyTableComponent } from './components/my-table/my-table.component';
 export class AppComponent {
 
   title = 'frontend';
+
+  constructor(private authService: AuthService) {}
+
+  isAuthenticated = this.authService.getIsAuthenticated()
+  userFullName = this.authService.getCurrentUserName();
 
   signUpButton: MyButtonConfig = new MyButtonConfig(
     'signup-button',
@@ -28,6 +34,14 @@ export class AppComponent {
     'Login',
     ''
   );
+
+  signOutButton: MyButtonConfig = new MyButtonConfig(
+    'login-button',
+    'Logout',
+    ''
+  );
+
+
 
 
 

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/common/car/car';
+import { AuthService } from 'src/app/services/authentication/auth.service';
 import { CarService } from 'src/app/services/car/car.service';
 import { MyButtonConfig } from '../../my-button/config/my-button-config';
 import { MyTableActions } from '../../my-table/config/actions/my-table-actions';
@@ -19,7 +20,8 @@ export class CarTableComponent implements OnInit {
   constructor(
     private carService: CarService,
     private route: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private authService: AuthService,
   ) {}
 
   idHeader: MyHeaders;
@@ -89,17 +91,39 @@ export class CarTableComponent implements OnInit {
   }
 
   newRowHandler($event: { dataItem: any; action: any }) {
-    this._router.navigateByUrl(`cars/create`);
+    if(!this.authService.getIsAuthenticated()) {
+      this._router.navigateByUrl("/login")
+    }
+    else {
+      if(!this.authService.isAdmin()){
+        alert('Not authorized')
+      }
+      else
+        this._router.navigateByUrl(`cars/create`);
+    }
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
-    console.log(event.dataItem, event.action);
-    if (event.action === 'Edit') {
-      this._router.navigateByUrl(`cars/edit/${event.dataItem.id}`);
-    } else if (event.action === 'Delete') {
-      this.carService.deleteCar(event.dataItem.id).subscribe((response) => {
-        this.listCars();
-      });
+
+    if(!this.authService.getIsAuthenticated()) {
+      this._router.navigateByUrl("/login")
+    }
+    else {
+      if(!this.authService.isAdmin()){
+        alert('Not authorized')
+      }
+      else {
+        if(this.authService.getIsAuthenticated()){
+          console.log(event.dataItem, event.action);
+          if (event.action === 'Edit') {
+            this._router.navigateByUrl(`cars/edit/${event.dataItem.id}`);
+          } else if (event.action === 'Delete') {
+            this.carService.deleteCar(event.dataItem.id).subscribe((response) => {
+              this.listCars();
+            });
+          }
+        }
+      }
     }
   }
 

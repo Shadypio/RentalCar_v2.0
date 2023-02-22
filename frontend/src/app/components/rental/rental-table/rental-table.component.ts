@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Rental } from 'src/app/common/rental/rental';
+import { AuthService } from 'src/app/services/authentication/auth.service';
 import { RentalService } from 'src/app/services/rental/rental.service';
 import { MyButtonConfig } from '../../my-button/config/my-button-config';
 import { MyTableActions } from '../../my-table/config/actions/my-table-actions';
@@ -19,6 +20,7 @@ export class RentalTableComponent implements OnInit {
   constructor(
     private rentalService: RentalService,
     private route: ActivatedRoute,
+    private authService: AuthService,
     private _router: Router
   ) {}
 
@@ -105,29 +107,41 @@ export class RentalTableComponent implements OnInit {
   }
 
   newRowHandler($event: { dataItem: any; action: any }) {
-
-    /*
-    const newRental = new Rental(10, 'sss', 'sss', 1, 2)
-    this.rentalService.create(newRental).subscribe(
-      response => {}
-    )*/
-
+    if(!this.authService.getIsAuthenticated()) {
+      this._router.navigateByUrl("/login")
+    }
+    else {
+      if(!this.authService.isAdmin()){
+        alert('Not authorized')
+      }
+      else
     this._router.navigateByUrl(`rental/create`)
+    }
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
-    console.log(event.dataItem, event.action);
-    if (event.action === "Edit") {
-      //this.rentalService.editRental(event.dataItem.id, event.dataItem)
-      this._router.navigateByUrl(`rental/edit/${event.dataItem.id}`)
+
+    if(!this.authService.getIsAuthenticated()) {
+      this._router.navigateByUrl("/login")
     }
-    else if (event.action === "Delete") {
-      this.rentalService.deleteRental(event.dataItem.id).subscribe(
-        response => {
-          this.listRentals();
-        }
-      )
+    else {
+      if(!this.authService.isAdmin()){
+        alert('Not authorized')
+      }
+      else {
+      if (event.action === "Edit") {
+        //this.rentalService.editRental(event.dataItem.id, event.dataItem)
+        this._router.navigateByUrl(`rental/edit/${event.dataItem.id}`)
+      }
+      else if (event.action === "Delete") {
+        this.rentalService.deleteRental(event.dataItem.id).subscribe(
+          response => {
+            this.listRentals();
+          }
+        )
+      }
     }
+  }
   }
 
   viewDetailsOnDataHandler(event: {dataItem: any}) {

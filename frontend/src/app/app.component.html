@@ -74,16 +74,27 @@
               <!--app-login-status></app-login-status-->
             </ul>
 
-
-              <!--app-my-button
-              [buttonConfig]="signUpButton"
-              routerLink="customers/create"></app-my-button-->
+            <div *ngIf="!isAuthenticated; else logout_button">
               <app-my-button
               [buttonConfig]="signInButton"
               routerLink="/login"></app-my-button>
 
+            </div>
+
+            <ng-template #logout_button>
+
+              <p>Welcome back! {{userFullName}} </p>
+
+              <app-my-button
+              [buttonConfig]="signOutButton"
+              routerLink="/logout"></app-my-button>
+
+            </ng-template>
 
           </div>
+
+
+
         </nav>
 
 

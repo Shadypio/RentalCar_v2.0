@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from 'src/app/common/customer/customer';
+import { AuthService } from 'src/app/services/authentication/auth.service';
 import { CustomerService } from 'src/app/services/customer/customer.service';
 import { MyTableActions } from '../../my-table/config/actions/my-table-actions';
 import { MyHeaders } from '../../my-table/config/header/my-headers';
@@ -18,6 +19,7 @@ export class CustomerTableComponent implements OnInit {
 
   constructor(private customerService: CustomerService,
               private route: ActivatedRoute,
+              private authService: AuthService,
               private _router: Router) { }
 
   idHeader: MyHeaders;
@@ -87,17 +89,36 @@ export class CustomerTableComponent implements OnInit {
   }
 
   newRowHandler($event: { dataItem: any; action: any }) {
-    this._router.navigateByUrl(`customers/create`);
+    if(!this.authService.getIsAuthenticated()) {
+      this._router.navigateByUrl("/login")
+    }
+    else {
+      if(!this.authService.isAdmin()){
+        alert('Not authorized')
+      }
+      else
+        this._router.navigateByUrl(`customers/create`);
+    }
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
-    console.log(event.dataItem, event.action);
-    if (event.action === 'Edit') {
-      this._router.navigateByUrl(`customers/edit/${event.dataItem.id}`);
-    } else if (event.action === 'Delete') {
-      this.customerService.deleteCustomer(event.dataItem.id).subscribe((response) => {
-        this.listCustomers();
-      });
+
+    if(!this.authService.getIsAuthenticated()) {
+      this._router.navigateByUrl("/login")
+    }
+    else {
+      if(!this.authService.isAdmin()){
+        alert('Not authorized')
+      }
+      else {
+        if (event.action === 'Edit') {
+          this._router.navigateByUrl(`customers/edit/${event.dataItem.id}`);
+        } else if (event.action === 'Delete') {
+          this.customerService.deleteCustomer(event.dataItem.id).subscribe((response) => {
+            this.listCustomers();
+          });
+        }
+      }
     }
   }
 

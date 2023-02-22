@@ -194,10 +194,10 @@
       "firstName": "Mario",
       "lastName": "Rossi",
       "username": "mariorossi",
-      "password": "PasswordRossi",
+      "password": "admin",
       "dateOfBirth": "2000-02-10",
       "enabled": true,
-      "role": 0,
+      "role": 1,
       "rentalMade": 1
     },
     {
@@ -208,7 +208,7 @@
       "password": "PasswordVerdi",
       "dateOfBirth": "2000-05-11",
       "enabled": true,
-      "role": 1,
+      "role": 2,
       "rentalMade": 2
     },
     {
@@ -219,7 +219,7 @@
       "password": "LaPasswordCambiata",
       "dateOfBirth": "2000-10-01",
       "enabled": true,
-      "role": 1,
+      "role": 2,
       "rentalMade": 1
     }
   ]

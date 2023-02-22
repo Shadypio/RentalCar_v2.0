@@ -8,6 +8,8 @@ import myAppConfig from '../../config/my-app-config'
 import { CustomerService } from 'src/app/services/customer/customer.service';
 import { Customer } from 'src/app/common/customer/customer';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/authentication/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -58,6 +60,7 @@ export class LoginComponent implements OnInit {
   customerLogged: Customer;
 
   constructor(private router: Router,
+              private authService: AuthService,
               private customerService: CustomerService) {}
 
   ngOnInit(): void {
@@ -87,6 +90,8 @@ export class LoginComponent implements OnInit {
   }
 
   redirectAccount(id: number) {
+    this.authService.login(this.customerLogged);
+    console.log(`is admin ${this.authService.isAdmin()}`)
     this.router.navigateByUrl(`/customers/${id}`)
   }
 
