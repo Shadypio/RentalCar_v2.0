@@ -15,15 +15,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { CarTableComponent } from './components/car/car-table/car-table.component';
 import { LoginComponent } from './components/login/login.component';
 
-import {
-  OktaAuthGuard,
-  OktaAuthModule,
-  OktaCallbackComponent,
-  OKTA_CONFIG
-} from '@okta/okta-angular'
-
-import { OktaAuth } from '@okta/okta-auth-js'
-
 import { RentalDetailsComponent } from './components/rental/rental-details/rental-details.component';
 import { RentalService } from './services/rental/rental.service';
 import { CustomerService } from './services/customer/customer.service';
@@ -90,7 +81,6 @@ const routes: Routes = [
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    OktaAuthModule
 
   ],
   exports: [RouterModule],
