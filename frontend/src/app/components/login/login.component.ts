@@ -1,10 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { OKTA_AUTH } from '@okta/okta-angular';
-import { OktaAuth } from '@okta/okta-auth-js';
-import { Inject } from '@angular/core';
-import OktaSignIn from '@okta/okta-signin-widget';
-
-import myAppConfig from '../../config/my-app-config';
 import { CustomerService } from 'src/app/services/customer/customer.service';
 import { Customer } from 'src/app/common/customer/customer';
 import { Router } from '@angular/router';
