@@ -37,16 +37,20 @@ export class CarDetailsComponent implements OnInit {
 
 
   loadCar() {
-    const carId = +this.route.snapshot.paramMap.get('id')!;
 
+    const hasCarId: boolean = this.route.snapshot.paramMap.has('id');
 
-    this.carService.getCarById(carId).subscribe(
-      data => {
-        if(data)
-          this.carFound = data;
-      }
+    if(hasCarId){
+      const carId = +this.route.snapshot.paramMap.get('id')!;
 
-    )
+      this.carService.getCarById(carId).subscribe(
+        data => {
+          if(data)
+            this.carFound = data;
+        }
+
+      )
+  }
 
   }
 

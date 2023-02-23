@@ -36,7 +36,6 @@ export class CarService {
       catchError(this.handleError)
     );*/
     const carUrl = `${this.baseUrl}/${id}`
-    console.log(`${carUrl}`)
     return this.httpClient.get<Car>(carUrl)
   }
 
