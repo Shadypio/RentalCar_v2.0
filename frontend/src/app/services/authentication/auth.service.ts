@@ -14,7 +14,6 @@ export class AuthService {
   login(customerLogged: Customer) {
     this.customerInSession = customerLogged;
     this.isAuthenticated = true;
-    // localStorage.setItem('currentUser', JSON.stringify(this.customerInSession))
   }
 
   logout() {

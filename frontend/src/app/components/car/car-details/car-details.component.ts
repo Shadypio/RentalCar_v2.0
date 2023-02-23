@@ -9,16 +9,11 @@ import { MyButtonConfig } from '../../my-button/config/my-button-config';
 @Component({
   selector: 'app-car-details',
   templateUrl: './car-details.component.html',
-  styleUrls: ['./car-details.component.css']
+  styleUrls: ['./car-details.component.css'],
 })
 export class CarDetailsComponent implements OnInit {
-
-  carFound : Car;
-  rentButton: MyButtonConfig = new MyButtonConfig(
-    'button-53',
-    'Rent now',
-    ''
-  )
+  carFound: Car;
+  rentButton: MyButtonConfig = new MyButtonConfig('button-53', 'Rent now', '');
 
   constructor(
     private route: ActivatedRoute,
@@ -26,42 +21,32 @@ export class CarDetailsComponent implements OnInit {
     private carService: CarService,
     private rentalService: RentalService,
     private authService: AuthService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    // this.loadCar();
     this.route.paramMap.subscribe(() => {
       this.loadCar();
-    })
+    });
   }
-
 
   loadCar() {
-
     const hasCarId: boolean = this.route.snapshot.paramMap.has('id');
 
-    if(hasCarId){
+    if (hasCarId) {
       const carId = +this.route.snapshot.paramMap.get('id')!;
 
-      this.carService.getCarById(carId).subscribe(
-        data => {
-          if(data)
-            this.carFound = data;
-        }
-
-      )
-  }
-
+      this.carService.getCarById(carId).subscribe((data) => {
+        if (data) this.carFound = data;
+      });
+    }
   }
 
   rentCar(rentedCarId: number) {
-    if(!this.authService.getIsAuthenticated()) {
-      this._router.navigateByUrl("/login")
-    }
-    else{
+    if (!this.authService.getIsAuthenticated()) {
+      this._router.navigateByUrl('/login');
+    } else {
       const idCustomer = this.authService.getCurrentUserId();
-      this._router.navigateByUrl(`cars/rent/${rentedCarId}/${idCustomer}`)
+      this._router.navigateByUrl(`cars/rent/${rentedCarId}/${idCustomer}`);
     }
   }
-
 }

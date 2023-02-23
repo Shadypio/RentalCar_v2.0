@@ -24,10 +24,6 @@ export class RentalService {
 
   // Show lists of item
   getRentals(): Observable<any> {
-    /*
-    return this.httpClient.get(this.apiUrl).pipe(
-      catchError(this.handleError)
-    );*/
     return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
       map(response => response._embedded.rentals)
     );
@@ -35,10 +31,7 @@ export class RentalService {
 
   // Create new item
   getRentalById(id: any): Observable<any> {
-    /*
-    return this.httpClient.get(`${this.apiUrl}/${id}`).pipe(
-      catchError(this.handleError)
-    );*/
+
     const rentalUrl = `${this.baseUrl}/${id}`
     return this.httpClient.get<Rental>(rentalUrl)
   }

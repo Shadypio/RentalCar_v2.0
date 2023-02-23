@@ -13,14 +13,15 @@ import { MySearch } from '../../my-table/config/search/my-search';
 @Component({
   selector: 'app-customer-table',
   templateUrl: './customer-table.component.html',
-  styleUrls: ['./customer-table.component.css']
+  styleUrls: ['./customer-table.component.css'],
 })
 export class CustomerTableComponent implements OnInit {
-
-  constructor(private customerService: CustomerService,
-              private route: ActivatedRoute,
-              private authService: AuthService,
-              private _router: Router) { }
+  constructor(
+    private customerService: CustomerService,
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private _router: Router
+  ) {}
 
   idHeader: MyHeaders;
   firstNameHeader: MyHeaders;
@@ -37,7 +38,7 @@ export class CustomerTableComponent implements OnInit {
   pagination: MyPagination;
   customerTable: MyTableConfig;
 
-  customers: Customer[] = []
+  customers: Customer[] = [];
 
   ngOnInit(): void {
     // creating headers for table
@@ -58,28 +59,28 @@ export class CustomerTableComponent implements OnInit {
 
       this.enabledHeader,
       this.roleHeader,
-      this.rentalMadeHeader
-    ]
+      this.rentalMadeHeader,
+    ];
 
-     // declaring order criteria
-     this.orderByID = new MyOrder('0', 'asc');
+    // declaring order criteria
+    this.orderByID = new MyOrder('0', 'asc');
 
-     // declaring search option
-     this.searchByUsername = new MySearch(['username']);
+    // declaring search option
+    this.searchByUsername = new MySearch(['username']);
 
-     // declaring MyPagination object
-     this.pagination = new MyPagination(5, [5, 10, 15, 20]);
+    // declaring MyPagination object
+    this.pagination = new MyPagination(5, [5, 10, 15, 20]);
 
-     // declaring table for displaying data cars
-     this.customerTable = new MyTableConfig(
-       this.myHeaders,
-       this.orderByID,
-       this.searchByUsername,
-       this.pagination,
-       [MyTableActions.NEW_ROW, MyTableActions.EDIT, MyTableActions.DELETE]
-     );
+    // declaring table for displaying data cars
+    this.customerTable = new MyTableConfig(
+      this.myHeaders,
+      this.orderByID,
+      this.searchByUsername,
+      this.pagination,
+      [MyTableActions.NEW_ROW, MyTableActions.EDIT, MyTableActions.DELETE]
+    );
 
-     this.listCustomers();
+    this.listCustomers();
   }
 
   listCustomers() {
@@ -104,7 +105,6 @@ export class CustomerTableComponent implements OnInit {
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
-
     /*
     if(!this.authService.getIsAuthenticated()) {
       this._router.navigateByUrl("/login")
@@ -114,19 +114,19 @@ export class CustomerTableComponent implements OnInit {
         alert('Not authorized')
       }*/
 
-        if (event.action === 'Edit') {
-          this._router.navigateByUrl(`customers/edit/${event.dataItem.id}`);
-        } else if (event.action === 'Delete') {
-          this.customerService.deleteCustomer(event.dataItem.id).subscribe((response) => {
-            this.listCustomers();
-          });
-        }
-
+    if (event.action === 'Edit') {
+      this._router.navigateByUrl(`customers/edit/${event.dataItem.id}`);
+    } else if (event.action === 'Delete') {
+      this.customerService
+        .deleteCustomer(event.dataItem.id)
+        .subscribe((response) => {
+          this.listCustomers();
+        });
+    }
   }
 
   viewDetailsOnDataHandler(event: { dataItem: any }) {
     // view details of selected row
     this._router.navigateByUrl(`customers/${event.dataItem.id}`);
   }
-
 }

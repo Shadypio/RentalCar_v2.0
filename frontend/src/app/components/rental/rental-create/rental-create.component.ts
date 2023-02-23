@@ -11,13 +11,14 @@ import { RentalService } from 'src/app/services/rental/rental.service';
   styleUrls: ['./rental-create.component.css'],
 })
 export class RentalCreateComponent implements OnInit {
-
   carFound: Car;
   carsFound: Car[];
 
-  constructor(private rentalService: RentalService,
-              private carService: CarService,
-              private route: ActivatedRoute) {}
+  constructor(
+    private rentalService: RentalService,
+    private carService: CarService,
+    private route: ActivatedRoute
+  ) {}
 
   rental: Rental = new Rental(RentalService.id++, '', '', 0, 0);
   isRentalAdded = false;
@@ -26,50 +27,30 @@ export class RentalCreateComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       this.loadCar();
       this.loadCars();
-
-    })
-
-
-    console.log(`prenotata ${this.rental.rentedCar}`)
+    });
   }
-
 
   loadCar() {
     const carId = +this.route.snapshot.paramMap.get('idCar')!;
     const customerId = +this.route.snapshot.paramMap.get('idCustomer')!;
 
-
-    this.carService.getCarById(carId).subscribe(
-      data => {
-        if(data){
-          this.carFound = data;
-          if(this.carFound.id)
-            this.rental.rentedCar = this.carFound.id
-          if(customerId)
-            this.rental.referredCustomer = customerId
-
-        }
+    this.carService.getCarById(carId).subscribe((data) => {
+      if (data) {
+        this.carFound = data;
+        if (this.carFound.id) this.rental.rentedCar = this.carFound.id;
+        if (customerId) this.rental.referredCustomer = customerId;
       }
-
-    )
-
+    });
   }
 
   loadCars() {
-    this.carService.getCars().subscribe(
-      data => {
-        if(data)
-          this.carsFound = data;
-      }
-    )
+    this.carService.getCars().subscribe((data) => {
+      if (data) this.carsFound = data;
+    });
   }
 
   addRental(): void {
-
-
-
     const data = {
-
       id: this.rental.id,
       startDate: this.rental.startDate,
       endDate: this.rental.endDate,
@@ -87,15 +68,15 @@ export class RentalCreateComponent implements OnInit {
       return;
     }
 
-    this.rentalService.create(data)
-    .subscribe(
-      response => {
+    this.rentalService.create(data).subscribe(
+      (response) => {
         console.log(response);
         this.isRentalAdded = true;
       },
-      error => {
+      (error) => {
         console.log(error);
-      });
+      }
+    );
   }
 
   // Reset on adding new

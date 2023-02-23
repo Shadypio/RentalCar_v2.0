@@ -21,7 +21,7 @@ export class CarTableComponent implements OnInit {
     private carService: CarService,
     private route: ActivatedRoute,
     private _router: Router,
-    private authService: AuthService,
+    private authService: AuthService
   ) {}
 
   idHeader: MyHeaders;
@@ -91,7 +91,6 @@ export class CarTableComponent implements OnInit {
   }
 
   newRowHandler($event: { dataItem: any; action: any }) {
-
     /*
     if(!this.authService.isAdmin()){
       alert('Not authorized')
@@ -99,29 +98,24 @@ export class CarTableComponent implements OnInit {
     else
       this._router.navigateByUrl(`cars/create`);
       */
-      this._router.navigateByUrl(`cars/create`);
+    this._router.navigateByUrl(`cars/create`);
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
-
-      if(this.authService.getIsAuthenticated()){
-        if(!this.authService.isAdmin()){
-          alert('Not authorized')
-        }
+    if (this.authService.getIsAuthenticated()) {
+      if (!this.authService.isAdmin()) {
+        alert('Not authorized');
       }
+    }
 
-
-          console.log(event.dataItem, event.action);
-          if (event.action === 'Edit') {
-            this._router.navigateByUrl(`cars/edit/${event.dataItem.id}`);
-          } else if (event.action === 'Delete') {
-            this.carService.deleteCar(event.dataItem.id).subscribe((response) => {
-              this.listCars();
-            });
-          }
-
-
-
+    console.log(event.dataItem, event.action);
+    if (event.action === 'Edit') {
+      this._router.navigateByUrl(`cars/edit/${event.dataItem.id}`);
+    } else if (event.action === 'Delete') {
+      this.carService.deleteCar(event.dataItem.id).subscribe((response) => {
+        this.listCars();
+      });
+    }
   }
 
   viewDetailsOnDataHandler(event: { dataItem: any }) {

@@ -56,50 +56,16 @@ export class MyTableComponent implements OnInit {
 
   ngOnInit(): void {
 
-    /*
-    if (this.tableConfig)
-      if (this.tableConfig.order)
-
-        this.sortData(
-          this.tableConfig?.order.defaultColumn,
-          this.tableConfig?.order.orderType
-        );
-        */
-
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
     console.log(event.dataItem, event.action);
   }
 
-  // sort data in columns
-  columnPropertyMap = new Map<string, string>([
-    ['0', 'id'],
-    ['1', 'licensePlate'],
-    ['2', 'brand'],
-    ['3', 'model'],
-    ['4', 'year'],
-    ['5', 'category'],
-  ]);
 
-  onSortSelection() {
-    console.log(`sort by param: ${this.sortByParam}`)
-    if (this.sortDirection === 'desc') {
-      this.sortDirection = 'asc';
-    } else
-      this.sortDirection = 'desc';
-  }
 
 
   sortData(headerKey: string, orderType: string) {
-
-    console.log(`${headerKey} - ${orderType} `);
-
-    let headerIndex: string = this.columnPropertyMap.has(headerKey)
-      ? this.columnPropertyMap.get(headerKey)!
-      : '';
-
-    console.log(`${headerIndex} `);
 
     this.data.sort((a, b) => {
       if (a[headerKey] < b[headerKey]) {
@@ -111,42 +77,6 @@ export class MyTableComponent implements OnInit {
       }
     });
 
-    /*
-    this.filteredData.sort((a, b) => {
-      if (a[headerIndex] < b[headerIndex]) {
-        return orderType === 'asc' ? -1 : 1;
-      } else if (a[headerIndex] > b[headerIndex]) {
-        return orderType === 'asc' ? 1 : -1;
-      } else {
-        return 0;
-      }
-    });*/
-
-  }
-
-
-  /*
-  filterData(searchTerm: string): Observable<Car[]> {
-
-
-    return this.cars.pipe(
-      map(carsData => {
-        return carsData.filter((item: Car) => {
-          return Object.values(item).some((value) => {
-            return value
-              .toString()
-              .toLowerCase()
-              .includes(searchTerm.toLowerCase());
-          });
-        });
-      })
-    );
-
-
-  }*/
-
-  filterData(searchTerm: string) {
-    console.log("a")
   }
 
   onSearchTermFilter() {
@@ -202,10 +132,6 @@ export class MyTableComponent implements OnInit {
 
   performActionOnDataItem(event: { dataItem: any; action: any }) {
     this.performActionOnData.emit(event);
-  }
-
-  objectKeys(obj: {}) {
-    return Object.keys(obj);
   }
 
   viewDetails(event: { dataItem: any}) {

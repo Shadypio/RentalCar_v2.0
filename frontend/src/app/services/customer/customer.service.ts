@@ -19,20 +19,12 @@ export class CustomerService {
 
   // Show lists of item
   getCustomers(): Observable<any> {
-    /*
-    return this.httpClient.get(this.apiUrl).pipe(
-      catchError(this.handleError)
-    );*/
     return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
       map(response => response._embedded.customers)
     );
   }
 
   getCustomerById(id: any): Observable<any> {
-    /*
-    return this.httpClient.get(`${this.apiUrl}/${id}`).pipe(
-      catchError(this.handleError)
-    );*/
     const customerUrl = `${this.baseUrl}/${id}`
     return this.httpClient.get<Customer>(customerUrl)
   }
