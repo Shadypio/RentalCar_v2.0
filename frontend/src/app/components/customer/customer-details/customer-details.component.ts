@@ -32,11 +32,17 @@ export class CustomerDetailsComponent implements OnInit {
     this.customerService.getCustomerById(customerId).subscribe((data) => {
       if (data) {
         this.customerFound = data;
-        this.roleService.getRoleById(1).subscribe((data) => {
-          if(data)
-            this.customerFound.role = data;
-        });
-        console.log(`roleeee ${this.customerFound.role}`)
+        this.loadRole();
+      }
+    });
+  }
+
+  loadRole() {
+    this.roleService.getRoleById(1).subscribe((data) => {
+      if(data){
+
+        this.customerFound.role = data;
+        console.log(`roleeee loadrole ${this.customerFound.role.roleName}`)
       }
     });
   }
