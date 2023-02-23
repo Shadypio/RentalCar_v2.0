@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PasswordRecoveryFlow } from '@okta/okta-auth-js/lib/idx/flow';
 import { Customer } from 'src/app/common/customer/customer';
+import { Role } from 'src/app/common/role/role';
 import { CustomerService } from 'src/app/services/customer/customer.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { CustomerService } from 'src/app/services/customer/customer.service';
   styleUrls: ['./customer-create.component.css'],
 })
 export class CustomerCreateComponent implements OnInit {
+  role: Role = new Role(3, "USER")
   customer: Customer = new Customer(
     CustomerService.id++,
     '',
@@ -17,7 +19,7 @@ export class CustomerCreateComponent implements OnInit {
     '',
     '',
     true,
-    2,
+    this.role,
     0
   );
   isCustomerAdded = false;
@@ -44,7 +46,7 @@ export class CustomerCreateComponent implements OnInit {
       !data.username ||
       !data.password ||
       !data.dateOfBirth ||
-      data.role == 0
+      data.role.id == 0
     ) {
       alert('Please fill forms!');
       return;
@@ -72,7 +74,7 @@ export class CustomerCreateComponent implements OnInit {
       '',
       '',
       true,
-      2,
+      this.role,
       0
     );
   }

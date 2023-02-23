@@ -48,7 +48,7 @@ export class CustomerTableComponent implements OnInit {
     this.usernameHeader = new MyHeaders('username', 'Username');
     this.dateOfBirthHeader = new MyHeaders('dateOfBirth', 'Date Of Birth');
     this.enabledHeader = new MyHeaders('enabled', 'Enabled');
-    this.roleHeader = new MyHeaders('role', 'Role');
+    this.roleHeader = new MyHeaders('role[roleName]', 'Role');
     this.rentalMadeHeader = new MyHeaders('rentalMade', 'Rental Made');
     this.myHeaders = [
       // this.idHeader,

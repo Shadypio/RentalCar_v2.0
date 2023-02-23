@@ -27,7 +27,7 @@ export class AuthService {
 
 
   isAdmin() {
-    if (this.customerInSession.role === 1)
+    if (this.customerInSession.role.id === 1)
       return true;
     else
       return false;

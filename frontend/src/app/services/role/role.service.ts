@@ -20,7 +20,7 @@ export class RoleService {
     )
   }
 
-  getCarById(id: any): Observable<any> {
+  getRoleById(id: any): Observable<any> {
     const roleUrl = `${this.baseUrl}/${id}`
     return this.httpClient.get<Role>(roleUrl)
   }
