@@ -29,9 +29,12 @@ export class CustomerService {
   }
 
   getCustomerById(id: any): Observable<any> {
+    /*
     return this.httpClient.get(`${this.apiUrl}/${id}`).pipe(
       catchError(this.handleError)
-    );
+    );*/
+    const customerUrl = `${this.baseUrl}/${id}`
+    return this.httpClient.get<Customer>(customerUrl)
   }
 
   getCustomerByUsernamePassword(username: string, password: string): Observable<any> {

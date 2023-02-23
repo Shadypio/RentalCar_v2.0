@@ -35,9 +35,12 @@ export class RentalService {
 
   // Create new item
   getRentalById(id: any): Observable<any> {
+    /*
     return this.httpClient.get(`${this.apiUrl}/${id}`).pipe(
       catchError(this.handleError)
-    );
+    );*/
+    const rentalUrl = `${this.baseUrl}/${id}`
+    return this.httpClient.get<Rental>(rentalUrl)
   }
 
   create(data: any): Observable<any> {
