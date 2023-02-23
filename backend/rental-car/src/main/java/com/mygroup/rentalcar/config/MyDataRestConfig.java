@@ -23,9 +23,10 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     public MyDataRestConfig(EntityManager theEntityManager) {
         entityManager = theEntityManager;
     }
+
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-
+        /*
         HttpMethod[] unsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE};
 
         // disable methods
@@ -33,7 +34,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
                 .forDomainType(Car.class)
                 .withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
                 .withCollectionExposure(((metdata, httpMethods) -> httpMethods.disable(unsupportedActions)));
-
+        */
         // call an internal exposer method
         exposeIds(config);
     }
