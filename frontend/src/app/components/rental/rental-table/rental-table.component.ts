@@ -107,6 +107,7 @@ export class RentalTableComponent implements OnInit {
   }
 
   newRowHandler($event: { dataItem: any; action: any }) {
+    /*
     if(!this.authService.getIsAuthenticated()) {
       this._router.navigateByUrl("/login")
     }
@@ -116,11 +117,13 @@ export class RentalTableComponent implements OnInit {
       }
       else
     this._router.navigateByUrl(`rental/create`)
-    }
+    }*/
+    this._router.navigateByUrl(`rental/create`)
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
 
+    /*
     if(!this.authService.getIsAuthenticated()) {
       this._router.navigateByUrl("/login")
     }
@@ -129,6 +132,7 @@ export class RentalTableComponent implements OnInit {
         alert('Not authorized')
       }
       else {
+        */
       if (event.action === "Edit") {
         //this.rentalService.editRental(event.dataItem.id, event.dataItem)
         this._router.navigateByUrl(`rental/edit/${event.dataItem.id}`)
@@ -140,9 +144,9 @@ export class RentalTableComponent implements OnInit {
           }
         )
       }
-    }
+
   }
-  }
+
 
   viewDetailsOnDataHandler(event: {dataItem: any}) {
     // view details of selected row

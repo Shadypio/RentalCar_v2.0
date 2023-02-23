@@ -92,21 +92,24 @@ export class CarTableComponent implements OnInit {
 
   newRowHandler($event: { dataItem: any; action: any }) {
 
+    /*
     if(!this.authService.isAdmin()){
       alert('Not authorized')
     }
     else
       this._router.navigateByUrl(`cars/create`);
-
+      */
+      this._router.navigateByUrl(`cars/create`);
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
 
-      if(!this.authService.isAdmin()){
-        alert('Not authorized')
+      if(this.authService.getIsAuthenticated()){
+        if(!this.authService.isAdmin()){
+          alert('Not authorized')
+        }
       }
 
-      else {
 
           console.log(event.dataItem, event.action);
           if (event.action === 'Edit') {
@@ -118,7 +121,7 @@ export class CarTableComponent implements OnInit {
           }
 
 
-    }
+
   }
 
   viewDetailsOnDataHandler(event: { dataItem: any }) {

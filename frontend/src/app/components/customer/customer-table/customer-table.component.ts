@@ -55,10 +55,10 @@ export class CustomerTableComponent implements OnInit {
       this.lastNameHeader,
       this.usernameHeader,
       this.dateOfBirthHeader,
-      /*
+
       this.enabledHeader,
       this.roleHeader,
-      this.rentalMadeHeader*/
+      this.rentalMadeHeader
     ]
 
      // declaring order criteria
@@ -89,6 +89,7 @@ export class CustomerTableComponent implements OnInit {
   }
 
   newRowHandler($event: { dataItem: any; action: any }) {
+    /*
     if(!this.authService.getIsAuthenticated()) {
       this._router.navigateByUrl("/login")
     }
@@ -98,19 +99,21 @@ export class CustomerTableComponent implements OnInit {
       }
       else
         this._router.navigateByUrl(`customers/create`);
-    }
+    }*/
+    this._router.navigateByUrl(`customers/create`);
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
 
+    /*
     if(!this.authService.getIsAuthenticated()) {
       this._router.navigateByUrl("/login")
     }
     else {
       if(!this.authService.isAdmin()){
         alert('Not authorized')
-      }
-      else {
+      }*/
+
         if (event.action === 'Edit') {
           this._router.navigateByUrl(`customers/edit/${event.dataItem.id}`);
         } else if (event.action === 'Delete') {
@@ -118,8 +121,7 @@ export class CustomerTableComponent implements OnInit {
             this.listCustomers();
           });
         }
-      }
-    }
+
   }
 
   viewDetailsOnDataHandler(event: { dataItem: any }) {

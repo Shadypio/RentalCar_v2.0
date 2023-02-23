@@ -39,8 +39,11 @@ export class CarService {
     return this.httpClient.get<Car>(carUrl)
   }
 
-  create(data: any): Observable<any> {
+  create(data: any): Observable<any> {/*
     return this.httpClient.post(this.apiUrl, data).pipe(
+      catchError(this.handleError)
+    );*/
+    return this.httpClient.post(this.baseUrl, data).pipe(
       catchError(this.handleError)
     );
   }
@@ -54,9 +57,13 @@ export class CarService {
 
   // Delete
   deleteCar(id: any): Observable<any> {
+    /*
     return this.httpClient.delete(`${this.apiUrl}/${id}`).pipe(
       catchError(this.handleError)
-    );
+    );*/
+    const carUrl = `${this.baseUrl}/${id}`;
+    console.log(`aooo daje ${carUrl}`)
+    return this.httpClient.delete(carUrl);
   }
 
   // Handle API errors
