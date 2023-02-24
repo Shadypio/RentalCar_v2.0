@@ -49,21 +49,21 @@ export class CustomerService {
   }
 
   create(data: any): Observable<any> {
-    return this.httpClient.post(this.apiUrl, data).pipe(
+    return this.httpClient.post(this.baseUrl, data).pipe(
       catchError(this.handleError)
     );
   }
 
   // Edit / Update
   editCustomer(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.apiUrl}/${id}`, data).pipe(
+    return this.httpClient.put(`${this.baseUrl}/${id}`, data).pipe(
       catchError(this.handleError)
     );
   }
 
   // Delete
   deleteCustomer(id: any): Observable<any> {
-    return this.httpClient.delete(`${this.apiUrl}/${id}`).pipe(
+    return this.httpClient.delete(`${this.baseUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }

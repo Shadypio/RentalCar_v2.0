@@ -3,6 +3,7 @@ import { PasswordRecoveryFlow } from '@okta/okta-auth-js/lib/idx/flow';
 import { Customer } from 'src/app/common/customer/customer';
 import { Role } from 'src/app/common/role/role';
 import { CustomerService } from 'src/app/services/customer/customer.service';
+import { RoleService } from 'src/app/services/role/role.service';
 
 @Component({
   selector: 'app-customer-create',
@@ -10,7 +11,11 @@ import { CustomerService } from 'src/app/services/customer/customer.service';
   styleUrls: ['./customer-create.component.css'],
 })
 export class CustomerCreateComponent implements OnInit {
-  role: Role = new Role(3, "USER")
+
+  constructor(private customerService: CustomerService,
+              private roleService: RoleService) {}
+
+
   customer: Customer = new Customer(
     CustomerService.id++,
     '',
@@ -19,14 +24,19 @@ export class CustomerCreateComponent implements OnInit {
     '',
     '',
     true,
-    this.role,
+    null,
     null
   );
   isCustomerAdded = false;
 
-  constructor(private customerService: CustomerService) {}
+  ngOnInit(): void {
+    this.roleService.getRoleById(2).subscribe((data) => {
+      if(data) {
+        this.customer.role = data;
+      }
+  });
 
-  ngOnInit(): void {}
+  }
 
   addCustomer(): void {
     const data = {
@@ -45,13 +55,14 @@ export class CustomerCreateComponent implements OnInit {
       !data.lastName ||
       !data.username ||
       !data.password ||
-      !data.dateOfBirth ||
-      data.role?.id == 0
+      !data.dateOfBirth
     ) {
       alert('Please fill forms!');
       return;
     }
 
+    console.log("data")
+    console.log(data)
     this.customerService.create(data).subscribe(
       (response) => {
         console.log(response);
@@ -74,7 +85,7 @@ export class CustomerCreateComponent implements OnInit {
       '',
       '',
       true,
-      this.role,
+      null,
       null
     );
   }

@@ -54,7 +54,7 @@ export class RentalService {
 
   create(data: any): Observable<any> {
     console.log(`${data.id}    ${data.startDate}`)
-    return this.httpClient.post(this.apiUrl, data).pipe(
+    return this.httpClient.post(this.baseUrl, data).pipe(
       catchError(this.handleError)
     );
   }
@@ -72,21 +72,14 @@ export class RentalService {
 
   // Edit/ Update
   editRental(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.apiUrl}/${id}`, data).pipe(
+    return this.httpClient.put(`${this.baseUrl}/${id}`, data).pipe(
       catchError(this.handleError)
     );
   }
 
   // Delete
   deleteRental(id: any): Observable<any> {
-    return this.httpClient.delete(`${this.apiUrl}/${id}`).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-  // Search By Name
-  filterByTitle(title: any): Observable<any> {
-    return this.httpClient.get(`${this.apiUrl}?title_like=${title}`).pipe(
+    return this.httpClient.delete(`${this.baseUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }

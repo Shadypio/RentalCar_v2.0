@@ -12,6 +12,6 @@ export class Customer {
     public dateOfBirth: string,
     public enabled: boolean,
     public role: Role | null,
-    public rentalMade: Rental | null
+    public rentalMade: Rental | null | undefined
   ) {}
 }
