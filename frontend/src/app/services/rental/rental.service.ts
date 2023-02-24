@@ -62,16 +62,6 @@ export class RentalService {
     );
   }
 
-  /*
-  createWithRentedCar(rentedCarId: number) : Observable<any> {
-
-    const newRental = new Rental(RentalService.id++, "inizio","fine", 1, rentedCarId);
-    return this.httpClient.post(this.apiUrl, newRental).pipe(
-      catchError(this.handleError)
-
-    );
-
-  }*/
 
   // Edit/ Update
   editRental(id: any, data: any): Observable<any> {
