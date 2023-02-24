@@ -57,13 +57,17 @@ export class CarDetailsComponent implements OnInit {
   }
 
   rentCar(rentedCarId: number) {
+    /*
     if (!this.authService.getIsAuthenticated()) {
       this._router.navigateByUrl('/login');
     } else {
       const idCustomer = this.authService.getCurrentUserId();
       this._router.navigateByUrl(`cars/rent/${rentedCarId}/${idCustomer}`);
     }
-  }
+  }*/
 
+  // TODO: retrieve idCustomer properly
+  this._router.navigateByUrl(`cars/rent/${rentedCarId}/4`);
+  }
 
 }

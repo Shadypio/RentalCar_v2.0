@@ -39,6 +39,9 @@ export class CarCreateComponent implements OnInit {
       return;
     }
 
+    console.log("auto da agg")
+    console.log(data)
+
     this.carService.create(data).subscribe(
       (response) => {
         console.log(response);

@@ -14,7 +14,7 @@ export class RentalService {
 
   apiUrl: string = 'http://localhost:3000/rentals';
   baseUrl = 'http://localhost:8080/api/rentals';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  // headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   static id: number = 100;
 
@@ -52,9 +52,10 @@ export class RentalService {
 
 
 
-  create(data: any): Observable<any> {
-    console.log(`${data.id}    ${data.startDate}`)
-    return this.httpClient.post(this.baseUrl, data).pipe(
+  create(data: Rental): Observable<any> {
+    console.log(`data nel create`)
+    console.log(data)
+    return this.httpClient.post<Rental>(this.baseUrl, data).pipe(
       catchError(this.handleError)
     );
   }
