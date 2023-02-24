@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/common/car/car';
 import { Rental } from 'src/app/common/rental/rental';
 import { CarService } from 'src/app/services/car/car.service';
+import { CustomerService } from 'src/app/services/customer/customer.service';
 import { RentalService } from 'src/app/services/rental/rental.service';
 
 @Component({
@@ -17,10 +18,11 @@ export class RentalCreateComponent implements OnInit {
   constructor(
     private rentalService: RentalService,
     private carService: CarService,
+    private customerService: CustomerService,
     private route: ActivatedRoute
   ) {}
 
-  rental: Rental = new Rental(RentalService.id++, '', '', 0, 0);
+  rental: Rental = new Rental(RentalService.id++, '', '', null, null);
   isRentalAdded = false;
 
   ngOnInit(): void {
@@ -36,9 +38,13 @@ export class RentalCreateComponent implements OnInit {
 
     this.carService.getCarById(carId).subscribe((data) => {
       if (data) {
-        this.carFound = data;
-        if (this.carFound.id) this.rental.rentedCar = this.carFound.id;
-        if (customerId) this.rental.referredCustomer = customerId;
+         this.rental.rentedCar = data;
+      }
+    });
+
+    this.customerService.getCustomerById(customerId).subscribe((data) => {
+      if (data) {
+         this.rental.referredCustomer = data;
       }
     });
   }
@@ -61,8 +67,8 @@ export class RentalCreateComponent implements OnInit {
     if (
       !data.startDate ||
       !data.endDate ||
-      data.referredCustomer === 0 ||
-      data.rentedCar === 0
+      !data.referredCustomer ||
+      !data.rentedCar
     ) {
       alert('Please fill forms!');
       return;
@@ -82,6 +88,6 @@ export class RentalCreateComponent implements OnInit {
   // Reset on adding new
   newRental(): void {
     this.isRentalAdded = false;
-    this.rental = new Rental(RentalService.id++, '', '', 0, 0);
+    this.rental = new Rental(RentalService.id++, '', '', null, null);
   }
 }

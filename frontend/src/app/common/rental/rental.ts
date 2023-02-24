@@ -7,8 +7,8 @@ export class Rental {
     public id: number,
     public startDate: string,
     public endDate: string,
-    public referredCustomer: number,
-    public rentedCar: number
+    public referredCustomer: Customer | null,
+    public rentedCar: Car | null
 
   ) {}
 }

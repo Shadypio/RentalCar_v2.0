@@ -58,8 +58,8 @@ export class CustomerTableComponent implements OnInit {
       this.dateOfBirthHeader,
 
       this.enabledHeader,
-      this.roleHeader,
-      this.rentalMadeHeader,
+      //this.roleHeader,
+      //this.rentalMadeHeader,
     ];
 
     // declaring order criteria

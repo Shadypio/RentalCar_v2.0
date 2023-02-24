@@ -75,8 +75,8 @@ export class RentalTableComponent implements OnInit {
       //this.idHeader,
       this.startDateHeader,
       this.endDateHeader,
-      this.referredCustomerHeader,
-      this.rentedCarHeader,
+      //this.referredCustomerHeader,
+      //this.rentedCarHeader,
     ];
 
     // declaring order criteria

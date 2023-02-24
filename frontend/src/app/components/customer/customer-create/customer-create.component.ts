@@ -20,7 +20,7 @@ export class CustomerCreateComponent implements OnInit {
     '',
     true,
     this.role,
-    0
+    null
   );
   isCustomerAdded = false;
 
@@ -46,7 +46,7 @@ export class CustomerCreateComponent implements OnInit {
       !data.username ||
       !data.password ||
       !data.dateOfBirth ||
-      data.role.id == 0
+      data.role?.id == 0
     ) {
       alert('Please fill forms!');
       return;
@@ -75,7 +75,7 @@ export class CustomerCreateComponent implements OnInit {
       '',
       true,
       this.role,
-      0
+      null
     );
   }
 }

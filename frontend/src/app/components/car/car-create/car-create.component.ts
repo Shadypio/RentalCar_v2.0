@@ -8,7 +8,7 @@ import { CarService } from 'src/app/services/car/car.service';
   styleUrls: ['./car-create.component.css'],
 })
 export class CarCreateComponent implements OnInit {
-  car: Car = new Car(CarService.id++, '', '', '', 0, '');
+  car: Car = new Car(CarService.id++, '', '', '', 0, '', null);
   isCarAdded = false;
   years: number[] = [
     2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
@@ -53,6 +53,6 @@ export class CarCreateComponent implements OnInit {
   // Reset on adding new
   newCar(): void {
     this.isCarAdded = false;
-    this.car = new Car(CarService.id++, '', '', '', 0, '');
+    this.car = new Car(CarService.id++, '', '', '', 0, '',null);
   }
 }

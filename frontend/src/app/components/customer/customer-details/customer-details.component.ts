@@ -38,11 +38,11 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   loadRole() {
-    this.roleService.getRoleById(1).subscribe((data) => {
+    this.roleService.getRoleById(2).subscribe((data) => {
       if(data){
 
         this.customerFound.role = data;
-        console.log(`roleeee loadrole ${this.customerFound.role.roleName}`)
+        console.log(`roleeee loadrole ${this.customerFound.role?.roleName}`)
       }
     });
   }

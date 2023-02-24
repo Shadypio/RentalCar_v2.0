@@ -30,6 +30,7 @@ export class CarTableComponent implements OnInit {
   modelHeader: MyHeaders;
   yearHeader: MyHeaders;
   categoryHeader: MyHeaders;
+  rentalHeader: MyHeaders;
   myHeaders: MyHeaders[];
 
   orderByID: MyOrder;
@@ -54,6 +55,7 @@ export class CarTableComponent implements OnInit {
     this.modelHeader = new MyHeaders('model', 'Model');
     this.yearHeader = new MyHeaders('year', 'Registration Year');
     this.categoryHeader = new MyHeaders('category', 'Category');
+    this.rentalHeader = new MyHeaders('rental', 'Rental')
     this.myHeaders = [
       this.idHeader,
       this.licensePlateHeader,
@@ -61,6 +63,7 @@ export class CarTableComponent implements OnInit {
       this.modelHeader,
       this.yearHeader,
       this.categoryHeader,
+      //this.rentalHeader
     ];
 
     // declaring order criteria

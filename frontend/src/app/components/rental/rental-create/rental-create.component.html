@@ -16,7 +16,7 @@
 
       <div class="form-group">
         <label for="referredCustomer">ID Customer</label>
-        <ng-container *ngIf="rental.referredCustomer === 0; else not_blocked_customer">
+        <ng-container *ngIf="!rental.referredCustomer; else not_blocked_customer">
           <input type="number" class="form-control" id="referredCustomer" required [(ngModel)]="rental.referredCustomer" name="referredCustomer"/>
         </ng-container>
         <ng-template #not_blocked_customer>
@@ -26,7 +26,7 @@
 
       <div class="form-group">
         <label for="rentedCar">ID Car</label>
-        <ng-container *ngIf="rental.rentedCar === 0; else not_blocked">
+        <ng-container *ngIf="!rental.rentedCar; else not_blocked">
           <select [(ngModel)]="rental.rentedCar">
             <option *ngFor="let car of carsFound" [value]="car.id" >
               {{car.id}}

@@ -6,7 +6,7 @@
     <img src="../../../assets/images/avatar.png" class="detail-img">
 
     <hr>
-    <h4>User Info: {{customerFound.username}} - {{customerFound.role.roleName}} </h4>
+    <h4>User Info: {{customerFound.username!}} - {{customerFound.role?.roleName!}} </h4>
     <p> {{customerFound.firstName}} {{customerFound.lastName }} - {{customerFound.dateOfBirth }}</p>
 
 
