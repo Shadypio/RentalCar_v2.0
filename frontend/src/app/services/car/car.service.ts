@@ -6,6 +6,7 @@ import {
 import { Injectable, Input } from '@angular/core';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { Car } from 'src/app/common/car/car';
+import { Rental } from 'src/app/common/rental/rental';
 
 @Injectable({
   providedIn: 'root',
@@ -30,6 +31,11 @@ export class CarService {
   getCarById(id: any): Observable<any> {
     const carUrl = `${this.baseUrl}/${id}`;
     return this.httpClient.get<Car>(carUrl);
+  }
+
+  getRentalMade(id: any): Observable<any> {
+    const rentalUrl = `${this.baseUrl}/${id}/rental`;
+    return this.httpClient.get<Rental>(rentalUrl);
   }
 
   // Create new item

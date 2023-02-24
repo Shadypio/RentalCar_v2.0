@@ -8,12 +8,15 @@
     <hr>
     <h4>Description</h4>
     <p> {{ carFound.brand }} {{ carFound.model }} - {{ carFound.year }} </p>
+    <p *ngIf="carFound.rental; else rent_the_car">Already Rented</p>
 
+    <ng-template #rent_the_car>
     <app-my-button
         [buttonConfig]="rentButton"
         (click)="rentCar(carFound.id)"
         type="submit">
       </app-my-button>
+    </ng-template>
     <br>
     <a routerLink="/cars" class="mt-5">Back to Cars</a>
   </div>

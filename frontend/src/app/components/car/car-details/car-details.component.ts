@@ -23,6 +23,8 @@ export class CarDetailsComponent implements OnInit {
     private authService: AuthService
   ) {}
 
+  carId: number;
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.loadCar();
@@ -33,12 +35,25 @@ export class CarDetailsComponent implements OnInit {
     const hasCarId: boolean = this.route.snapshot.paramMap.has('id');
 
     if (hasCarId) {
-      const carId = +this.route.snapshot.paramMap.get('id')!;
+      this.carId = +this.route.snapshot.paramMap.get('id')!;
 
-      this.carService.getCarById(carId).subscribe((data) => {
-        if (data) this.carFound = data;
+      this.carService.getCarById(this.carId).subscribe((data) => {
+        if (data) {
+          this.carFound = data;
+          this.checkRental();
+        }
       });
+
+
     }
+  }
+
+  checkRental() {
+
+    this.carService.getRentalMade(this.carFound.id).subscribe((data) => {
+      if (data) this.carFound.rental = data;
+    })
+
   }
 
   rentCar(rentedCarId: number) {
@@ -49,4 +64,6 @@ export class CarDetailsComponent implements OnInit {
       this._router.navigateByUrl(`cars/rent/${rentedCarId}/${idCustomer}`);
     }
   }
+
+
 }
