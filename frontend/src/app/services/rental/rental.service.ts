@@ -2,6 +2,8 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { map, Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Car } from 'src/app/common/car/car';
+import { Customer } from 'src/app/common/customer/customer';
 import { Rental } from 'src/app/common/rental/rental';
 
 @Injectable({
@@ -35,6 +37,20 @@ export class RentalService {
     const rentalUrl = `${this.baseUrl}/${id}`
     return this.httpClient.get<Rental>(rentalUrl)
   }
+
+  getRentedCar(id: any): Observable<any> {
+
+    const carUrl =  `${this.baseUrl}/${id}/rentedCar`
+    return this.httpClient.get<Car>(carUrl)
+  }
+
+  getReferredCustomer(id: any): Observable<any> {
+
+    const customerUrl =  `${this.baseUrl}/${id}/referredCustomer`
+    return this.httpClient.get<Customer>(customerUrl)
+  }
+
+
 
   create(data: any): Observable<any> {
     console.log(`${data.id}    ${data.startDate}`)

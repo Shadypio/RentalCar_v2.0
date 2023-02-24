@@ -7,8 +7,10 @@
 
     <hr>
     <h4>Period</h4>
+    <p> Rented {{ rentalFound.rentedCar?.brand }} {{ rentalFound.rentedCar?.model }}</p>
     <p> From:  {{ rentalFound.startDate }}</p>
     <p> To:  {{ rentalFound.endDate }}</p>
+    <p> By: {{ rentalFound.referredCustomer?.username }}</p>
 
     <br>
     <a routerLink="/rentals" class="mt-5">Back to Rentals</a>

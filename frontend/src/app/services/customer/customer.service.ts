@@ -2,6 +2,8 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { Customer } from 'src/app/common/customer/customer';
+import { Rental } from 'src/app/common/rental/rental';
+import { Role } from 'src/app/common/role/role';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +29,16 @@ export class CustomerService {
   getCustomerById(id: any): Observable<any> {
     const customerUrl = `${this.baseUrl}/${id}`
     return this.httpClient.get<Customer>(customerUrl)
+  }
+
+  getRole(id: any): Observable<any> {
+    const roleUrl = `${this.baseUrl}/${id}/role`;
+    return this.httpClient.get<Role>(roleUrl);
+  }
+
+  getRentalMade(id: any): Observable<any> {
+    const rentalUrl = `${this.baseUrl}/${id}/rentalMade`;
+    return this.httpClient.get<Rental>(rentalUrl);
   }
 
   getCustomerByUsernamePassword(username: string, password: string): Observable<any> {

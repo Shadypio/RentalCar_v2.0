@@ -16,6 +16,8 @@ export class RentalDetailsComponent implements OnInit {
     private rentalService: RentalService
   ) {}
 
+  rentalId: number
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.loadRental();
@@ -23,10 +25,26 @@ export class RentalDetailsComponent implements OnInit {
   }
 
   loadRental() {
-    const rentalId = +this.route.snapshot.paramMap.get('id')!;
+    this.rentalId = +this.route.snapshot.paramMap.get('id')!;
 
-    this.rentalService.getRentalById(rentalId).subscribe((data) => {
-      if (data) this.rentalFound = data;
+    this.rentalService.getRentalById(this.rentalId).subscribe((data) => {
+      if (data) {
+        this.rentalFound = data;
+        this.checkRentedCar();
+        this.checkReferredCustomer();
+      }
+    });
+  }
+
+  checkRentedCar() {
+    this.rentalService.getRentedCar(this.rentalId).subscribe((data) => {
+      if(data) this.rentalFound.rentedCar = data;
+    });
+  }
+
+  checkReferredCustomer() {
+    this.rentalService.getReferredCustomer(this.rentalId).subscribe((data) => {
+      if(data) this.rentalFound.referredCustomer = data;
     });
   }
 }

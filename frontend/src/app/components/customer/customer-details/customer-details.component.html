@@ -10,6 +10,11 @@
     <p> {{customerFound.firstName}} {{customerFound.lastName }} - {{customerFound.dateOfBirth }}</p>
 
 
+    <p *ngIf="customerFound.rentalMade">{{customerFound.username}} has rented {{customerFound.rentalMade.rentedCar?.brand}}
+      {{customerFound.rentalMade.rentedCar?.model}} from
+      {{customerFound.rentalMade.startDate | date}} to {{customerFound.rentalMade.endDate | date}} </p>
+
+
     <br>
     <a routerLink="/customers" class="mt-5">Back to customers</a>
   </div>
