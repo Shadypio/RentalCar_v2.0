@@ -53,6 +53,8 @@ export class RentalService {
 
 
   create(data: Rental): Observable<any> {
+    var ogg = Rental
+
     console.log(`data nel create`)
     console.log(data)
     return this.httpClient.post<Rental>(this.baseUrl, data).pipe(
