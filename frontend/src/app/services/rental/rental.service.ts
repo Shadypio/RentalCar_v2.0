@@ -14,7 +14,7 @@ export class RentalService {
 
   apiUrl: string = 'http://localhost:3000/rentals';
   baseUrl = 'http://localhost:8080/api/rentals';
-  // headers = new HttpHeaders().set('Content-Type', 'application/json');
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   static id: number = 100;
 
@@ -26,8 +26,8 @@ export class RentalService {
 
   // Show lists of item
   getRentals(): Observable<any> {
-    return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
-      map(response => response._embedded.rentals)
+    return this.httpClient.get<Rental[]>(this.baseUrl).pipe(
+      map(response => this.rentalsData = response)
     );
   }
 
@@ -53,10 +53,9 @@ export class RentalService {
 
 
   create(data: Rental): Observable<any> {
-    var ogg = Rental
 
     console.log(`data nel create`)
-    console.log(data)
+    console.log(data.referredCustomer)
     return this.httpClient.post<Rental>(this.baseUrl, data).pipe(
       catchError(this.handleError)
     );

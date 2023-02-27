@@ -1,5 +1,6 @@
 package com.mygroup.rentalcar.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,11 +34,13 @@ public class Rental {
     @OneToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_referred_customer", referencedColumnName = "id")
     @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @JsonManagedReference
     private Customer referredCustomer;
 
     @OneToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_rented_car", referencedColumnName = "id")
     @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @JsonManagedReference
     private Car rentedCar;
 
 }

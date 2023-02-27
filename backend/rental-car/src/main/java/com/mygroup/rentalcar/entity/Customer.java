@@ -1,8 +1,11 @@
 package com.mygroup.rentalcar.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -13,6 +16,7 @@ import java.util.Date;
 @Table(name="customer")
 @Getter
 @Setter
+@ToString
 public class Customer {
 
     @Id
@@ -46,5 +50,6 @@ public class Customer {
     private Role role;
 
     @OneToOne(mappedBy = "referredCustomer", orphanRemoval = true)
+    @JsonBackReference
     private Rental rentalMade;
 }
