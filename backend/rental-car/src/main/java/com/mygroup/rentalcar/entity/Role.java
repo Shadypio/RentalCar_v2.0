@@ -1,6 +1,6 @@
 package com.mygroup.rentalcar.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 

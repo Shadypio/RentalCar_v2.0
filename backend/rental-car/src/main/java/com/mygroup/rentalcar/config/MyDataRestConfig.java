@@ -1,7 +1,7 @@
 package com.mygroup.rentalcar.config;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.metamodel.EntityType;
+import javax.persistence.EntityManager;
+import javax.persistence.metamodel.EntityType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -24,7 +24,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         entityManager = theEntityManager;
     }
 
-    @Override
+
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
         /*
         HttpMethod[] unsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE};

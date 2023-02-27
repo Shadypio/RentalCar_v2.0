@@ -2,7 +2,7 @@ package com.mygroup.rentalcar.service.customer;
 
 import com.mygroup.rentalcar.dao.CustomerRepository;
 import com.mygroup.rentalcar.entity.Customer;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
