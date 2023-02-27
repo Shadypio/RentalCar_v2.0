@@ -21,8 +21,8 @@ export class CustomerService {
 
   // Show lists of item
   getCustomers(): Observable<any> {
-    return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
-      map(response => response._embedded.customers)
+    return this.httpClient.get<Customer[]>(this.baseUrl).pipe(
+      map(response => this.customersData = response)
     );
   }
 

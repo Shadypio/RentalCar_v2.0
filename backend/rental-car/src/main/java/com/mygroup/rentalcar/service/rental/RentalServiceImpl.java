@@ -1,8 +1,6 @@
-package com.mygroup.rentalcar.service;
+package com.mygroup.rentalcar.service.rental;
 
 import com.mygroup.rentalcar.dao.RentalRepository;
-import com.mygroup.rentalcar.entity.Car;
-import com.mygroup.rentalcar.entity.Customer;
 import com.mygroup.rentalcar.entity.Rental;
 import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;

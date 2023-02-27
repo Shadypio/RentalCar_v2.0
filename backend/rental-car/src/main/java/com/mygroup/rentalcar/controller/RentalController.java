@@ -1,7 +1,8 @@
 package com.mygroup.rentalcar.controller;
 
 import com.mygroup.rentalcar.entity.Rental;
-import com.mygroup.rentalcar.service.IRentalService;
+import com.mygroup.rentalcar.service.rental.IRentalService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -11,11 +12,8 @@ import java.util.List;
 @RequestMapping("/api/rentals")
 public class RentalController {
 
+    @Autowired
     private IRentalService rentalService;
-
-    public RentalController(IRentalService rentalService) {
-        this.rentalService = rentalService;
-    }
 
     @PostMapping
     public void placeRental(@RequestBody Rental rental){

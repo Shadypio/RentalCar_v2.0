@@ -1,4 +1,4 @@
-package com.mygroup.rentalcar.service;
+package com.mygroup.rentalcar.service.rental;
 
 import com.mygroup.rentalcar.entity.Rental;
 import org.springframework.http.ResponseEntity;
