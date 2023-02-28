@@ -14,7 +14,6 @@ import { Rental } from 'src/app/common/rental/rental';
 export class CarService {
   apiUrl: string = 'http://localhost:3000/cars';
   baseUrl = 'http://localhost:8080/api/cars';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
   carsData: Car[];
   static id: number = 100;
   // private baseUrl = "http://localhost:8080/api/cars"
@@ -24,8 +23,8 @@ export class CarService {
   // Show lists of item
   getCars(): Observable<any> {
     return this.httpClient
-      .get<GetResponse>(this.baseUrl)
-      .pipe(map((response) => response._embedded.cars));
+      .get<Car[]>(this.baseUrl)
+      .pipe(map(response => this.carsData = response));
   }
 
   getCarById(id: any): Observable<any> {
