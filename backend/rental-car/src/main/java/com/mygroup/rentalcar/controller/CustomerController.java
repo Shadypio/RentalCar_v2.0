@@ -35,6 +35,12 @@ public class CustomerController {
         return this.customerService.getAllCustomers();
     }
 
+    @GetMapping(produces = "application/json")
+    @RequestMapping({ "/validateLogin" })
+    public Customer validateLogin() {
+        return new Customer();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Customer> findCustomerById(@PathVariable(value="id") Long id) {
         return this.customerService.getCustomerById(id);

@@ -57,7 +57,7 @@
             </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <!-- NAVBAR LINKS -->
-              <li class="nav-item">
+              <!--li class="nav-item">
                 <a class="nav-link" routerLink="/cars">Cars</a>
               </li>
               <li class="nav-item">
@@ -65,7 +65,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" routerLink="/customers">Customers</a>
-              </li>
+              </li-->
               <!--li class="nav-item">
                 <a class="nav-link" routerLink="/profile">Account</a>
               </li-->
@@ -74,22 +74,13 @@
               <!--app-login-status></app-login-status-->
             </ul>
 
-            <div *ngIf="!isAuthenticated; else logout_button">
-              <app-my-button
-              [buttonConfig]="signInButton"
-              routerLink="/login"></app-my-button>
+          <ul class="navbar-nav">
+            <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/cars" class="nav-link">View Cars</a></li>
+            <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/customers" class="nav-link">View customers</a></li>
+            <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+            <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
+          </ul>
 
-            </div>
-
-            <ng-template #logout_button>
-
-              <p>Welcome back! {{userFullName}} </p>
-
-              <app-my-button
-              [buttonConfig]="signOutButton"
-              routerLink="/logout"></app-my-button>
-
-            </ng-template>
 
           </div>
 

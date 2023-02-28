@@ -105,11 +105,6 @@ export class CarTableComponent implements OnInit {
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
-    if (this.authService.getIsAuthenticated()) {
-      if (!this.authService.isAdmin()) {
-        alert('Not authorized');
-      }
-    }
 
     console.log(event.dataItem, event.action);
     if (event.action === 'Edit') {

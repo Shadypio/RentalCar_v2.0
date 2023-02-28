@@ -13,7 +13,9 @@ export class CustomerService {
 
   apiUrl: string = 'http://localhost:3000/customers';
   baseUrl = 'http://localhost:8080/api/customers';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  username='javainuse'
+  password='password'
+  headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
   customersData: Customer[];
   static id: number = 100;
 
@@ -21,6 +23,7 @@ export class CustomerService {
 
   // Show lists of item
   getCustomers(): Observable<any> {
+
     return this.httpClient.get<Customer[]>(this.baseUrl).pipe(
       map(response => this.customersData = response)
     );
