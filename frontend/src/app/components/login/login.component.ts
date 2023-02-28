@@ -45,18 +45,28 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl(`/customers/${id}`);
   }*/
 
-  username = 'javainuse';
-  password = '';
-  invalidLogin = false;
+  username = ''
+  password = ''
+  invalidLogin = false
 
-  constructor(private router: Router, private loginservice: AuthService) {}
+  constructor(private router: Router,
+    private loginservice: AuthService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   checkLogin() {
-    if (this.loginservice.authenticate(this.username, this.password)) {
-      this.router.navigate(['']);
-      this.invalidLogin = false;
-    } else this.invalidLogin = true;
+    (this.loginservice.authenticate(this.username, this.password).subscribe(
+      data => {
+        this.router.navigate([''])
+        this.invalidLogin = false
+      },
+      error => {
+        this.invalidLogin = true
+
+      }
+    )
+    );
+
   }
 }

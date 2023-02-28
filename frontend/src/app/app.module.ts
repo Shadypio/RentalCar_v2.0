@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { MyButtonComponent } from './components/my-button/my-button.component';
 import { MyTableComponent } from './components/my-table/my-table.component';
 import { CarService } from './services/car/car.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CarDetailsComponent } from './components/car/car-details/car-details.component';
 import { Routes, RouterModule, Router} from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
@@ -32,6 +32,7 @@ import { CustomerEditComponent } from './components/customer/customer-edit/custo
 import { AuthService } from './services/authentication/auth.service';
 import { AuthGuard } from './services/authentication/authguard';
 import { LogoutComponent } from './components/logout/logout.component';
+import { BasicAuthHttpInterceptorService } from './services/authentication/basic-auth-http-interceptor.service';
 
 
 const routes: Routes = [
@@ -87,7 +88,13 @@ const routes: Routes = [
 
   ],
   exports: [RouterModule],
-  providers: [CarService, RentalService, CustomerService, RoleService, AuthService, AuthGuard],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS, useClass:BasicAuthHttpInterceptorService, multi:true
+    },
+    CarService, RentalService, CustomerService, RoleService, AuthService, AuthGuard],
+  //[CarService, RentalService, CustomerService, RoleService, AuthService, AuthGuard],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
