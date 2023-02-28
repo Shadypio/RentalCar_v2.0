@@ -76,6 +76,7 @@
 
           <ul class="navbar-nav">
             <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/cars" class="nav-link">View Cars</a></li>
+            <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/rentals" class="nav-link">View Rentals</a></li>
             <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/customers" class="nav-link">View customers</a></li>
             <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
             <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
