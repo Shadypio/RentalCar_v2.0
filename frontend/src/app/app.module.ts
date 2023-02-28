@@ -31,11 +31,13 @@ import { CustomerCreateComponent } from './components/customer/customer-create/c
 import { CustomerEditComponent } from './components/customer/customer-edit/customer-edit.component';
 import { AuthService } from './services/authentication/auth.service';
 import { AuthGuard } from './services/authentication/authguard';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 const routes: Routes = [
 
   {path: 'login', component: LoginComponent},
+  {path: 'logout', component: LogoutComponent},
   {path: 'profile', component: CustomerDetailsComponent},
   {path: 'rental/create', component: RentalCreateComponent },
   {path: 'rental/edit/:id', component: RentalEditComponent },
@@ -47,9 +49,9 @@ const routes: Routes = [
   {path: 'customers/create', component: CustomerCreateComponent },
   {path: 'customers/edit/:id', component: CustomerEditComponent },
   {path: 'customers/:id', component: CustomerDetailsComponent},
-  {path: 'customers', component: CustomerTableComponent},
-  {path: 'rentals', component: RentalTableComponent},
-  {path: 'cars', component: CarTableComponent},
+  {path: 'customers', component: CustomerTableComponent, canActivate:[AuthGuard]},
+  {path: 'rentals', component: RentalTableComponent, canActivate:[AuthGuard]},
+  {path: 'cars', component: CarTableComponent, canActivate:[AuthGuard]},
   {path: '', component: HomeComponent},
   {path: '**', component: PageNotFoundComponent}
 ]
@@ -74,6 +76,7 @@ const routes: Routes = [
     CustomerTableComponent,
     CustomerCreateComponent,
     CustomerEditComponent,
+    LogoutComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

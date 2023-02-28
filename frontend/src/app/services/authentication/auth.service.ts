@@ -8,6 +8,8 @@ export class AuthService {
 
   constructor() { }
 
+  /*
+
   private customerInSession: Customer;
   private isAuthenticated = false;
 
@@ -49,6 +51,25 @@ export class AuthService {
     if(this.customerInSession)
       return this.customerInSession.id
     return
+  } */
+
+  authenticate(username: string, password: string) {
+    if (username === "javainuse" && password === "password") {
+      sessionStorage.setItem('username', username)
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isUserLoggedIn() {
+    let user = sessionStorage.getItem('username')
+    console.log(!(user === null))
+    return !(user === null)
+  }
+
+  logOut() {
+    sessionStorage.removeItem('username')
   }
 
 

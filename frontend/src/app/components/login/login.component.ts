@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/authentication/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  /*
   username = '';
   password = '';
   customerLoggedArray: Customer[];
@@ -42,5 +43,20 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.customerLogged);
     console.log(`is admin ${this.authService.isAdmin()}`);
     this.router.navigateByUrl(`/customers/${id}`);
+  }*/
+
+  username = 'javainuse';
+  password = '';
+  invalidLogin = false;
+
+  constructor(private router: Router, private loginservice: AuthService) {}
+
+  ngOnInit() {}
+
+  checkLogin() {
+    if (this.loginservice.authenticate(this.username, this.password)) {
+      this.router.navigate(['']);
+      this.invalidLogin = false;
+    } else this.invalidLogin = true;
   }
 }

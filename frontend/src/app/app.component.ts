@@ -18,10 +18,12 @@ export class AppComponent {
 
   title = 'frontend';
 
-  constructor(private authService: AuthService) {}
+  constructor(public loginService: AuthService) {}
 
+  /*
   isAuthenticated = this.authService.getIsAuthenticated()
   userFullName = this.authService.getCurrentUserName();
+  */
 
   signUpButton: MyButtonConfig = new MyButtonConfig(
     'signup-button',
