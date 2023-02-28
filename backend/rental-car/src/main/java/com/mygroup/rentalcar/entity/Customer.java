@@ -1,6 +1,7 @@
 package com.mygroup.rentalcar.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import lombok.Getter;
@@ -34,6 +35,7 @@ public class Customer {
     private String username;
 
     @Column(name = "password")
+    @JsonIgnore
     private String password;
 
     @Temporal(TemporalType.DATE)

@@ -17,6 +17,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 /**
  * The JwtTokenUtil is responsible for performing JWT operations like creation and validation.
  * It makes use of the io.jsonwebtoken.Jwts for achieving this.
+ *
+ * eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqYXZhaW51c2UiLCJleHAiOjE2Nzc1MzI3NzQsImlhdCI6MTY3NzUxNDc3NH0.ziGL0JB5NE4qS8rOEf6VrYWkvv_O1PfJWz9nEq_DRktQQuyfqH40aljTg_yuMFaBphX3LWYGDjH6FtSV2yqskQ
  */
 @Component
 public class JwtTokenUtil implements Serializable {

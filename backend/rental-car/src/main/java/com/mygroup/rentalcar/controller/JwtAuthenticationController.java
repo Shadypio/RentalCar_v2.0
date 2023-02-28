@@ -2,6 +2,8 @@ package com.mygroup.rentalcar.controller;
 
 import java.util.Objects;
 
+import com.mygroup.rentalcar.dto.CustomerDTO;
+import com.mygroup.rentalcar.entity.Customer;
 import com.mygroup.rentalcar.jwt.JwtRequest;
 import com.mygroup.rentalcar.jwt.JwtResponse;
 import com.mygroup.rentalcar.jwt.JwtTokenUtil;
@@ -45,6 +47,11 @@ public class JwtAuthenticationController {
         final String token = jwtTokenUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new JwtResponse(token));
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<?> saveUser(@RequestBody CustomerDTO user) throws Exception {
+        return ResponseEntity.ok(userDetailsService.save(user));
     }
 
     private void authenticate(String username, String password) throws Exception {
