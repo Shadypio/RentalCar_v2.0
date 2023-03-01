@@ -15,7 +15,7 @@ export class CustomerService {
   baseUrl = 'http://localhost:8080/api/customers';
   username='javainuse'
   password='password'
-  headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
   customersData: Customer[];
   static id: number = 100;
 
