@@ -1,4 +1,4 @@
-package com.mygroup.rentalcar.jwt;
+package com.mygroup.rentalcar.entity;
 
 import java.io.Serializable;
 

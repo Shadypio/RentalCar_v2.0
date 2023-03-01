@@ -1,4 +1,4 @@
-package com.mygroup.rentalcar.jwt;
+package com.mygroup.rentalcar.service;
 import java.util.ArrayList;
 import java.util.Date;
 

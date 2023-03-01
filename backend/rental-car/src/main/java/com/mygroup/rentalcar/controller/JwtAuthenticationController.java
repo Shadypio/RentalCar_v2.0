@@ -1,13 +1,10 @@
 package com.mygroup.rentalcar.controller;
 
-import java.util.Objects;
-
 import com.mygroup.rentalcar.dto.CustomerDTO;
-import com.mygroup.rentalcar.entity.Customer;
-import com.mygroup.rentalcar.jwt.JwtRequest;
-import com.mygroup.rentalcar.jwt.JwtResponse;
-import com.mygroup.rentalcar.jwt.JwtTokenUtil;
-import com.mygroup.rentalcar.jwt.JwtUserDetailsService;
+import com.mygroup.rentalcar.entity.JwtRequest;
+import com.mygroup.rentalcar.entity.JwtResponse;
+import com.mygroup.rentalcar.config.JwtTokenUtil;
+import com.mygroup.rentalcar.service.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 

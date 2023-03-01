@@ -1,4 +1,4 @@
-package com.mygroup.rentalcar.jwt;
+package com.mygroup.rentalcar.config;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
