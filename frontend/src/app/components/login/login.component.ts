@@ -46,8 +46,8 @@ export class LoginComponent implements OnInit {
   }*/
 
 
-  username = 'javainuse'
-  //username = ''
+
+  username = ''
   password = ''
   invalidLogin = false
 
