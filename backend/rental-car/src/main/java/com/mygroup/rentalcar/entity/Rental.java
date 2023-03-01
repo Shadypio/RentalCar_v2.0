@@ -15,7 +15,7 @@ import java.util.Date;
 @Table(name="rental")
 @Getter
 @Setter
-@ToString
+// @ToString
 public class Rental {
 
     @Id
@@ -45,4 +45,14 @@ public class Rental {
     @JsonManagedReference
     private Car rentedCar;
 
+    @Override
+    public String toString() {
+        return "Rental{" +
+                "id=" + id +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", referredCustomer=" + referredCustomer +
+                ", rentedCar=" + rentedCar +
+                '}';
+    }
 }

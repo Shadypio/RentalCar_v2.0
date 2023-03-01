@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/api/cars")
 public class CarController {
@@ -30,6 +30,11 @@ public class CarController {
 
     @GetMapping
     public List<Car> getAllCars() {
+        /*
+        List<Car> cars = this.carService.getAllCars();
+        for (Car car : cars) {
+            System.out.println(car.toString());
+        }*/
         return this.carService.getAllCars();
     }
 

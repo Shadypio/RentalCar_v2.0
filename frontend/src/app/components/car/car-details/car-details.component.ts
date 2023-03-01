@@ -49,7 +49,7 @@ export class CarDetailsComponent implements OnInit {
   }
 
   checkRental() {
-
+    console.log("checking rental")
     this.carService.getRentalMade(this.carFound.id).subscribe((data) => {
       if (data) {
         console.log("checking rental")
