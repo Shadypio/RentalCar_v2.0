@@ -45,7 +45,9 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl(`/customers/${id}`);
   }*/
 
-  username = ''
+
+  username = 'javainuse'
+  //username = ''
   password = ''
   invalidLogin = false
 
@@ -55,6 +57,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  /*
   checkLogin() {
     (this.loginservice.authenticate(this.username, this.password).subscribe(
       data => {
@@ -68,5 +71,14 @@ export class LoginComponent implements OnInit {
     )
     );
 
+  }*/
+
+  checkLogin() {
+    if (this.loginservice.authenticate(this.username, this.password)
+    ) {
+      this.router.navigate([''])
+      this.invalidLogin = false
+    } else
+      this.invalidLogin = true
   }
 }

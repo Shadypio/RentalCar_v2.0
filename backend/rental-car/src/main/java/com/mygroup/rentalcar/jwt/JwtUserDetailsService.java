@@ -43,8 +43,8 @@ public class JwtUserDetailsService implements UserDetailsService {
         newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
 
         // to replace
-        newUser.setFirstName("Java");
-        newUser.setLastName("InUse");
+        newUser.setFirstName(user.getUsername()+"FirstName");
+        newUser.setLastName(user.getUsername()+"LastName");
         newUser.setEnabled(true);
         newUser.setDateOfBirth(new Date());
         newUser.setRole(roleRepository.findById(2L).get());
