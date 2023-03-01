@@ -93,7 +93,7 @@ const routes: Routes = [
       provide:HTTP_INTERCEPTORS, useClass:BasicAuthHttpInterceptorService, multi:true
     },
     CarService, RentalService, CustomerService, RoleService, AuthService, AuthGuard],
-  //[CarService, RentalService, CustomerService, RoleService, AuthService, AuthGuard],
+  // [CarService, RentalService, CustomerService, RoleService, AuthService, AuthGuard],
 
   bootstrap: [AppComponent]
 })

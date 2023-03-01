@@ -3,9 +3,19 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { Customer } from 'src/app/common/customer/customer';
 
+export class User{
+  constructor(
+    public status:string,
+     ) {}
+
+}
+
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class AuthService {
 
   constructor(private httpClient:HttpClient) { }
@@ -55,14 +65,28 @@ export class AuthService {
     return
   } */
 
+
+  /*
   authenticate(username: string, password: string) {
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-    return this.httpClient.get<Customer>('http://localhost:8080/api/customers/validateLogin',{headers}).pipe(
+    return this.httpClient.get<User>('http://localhost:8080/api/customers/validateLogin').pipe(
      map(
        userData => {
         sessionStorage.setItem('username',username);
-        let authString = 'Basic ' + btoa(username + ':' + password);
-        sessionStorage.setItem('basicauth', authString);
+        return userData;
+       }
+     )
+
+    );
+  }*/
+
+  authenticate(username: string, password: string) {
+    return this.httpClient.post<any>('http://localhost:8080/authenticate',{username,password}).pipe(
+     map(
+       userData => {
+        sessionStorage.setItem('username',username);
+        let tokenStr= 'Bearer '+userData.token;
+        sessionStorage.setItem('token', tokenStr);
         return userData;
        }
      )

@@ -2,6 +2,7 @@ package com.mygroup.rentalcar.controller;
 
 import com.mygroup.rentalcar.entity.Customer;
 import com.mygroup.rentalcar.entity.Rental;
+import com.mygroup.rentalcar.entity.User;
 import com.mygroup.rentalcar.service.customer.CustomerServiceImpl;
 import com.mygroup.rentalcar.service.customer.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +36,17 @@ public class CustomerController {
         return this.customerService.getAllCustomers();
     }
 
+    /*
     @GetMapping(produces = "application/json")
     @RequestMapping({ "/validateLogin" })
     public Customer validateLogin() {
         return new Customer();
+    }*/
+
+    @GetMapping(produces = "application/json")
+    @RequestMapping({ "/validateLogin" })
+    public User validateLogin() {
+        return new User("User successfully authenticated");
     }
 
     @GetMapping("/{id}")
