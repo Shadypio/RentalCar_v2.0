@@ -51,9 +51,9 @@ const routes: Routes = [
   {path: 'customers/edit/:id', component: CustomerEditComponent },
   {path: 'customers/:id', component: CustomerDetailsComponent},
   // canActivate:[AuthGuard]
-  {path: 'customers', component: CustomerTableComponent, canActivate:[AuthGuard]},
-  {path: 'rentals', component: RentalTableComponent, canActivate:[AuthGuard]},
-  {path: 'cars', component: CarTableComponent, canActivate:[AuthGuard]},
+  {path: 'customers', component: CustomerTableComponent, },
+  {path: 'rentals', component: RentalTableComponent, },
+  {path: 'cars', component: CarTableComponent,},
   {path: '', component: HomeComponent},
   {path: '**', component: PageNotFoundComponent}
 ]
