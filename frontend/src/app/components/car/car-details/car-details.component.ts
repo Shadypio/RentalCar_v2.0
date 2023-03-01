@@ -51,7 +51,11 @@ export class CarDetailsComponent implements OnInit {
   checkRental() {
 
     this.carService.getRentalMade(this.carFound.id).subscribe((data) => {
-      if (data) this.carFound.rental = data;
+      if (data) {
+        console.log("checking rental")
+        console.log(data)
+        this.carFound.rental = data;
+      }
     })
 
   }
