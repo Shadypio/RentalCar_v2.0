@@ -54,8 +54,8 @@ public class JwtUserDetailsService implements UserDetailsService {
         newUser.setEnabled(true);
         newUser.setDateOfBirth(new Date());
         // create Admin (1L) or User (2L)
-        newUser.setRole(roleRepository.findById(1L).get());
-        // newUser.setRole(roleRepository.findById(2L).get());
+        // newUser.setRole(roleRepository.findById(1L).get());
+        newUser.setRole(roleRepository.findById(2L).get());
 
         newUser.toString();
 

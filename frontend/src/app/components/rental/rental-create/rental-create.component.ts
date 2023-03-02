@@ -28,7 +28,6 @@ export class RentalCreateComponent implements OnInit {
   ) {}
 
 
-
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.loadCarAndCustomer();
@@ -64,7 +63,7 @@ export class RentalCreateComponent implements OnInit {
   }
 
   addRental(): void {
-    const data = {
+    const dataRental = {
       id: this.rental.id,
       startDate: this.rental.startDate,
       endDate: this.rental.endDate,
@@ -73,17 +72,31 @@ export class RentalCreateComponent implements OnInit {
     };
 
     if (
-      !data.startDate ||
-      !data.endDate ||
-      !data.referredCustomer ||
-      !data.rentedCar
+      !dataRental.startDate ||
+      !dataRental.endDate ||
+      !dataRental.referredCustomer ||
+      !dataRental.rentedCar
     ) {
       alert('Please fill forms!');
       return;
     }
 
+    const idUser = sessionStorage.getItem("idUser");
+    this.customerService.getRentalMade(idUser).subscribe((data) => {
+      if(!data){
+        this.createRental(dataRental);
+      }
+      else {
+        alert("You have already rented a car");
+      }
+    })
 
-    this.rentalService.create(data).subscribe(
+
+
+  }
+
+  createRental(dataRental: Rental) {
+    this.rentalService.create(dataRental).subscribe(
       (response) => {
         this.isRentalAdded = true;
       },
@@ -92,6 +105,5 @@ export class RentalCreateComponent implements OnInit {
       }
     );
   }
-
 
 }
