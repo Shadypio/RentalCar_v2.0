@@ -100,9 +100,5 @@ export class RentalCreateComponent implements OnInit {
     );
   }
 
-  // Reset on adding new
-  newRental(): void {
-    this.isRentalAdded = false;
-    this.rental = new Rental(RentalService.id++, '', '', null, null);
-  }
+
 }

@@ -34,7 +34,6 @@ public class JwtUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
         // check role
-        //return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),new ArrayList<>());
         User.UserBuilder builder = null;
         builder = User.withUsername(user.getUsername());
         builder.disabled(false);

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, of, switchMap } from 'rxjs';
 import { Customer } from 'src/app/common/customer/customer';
 import { CustomerService } from '../customer/customer.service';
@@ -20,7 +21,8 @@ export class User{
 export class AuthService {
 
   constructor(private httpClient:HttpClient,
-              private customerService: CustomerService) { }
+              private customerService: CustomerService,
+              private route: Router) { }
 
 
 
@@ -114,13 +116,21 @@ export class AuthService {
   isUserAdmin() {
 
     const role = sessionStorage.getItem("role")
-    console.log("role user is", role)
 
     if(role === "ADMIN")
       return true;
     else
       return false;
 
+  }
+
+  getUserId() {
+    return sessionStorage.getItem("idUser")
+  }
+
+  navigateToPersonalProfile() {
+    const id = this.getUserId();
+    this.route.navigateByUrl(`customers/${id}`);
   }
 
 

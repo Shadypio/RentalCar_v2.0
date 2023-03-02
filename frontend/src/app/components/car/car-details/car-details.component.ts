@@ -71,7 +71,8 @@ export class CarDetailsComponent implements OnInit {
   }*/
 
   // TODO: retrieve idCustomer properly
-  this._router.navigateByUrl(`cars/rent/${rentedCarId}/4`);
+  const idCustomer = sessionStorage.getItem('idUser');
+  this._router.navigateByUrl(`cars/rent/${rentedCarId}/${idCustomer}`);
   }
 
 }

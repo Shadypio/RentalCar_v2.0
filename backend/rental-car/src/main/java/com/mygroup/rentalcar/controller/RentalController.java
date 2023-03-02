@@ -1,5 +1,6 @@
 package com.mygroup.rentalcar.controller;
 
+import com.mygroup.rentalcar.entity.Car;
 import com.mygroup.rentalcar.entity.Rental;
 import com.mygroup.rentalcar.service.rental.IRentalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,13 @@ public class RentalController {
     @GetMapping("/{id}")
     public ResponseEntity<Rental> findRentalById(@PathVariable(value="id") Long id) {
         return this.rentalService.getRentalById(id);
+    }
+
+    @GetMapping("/{id}/rentedCar")
+    public Car findRentedCar(@PathVariable(value="id") Long id) {
+        Rental rental = this.rentalService.getRentalById(id).getBody();
+        return rental.getRentedCar();
+
     }
 
     @DeleteMapping("/{id}")

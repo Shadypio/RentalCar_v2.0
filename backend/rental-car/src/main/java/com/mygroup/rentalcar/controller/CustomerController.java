@@ -57,15 +57,16 @@ public class CustomerController {
         return this.customerService.getCustomerById(id);
     }
 
+    @GetMapping("/{id}/rentalMade")
+    public Rental findRentalMade(@PathVariable(value="id") Long id) {
+
+        return this.customerService.getCustomerById(id).getBody().getRentalMade();
+    }
+
     //@GetMapping("?username={username}")
     @RequestMapping({ "/username/{username}" })
     public Customer findCustomerByUsername(@PathVariable("username") String username) {
-        /*
-        Customer customer = this.customerService.getCustomerByUsername(username);
-        System.out.println("ciao");
-        System.out.println(customer.toString());
-        return ResponseEntity.ok().build();*/
-  
+
         return this.customerService.getCustomerByUsername(username);
     }
 

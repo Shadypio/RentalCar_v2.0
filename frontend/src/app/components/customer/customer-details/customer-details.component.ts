@@ -44,7 +44,9 @@ export class CustomerDetailsComponent implements OnInit {
 
   checkRole() {
     this.customerService.getRole(this.customerId).subscribe((data) => {
-      if(data) this.customerFound.role = data;
+      if(data){
+        this.customerFound.role = data;
+      }
     });
   }
 
@@ -52,13 +54,16 @@ export class CustomerDetailsComponent implements OnInit {
     this.customerService.getRentalMade(this.customerId).subscribe((data) => {
       if(data) {
         this.customerFound.rentalMade = data;
-        this.checkRentedCar();
+        console.log("check rented car")
+        console.log(this.customerFound.rentalMade?.id);
+        this.checkRentedCar(this.customerFound.rentalMade?.id!);
       }
     });
   }
 
-  checkRentedCar() {
-    this.rentalService.getRentedCar(this.customerFound.rentalMade?.id).subscribe((data) => {
+  checkRentedCar(id: number) {
+
+    this.rentalService.getRentedCar(id).subscribe((data) => {
       if(data) this.customerFound.rentalMade!.rentedCar = data
     })
   }

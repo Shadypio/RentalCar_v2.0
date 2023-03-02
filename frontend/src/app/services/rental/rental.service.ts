@@ -41,7 +41,7 @@ export class RentalService {
   getRentedCar(id: any): Observable<any> {
 
     const carUrl =  `${this.baseUrl}/${id}/rentedCar`
-    return this.httpClient.get<Car>(carUrl)
+    return this.httpClient.get<Rental>(carUrl)
   }
 
   getReferredCustomer(id: any): Observable<any> {

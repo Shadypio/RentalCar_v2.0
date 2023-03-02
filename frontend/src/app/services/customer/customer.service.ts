@@ -40,8 +40,11 @@ export class CustomerService {
   }
 
   getRentalMade(id: any): Observable<any> {
+
     const rentalUrl = `${this.baseUrl}/${id}/rentalMade`;
-    return this.httpClient.get<Rental>(rentalUrl);
+    return this.httpClient.get<Rental>(rentalUrl).pipe(
+      catchError(this.handleError)
+    );
   }
 
   getCustomerByUsernamePassword(username: string, password: string): Observable<any> {

@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
     this.customerService.getCustomerByUsername(username).subscribe(
       data => {
         this.customer = data;
-
+        sessionStorage.setItem('idUser', this.customer.id)
         if(this.customer.role.id === 1)
           sessionStorage.setItem('role', "ADMIN");
         else
@@ -90,31 +90,7 @@ export class LoginComponent implements OnInit {
     )
   }
 
-  /*checkLogin() {
-    this.userService.getLoggedUser(this.username!).subscribe(user =>{
-      this.user = user;
-      if(this.user!.typeUser == true){
-        sessionStorage.setItem('User_Type', 'CUSTOMER')
-      }else if(this.user!.typeUser ==false){
-        sessionStorage.setItem('User_Type', 'ADMIN')
-      }
-      this.loginService.authenticate(this.username!, this.password!).subscribe(
-        () => {
-          if(this.user!.typeUser == true){
-            this.router.navigate(['my-bookings'])
-            this.invalidLogin = false
-          }else if(this.user!.typeUser ==false){
-            this.router.navigate(['list-of-users'])
-            this.invalidLogin = false
-          }
-        },
-        () => {
-          this.invalidLogin = true
-        }
-      )
-    });
 
-  }*/
 
 
 }
