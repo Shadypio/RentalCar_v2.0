@@ -30,21 +30,9 @@ export class RentalDetailsComponent implements OnInit {
     this.rentalService.getRentalById(this.rentalId).subscribe((data) => {
       if (data) {
         this.rentalFound = data;
-        // this.checkRentedCar();
-        // this.checkReferredCustomer();
       }
     });
   }
 
-  checkRentedCar() {
-    this.rentalService.getRentedCar(this.rentalId).subscribe((data) => {
-      if(data) this.rentalFound.rentedCar = data;
-    });
-  }
 
-  checkReferredCustomer() {
-    this.rentalService.getReferredCustomer(this.rentalId).subscribe((data) => {
-      if(data) this.rentalFound.referredCustomer = data;
-    });
-  }
 }

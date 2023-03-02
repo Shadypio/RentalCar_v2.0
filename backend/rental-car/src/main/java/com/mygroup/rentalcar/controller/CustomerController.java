@@ -52,9 +52,9 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> findCustomerById(@PathVariable(value="id") Long id) {
+    public Customer findCustomerById(@PathVariable(value="id") Long id) {
 
-        return this.customerService.getCustomerById(id);
+        return this.customerService.getCustomerById(id).getBody();
     }
 
     @GetMapping("/{id}/rentalMade")

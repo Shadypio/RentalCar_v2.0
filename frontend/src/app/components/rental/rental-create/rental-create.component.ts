@@ -32,8 +32,6 @@ export class RentalCreateComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.loadCarAndCustomer();
-      console.log("info rental")
-
 
       this.loadCars();
     });
@@ -46,15 +44,13 @@ export class RentalCreateComponent implements OnInit {
     this.carService.getCarById(carId).subscribe((data) => {
       if (data) {
          this.rental.rentedCar = data;
-         console.log(this.rental.rentedCar)
       }
     });
 
     this.customerService.getCustomerById(customerId).subscribe((data) => {
       if (data) {
          this.rental.referredCustomer = data;
-         console.log("vedo il customer")
-         console.log(this.rental.referredCustomer)
+
       }
     });
 
@@ -86,12 +82,9 @@ export class RentalCreateComponent implements OnInit {
       return;
     }
 
-    console.log("info data")
-    console.log(data)
 
     this.rentalService.create(data).subscribe(
       (response) => {
-        console.log(response);
         this.isRentalAdded = true;
       },
       (error) => {

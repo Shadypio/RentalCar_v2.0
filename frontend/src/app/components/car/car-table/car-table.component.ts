@@ -19,9 +19,7 @@ import { MySearch } from '../../my-table/config/search/my-search';
 export class CarTableComponent implements OnInit {
   constructor(
     private carService: CarService,
-    private route: ActivatedRoute,
     private _router: Router,
-    private authService: AuthService
   ) {}
 
   idHeader: MyHeaders;
@@ -94,13 +92,6 @@ export class CarTableComponent implements OnInit {
   }
 
   newRowHandler($event: { dataItem: any; action: any }) {
-    /*
-    if(!this.authService.isAdmin()){
-      alert('Not authorized')
-    }
-    else
-      this._router.navigateByUrl(`cars/create`);
-      */
     this._router.navigateByUrl(`cars/create`);
   }
 

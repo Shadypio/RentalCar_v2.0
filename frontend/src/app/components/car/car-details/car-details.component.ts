@@ -49,11 +49,8 @@ export class CarDetailsComponent implements OnInit {
   }
 
   checkRental() {
-    console.log("checking rental")
     this.carService.getRentalMade(this.carFound.id).subscribe((data) => {
       if (data) {
-        console.log("checking rental")
-        console.log(data)
         this.carFound.rental = data;
       }
     })
@@ -61,16 +58,6 @@ export class CarDetailsComponent implements OnInit {
   }
 
   rentCar(rentedCarId: number) {
-    /*
-    if (!this.authService.getIsAuthenticated()) {
-      this._router.navigateByUrl('/login');
-    } else {
-      const idCustomer = this.authService.getCurrentUserId();
-      this._router.navigateByUrl(`cars/rent/${rentedCarId}/${idCustomer}`);
-    }
-  }*/
-
-  // TODO: retrieve idCustomer properly
   const idCustomer = sessionStorage.getItem('idUser');
   this._router.navigateByUrl(`cars/rent/${rentedCarId}/${idCustomer}`);
   }

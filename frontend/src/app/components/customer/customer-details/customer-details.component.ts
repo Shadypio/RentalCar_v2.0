@@ -19,7 +19,6 @@ export class CustomerDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private customerService: CustomerService,
     private rentalService: RentalService,
-    private roleService: RoleService
   ) {}
 
   customerId: number;
@@ -36,26 +35,17 @@ export class CustomerDetailsComponent implements OnInit {
     this.customerService.getCustomerById(this.customerId).subscribe((data) => {
       if (data) {
         this.customerFound = data;
-        this.checkRole();
+
         this.checkRentalMade();
       }
     });
   }
 
-  checkRole() {
-    this.customerService.getRole(this.customerId).subscribe((data) => {
-      if(data){
-        this.customerFound.role = data;
-      }
-    });
-  }
 
   checkRentalMade() {
     this.customerService.getRentalMade(this.customerId).subscribe((data) => {
       if(data) {
         this.customerFound.rentalMade = data;
-        console.log("check rented car")
-        console.log(this.customerFound.rentalMade?.id);
         this.checkRentedCar(this.customerFound.rentalMade?.id!);
       }
     });

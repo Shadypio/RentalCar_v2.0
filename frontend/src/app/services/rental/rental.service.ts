@@ -14,7 +14,7 @@ export class RentalService {
 
   apiUrl: string = 'http://localhost:3000/rentals';
   baseUrl = 'http://localhost:8080/api/rentals';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+
 
   static id: number = 100;
 
@@ -90,8 +90,4 @@ export class RentalService {
   };
 }
 
-interface GetResponse {
-  _embedded: {
-    rentals: Rental[]
-  }
-}
+

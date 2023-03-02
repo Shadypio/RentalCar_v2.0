@@ -13,9 +13,8 @@ export class CustomerService {
 
   apiUrl: string = 'http://localhost:3000/customers';
   baseUrl = 'http://localhost:8080/api/customers';
-  username='javainuse'
-  password='password'
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+
   customersData: Customer[];
   static id: number = 100;
 
@@ -43,13 +42,6 @@ export class CustomerService {
 
     const rentalUrl = `${this.baseUrl}/${id}/rentalMade`;
     return this.httpClient.get<Rental>(rentalUrl).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-  getCustomerByUsernamePassword(username: string, password: string): Observable<any> {
-    console.log(`${this.apiUrl}?username=${username}&password=${password}`)
-    return this.httpClient.get(`${this.apiUrl}?username=${username}&password=${password}`).pipe(
       catchError(this.handleError)
     );
   }
@@ -96,8 +88,3 @@ export class CustomerService {
 
 }
 
-interface GetResponse {
-  _embedded: {
-    customers: Customer[]
-  }
-}

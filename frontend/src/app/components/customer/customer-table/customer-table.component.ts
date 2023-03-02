@@ -57,7 +57,7 @@ export class CustomerTableComponent implements OnInit {
       this.usernameHeader,
       this.dateOfBirthHeader,
 
-      this.enabledHeader,
+      //this.enabledHeader,
       //this.roleHeader,
       //this.rentalMadeHeader,
     ];
@@ -90,29 +90,10 @@ export class CustomerTableComponent implements OnInit {
   }
 
   newRowHandler($event: { dataItem: any; action: any }) {
-    /*
-    if(!this.authService.getIsAuthenticated()) {
-      this._router.navigateByUrl("/login")
-    }
-    else {
-      if(!this.authService.isAdmin()){
-        alert('Not authorized')
-      }
-      else
-        this._router.navigateByUrl(`customers/create`);
-    }*/
     this._router.navigateByUrl(`customers/create`);
   }
 
   performActionOnDataHandler(event: { dataItem: any; action: string }) {
-    /*
-    if(!this.authService.getIsAuthenticated()) {
-      this._router.navigateByUrl("/login")
-    }
-    else {
-      if(!this.authService.isAdmin()){
-        alert('Not authorized')
-      }*/
 
     if (event.action === 'Edit') {
       this._router.navigateByUrl(`customers/edit/${event.dataItem.id}`);

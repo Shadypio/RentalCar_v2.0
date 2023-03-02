@@ -9,7 +9,7 @@ import { Role } from 'src/app/common/role/role';
 export class RoleService {
 
   baseUrl = 'http://localhost:8080/api/roles';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+
   rolesData: Role[];
 
   constructor(private httpClient: HttpClient) { }

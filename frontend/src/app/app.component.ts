@@ -20,11 +20,6 @@ export class AppComponent {
 
   constructor(public loginService: AuthService) {}
 
-  /*
-  isAuthenticated = this.authService.getIsAuthenticated()
-  userFullName = this.authService.getCurrentUserName();
-  */
-
   signUpButton: MyButtonConfig = new MyButtonConfig(
     'signup-button',
     'Sign Up',
