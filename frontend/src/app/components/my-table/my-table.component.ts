@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/authentication/auth.service';
 import { MyButtonConfig } from '../my-button/config/my-button-config';
 
 import { MyTableConfig } from './config/my-table-config';
@@ -39,7 +40,8 @@ export class MyTableComponent implements OnInit {
 
 
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,
+              public authService: AuthService) {}
 
   @Input() tableConfig?: MyTableConfig;
   @Input() data : any[];

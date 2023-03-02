@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { Customer } from 'src/app/common/customer/customer';
 import { Rental } from 'src/app/common/rental/rental';
 import { Role } from 'src/app/common/role/role';
@@ -49,6 +49,13 @@ export class CustomerService {
     return this.httpClient.get(`${this.apiUrl}?username=${username}&password=${password}`).pipe(
       catchError(this.handleError)
     );
+  }
+
+  getCustomerByUsername(username: string) {
+    return this.httpClient.get(`${this.baseUrl}/username/${username}`).pipe(
+      catchError(this.handleError)
+    );
+
   }
 
   create(data: any): Observable<any> {

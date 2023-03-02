@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { Injectable, OnInit } from '@angular/core';
+import { map, of, switchMap } from 'rxjs';
 import { Customer } from 'src/app/common/customer/customer';
+import { CustomerService } from '../customer/customer.service';
 
 export class User{
   constructor(
@@ -18,7 +19,10 @@ export class User{
 
 export class AuthService {
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient,
+              private customerService: CustomerService) { }
+
+
 
   /*
 
@@ -80,6 +84,8 @@ export class AuthService {
     );
   }*/
 
+  customerFound: any;
+
   authenticate(username: string, password: string) {
     return this.httpClient.post<any>('http://localhost:8080/authenticate',{username,password}).pipe(
      map(
@@ -87,6 +93,7 @@ export class AuthService {
         sessionStorage.setItem('username',username);
         let tokenStr= 'Bearer '+userData.token;
         sessionStorage.setItem('token', tokenStr);
+
         return userData;
        }
      )
@@ -96,12 +103,24 @@ export class AuthService {
 
   isUserLoggedIn() {
     let user = sessionStorage.getItem('username')
-    //console.log(!(user === null))
+    // console.log(!(user === null))
     return !(user === null)
   }
 
   logOut() {
     sessionStorage.removeItem('username')
+  }
+
+  isUserAdmin() {
+
+    const role = sessionStorage.getItem("role")
+    console.log("role user is", role)
+
+    if(role === "ADMIN")
+      return true;
+    else
+      return false;
+
   }
 
 

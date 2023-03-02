@@ -10,6 +10,7 @@ public interface ICustomerService {
     public void placeCustomer(Customer customer);
     public List<Customer> getAllCustomers();
     public ResponseEntity<Customer> getCustomerById(Long id);
+    public Customer getCustomerByUsername(String username);
     public void delete(Long id);
 
     void updateCustomer(Long id, Customer customerModified);

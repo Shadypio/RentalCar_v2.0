@@ -1,5 +1,6 @@
 package com.mygroup.rentalcar.controller;
 
+import com.mygroup.rentalcar.entity.Car;
 import com.mygroup.rentalcar.entity.Customer;
 import com.mygroup.rentalcar.entity.Rental;
 import com.mygroup.rentalcar.entity.User;
@@ -33,6 +34,7 @@ public class CustomerController {
 
     @GetMapping
     public List<Customer> getAllCustomers() {
+
         return this.customerService.getAllCustomers();
     }
 
@@ -51,7 +53,20 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Customer> findCustomerById(@PathVariable(value="id") Long id) {
+
         return this.customerService.getCustomerById(id);
+    }
+
+    //@GetMapping("?username={username}")
+    @RequestMapping({ "/username/{username}" })
+    public Customer findCustomerByUsername(@PathVariable("username") String username) {
+        /*
+        Customer customer = this.customerService.getCustomerByUsername(username);
+        System.out.println("ciao");
+        System.out.println(customer.toString());
+        return ResponseEntity.ok().build();*/
+  
+        return this.customerService.getCustomerByUsername(username);
     }
 
     @DeleteMapping("/{id}")

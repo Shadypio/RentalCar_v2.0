@@ -33,8 +33,15 @@ public class JwtUserDetailsService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-                new ArrayList<>());
+        // check role
+        //return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),new ArrayList<>());
+        User.UserBuilder builder = null;
+        builder = User.withUsername(user.getUsername());
+        builder.disabled(false);
+        builder.password(user.getPassword());
+        builder.disabled((user.getEnabled() ? false : true ));
+        builder.authorities("ROLE_" + user.getRole().getRoleName());
+        return builder.build();
     }
 
     public Customer save(CustomerDTO user) {
@@ -47,7 +54,9 @@ public class JwtUserDetailsService implements UserDetailsService {
         newUser.setLastName(user.getUsername()+"LastName");
         newUser.setEnabled(true);
         newUser.setDateOfBirth(new Date());
-        newUser.setRole(roleRepository.findById(2L).get());
+        // create Admin (1L) or User (2L)
+        newUser.setRole(roleRepository.findById(1L).get());
+        // newUser.setRole(roleRepository.findById(2L).get());
 
         newUser.toString();
 

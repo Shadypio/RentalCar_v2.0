@@ -1,7 +1,6 @@
 package com.mygroup.rentalcar.controller;
 
 import com.mygroup.rentalcar.entity.Car;
-import com.mygroup.rentalcar.entity.Customer;
 import com.mygroup.rentalcar.service.car.ICarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +17,9 @@ public class CarController {
     private ICarService carService;
 
     @PostMapping
-    public void placeCar(@RequestBody Car car) {
+    public ResponseEntity<Void> placeCar(@RequestBody Car car) {
         this.carService.placeCar(car);
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{id}/car")

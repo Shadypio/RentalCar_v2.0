@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
         configuration.setAllowedMethods(Arrays.asList("GET","POST","PATCH", "PUT", "DELETE", "OPTIONS", "HEAD"));
         configuration.setAllowCredentials(true);
-        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Requestor-Type"));
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Requestor-Type", "Content-Type"));
         configuration.setExposedHeaders(Arrays.asList("X-Get-Header"));
         configuration.setMaxAge(3600L);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -93,16 +93,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
 
-
         // We don't need CSRF for this example
         httpSecurity.csrf().disable().cors().and().
 
                 // dont authenticate this particular request
-        authorizeRequests().antMatchers("/authenticate", "/register").
-                permitAll().antMatchers(HttpMethod.OPTIONS, "/**")
-                .permitAll().
+        authorizeRequests()
+                .antMatchers("/authenticate", "/register").permitAll()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/cars/**").access("hasRole('ADMIN')")
+                .antMatchers(HttpMethod.PUT, "/api/cars/**").access("hasRole('ADMIN')")
+                .antMatchers(HttpMethod.DELETE, "/api/cars/**").access("hasRole('ADMIN')")
+                .antMatchers(HttpMethod.POST, "/api/customers/**").access("hasRole('ADMIN')")
+                .antMatchers(HttpMethod.PUT, "/api/customers/**").access("hasRole('ADMIN')")
+                .antMatchers(HttpMethod.DELETE, "/api/customers/**").access("hasRole('ADMIN')")
                 // all other requests need to be authenticated
-                        anyRequest().authenticated().and().
+                .anyRequest().authenticated().and().
                 // make sure we use stateless session; session won't be used to
                 // store user's state.
                         exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
