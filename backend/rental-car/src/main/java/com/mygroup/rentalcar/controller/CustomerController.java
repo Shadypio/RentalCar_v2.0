@@ -20,10 +20,17 @@ public class CustomerController {
     @Autowired
     private ICustomerService customerService;
 
+    /*
     @PostMapping
     public void placeCustomer(@RequestBody Customer customer){
 
         this.customerService.placeCustomer(customer);
+    }*/
+
+    @PostMapping
+    public ResponseEntity<Void> placeCustomer(@RequestBody Customer customer) {
+        this.customerService.placeCustomer(customer);
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{id}/customer")
@@ -37,13 +44,6 @@ public class CustomerController {
 
         return this.customerService.getAllCustomers();
     }
-
-    /*
-    @GetMapping(produces = "application/json")
-    @RequestMapping({ "/validateLogin" })
-    public Customer validateLogin() {
-        return new Customer();
-    }*/
 
     @GetMapping(produces = "application/json")
     @RequestMapping({ "/validateLogin" })

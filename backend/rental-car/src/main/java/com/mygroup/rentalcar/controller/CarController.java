@@ -22,6 +22,7 @@ public class CarController {
         return ResponseEntity.ok().build();
     }
 
+    // to review
     @PutMapping("/{id}/car")
     public void updateCar(@PathVariable(value="id") Long id, @RequestBody Car car){
 
@@ -30,11 +31,6 @@ public class CarController {
 
     @GetMapping
     public List<Car> getAllCars() {
-        /*
-        List<Car> cars = this.carService.getAllCars();
-        for (Car car : cars) {
-            System.out.println(car.toString());
-        }*/
         return this.carService.getAllCars();
     }
 
