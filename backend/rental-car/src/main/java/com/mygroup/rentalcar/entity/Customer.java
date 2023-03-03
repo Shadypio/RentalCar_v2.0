@@ -35,7 +35,6 @@ public class Customer {
     private String username;
 
     @Column(name = "password")
-    @JsonIgnore
     private String password;
 
     @Temporal(TemporalType.DATE)

@@ -6,8 +6,10 @@ import com.mygroup.rentalcar.entity.Rental;
 import com.mygroup.rentalcar.entity.User;
 import com.mygroup.rentalcar.service.customer.CustomerServiceImpl;
 import com.mygroup.rentalcar.service.customer.ICustomerService;
+import com.mygroup.rentalcar.service.role.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,17 +22,26 @@ public class CustomerController {
     @Autowired
     private ICustomerService customerService;
 
+    @Autowired
+    private IRoleService roleService;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     /*
-    @PostMapping
-    public void placeCustomer(@RequestBody Customer customer){
-
-        this.customerService.placeCustomer(customer);
-    }*/
-
     @PostMapping
     public ResponseEntity<Void> placeCustomer(@RequestBody Customer customer) {
         this.customerService.placeCustomer(customer);
         return ResponseEntity.ok().build();
+    }*/
+
+    @PostMapping
+    public void placeCustomer(@RequestBody Customer customer) {
+
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+        customer.setRole(this.roleService.getRoleById(2L));
+        this.customerService.placeCustomer(customer);
+
     }
 
     @PutMapping("/{id}/customer")
