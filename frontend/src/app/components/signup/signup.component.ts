@@ -61,7 +61,7 @@ export class SignupComponent implements OnInit {
     }
 
 
-    this.customerService.register(data.username, data.password).subscribe(
+    this.customerService.register(data).subscribe(
       (response) => {
         console.log(response);
         this.isCustomerAdded = true;
