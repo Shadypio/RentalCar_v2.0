@@ -29,6 +29,7 @@ public class CarServiceImpl implements ICarService {
         Optional<Car> carToModifyResponseEntity = this.carRepository.findById(id);
         if(carToModifyResponseEntity.isPresent()) {
             Car carToModify = ResponseEntity.ok().body(carToModifyResponseEntity.get()).getBody();
+            carToModify = carModified;
             this.carRepository.save(carToModify);
 
         } else {

@@ -27,6 +27,7 @@ public class CustomerServiceImpl implements ICustomerService {
         Optional<Customer> customerToModifyResponseEntity = this.customerRepository.findById(id);
         if(customerToModifyResponseEntity.isPresent()) {
             Customer customerToModify = ResponseEntity.ok().body(customerToModifyResponseEntity.get()).getBody();
+            customerToModify = customerModified;
             this.customerRepository.save(customerToModify);
 
         } else {

@@ -23,9 +23,8 @@ public class CarController {
     }
 
     // to review
-    @PutMapping("/{id}/car")
+    @PutMapping("/{id}")
     public void updateCar(@PathVariable(value="id") Long id, @RequestBody Car car){
-
         this.carService.updateCar(id, car);
     }
 

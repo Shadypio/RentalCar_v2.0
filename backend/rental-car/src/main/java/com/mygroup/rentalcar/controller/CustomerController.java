@@ -44,9 +44,9 @@ public class CustomerController {
 
     }
 
-    @PutMapping("/{id}/customer")
+    @PutMapping("/{id}")
     public void updateCustomer(@PathVariable(value="id") Long id, @RequestBody Customer customer){
-
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
         this.customerService.updateCustomer(id, customer);
     }
 

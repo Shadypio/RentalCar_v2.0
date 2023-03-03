@@ -26,16 +26,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
 
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-        /*
-        HttpMethod[] unsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE};
 
-        // disable methods
-        config.getExposureConfiguration()
-                .forDomainType(Car.class)
-                .withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
-                .withCollectionExposure(((metdata, httpMethods) -> httpMethods.disable(unsupportedActions)));
-        */
-        // call an internal exposer method
         exposeIds(config);
     }
 

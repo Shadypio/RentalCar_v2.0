@@ -27,7 +27,10 @@ export class CustomerEditComponent implements OnInit {
     const customerId = +this.route.snapshot.paramMap.get('id')!;
 
     this.customerService.getCustomerById(customerId).subscribe((data) => {
-      if (data) this.customerFound = data;
+      if (data) {
+        this.customerFound = data;
+        this.customerFound.password = ""
+      }
     });
   }
 
