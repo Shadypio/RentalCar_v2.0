@@ -1,0 +1,40 @@
+<h2>Fill the Sign Up Form</h2>
+
+<div style="width: 500px; margin: auto;">
+  <div class="submit-form">
+    <div *ngIf="!isCustomerAdded">
+
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" required [(ngModel)]="customer.firstName" name="firstName" />
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" required [(ngModel)]="customer.lastName" name="lastName" />
+      </div>
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" required [(ngModel)]="customer.username" name="username" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" required [(ngModel)]="customer.password" name="password" />
+      </div>
+
+      <div class="form-group">
+        <label for="dateOfBirth">Date Of Birth</label>
+        <input type="date" class="form-control" id="dateOfBirth" required [(ngModel)]="customer.dateOfBirth" name="dateOfBirth" />
+      </div>
+
+      <button (click)="addCustomer()" class="btn btn-success">Create</button>
+    </div>
+
+    <div *ngIf="isCustomerAdded">
+      <h3>Your profile has been successfully added to our platform</h3>
+      <button class="btn btn-success" (click)="loginRedirect()"> Login now</button>
+    </div>
+  </div>
+</div>

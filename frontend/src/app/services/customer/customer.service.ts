@@ -11,6 +11,7 @@ import { Role } from 'src/app/common/role/role';
 export class CustomerService {
 
 
+
   apiUrl: string = 'http://localhost:3000/customers';
   baseUrl = 'http://localhost:8080/api/customers';
 
@@ -55,6 +56,12 @@ export class CustomerService {
 
   create(data: any): Observable<any> {
     return this.httpClient.post(this.baseUrl, data).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  register(username: string, password: string) {
+    return this.httpClient.post("http://localhost:8080/register", {username, password}).pipe(
       catchError(this.handleError)
     );
   }

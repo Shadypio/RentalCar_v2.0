@@ -33,11 +33,13 @@ import { AuthService } from './services/authentication/auth.service';
 import { AuthGuard } from './services/authentication/authguard';
 import { LogoutComponent } from './components/logout/logout.component';
 import { BasicAuthHttpInterceptorService } from './services/authentication/basic-auth-http-interceptor.service';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 const routes: Routes = [
 
   {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'profile', component: CustomerDetailsComponent},
   {path: 'rental/create', component: RentalCreateComponent },
@@ -79,6 +81,7 @@ const routes: Routes = [
     CustomerCreateComponent,
     CustomerEditComponent,
     LogoutComponent,
+    SignupComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
