@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OktaAuthStateService, OKTA_AUTH } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
@@ -12,8 +12,10 @@ import { RoleService } from 'src/app/services/role/role.service';
   templateUrl: './customer-details.component.html',
   styleUrls: ['./customer-details.component.css'],
 })
-export class CustomerDetailsComponent implements OnInit {
+export class CustomerDetailsComponent implements OnInit, OnDestroy {
   customerFound: Customer;
+
+  loadCustomerSubscription: any
 
   constructor(
     private route: ActivatedRoute,
@@ -24,7 +26,7 @@ export class CustomerDetailsComponent implements OnInit {
   customerId: number;
 
   ngOnInit() {
-    this.route.paramMap.subscribe(() => {
+    this.loadCustomerSubscription = this.route.paramMap.subscribe(() => {
       this.loadCustomer();
     });
   }
@@ -56,5 +58,9 @@ export class CustomerDetailsComponent implements OnInit {
     this.rentalService.getRentedCar(id).subscribe((data) => {
       if(data) this.customerFound.rentalMade!.rentedCar = data
     })
+  }
+
+  ngOnDestroy(): void {
+    this.loadCustomerSubscription.unsubscribe();
   }
 }

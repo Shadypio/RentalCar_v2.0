@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from 'src/app/common/customer/customer';
 import { AuthService } from 'src/app/services/authentication/auth.service';
@@ -15,7 +15,10 @@ import { MySearch } from '../../my-table/config/search/my-search';
   templateUrl: './customer-table.component.html',
   styleUrls: ['./customer-table.component.css'],
 })
-export class CustomerTableComponent implements OnInit {
+export class CustomerTableComponent implements OnInit, OnDestroy {
+
+  listCustomerSubscription: any
+
   constructor(
     private customerService: CustomerService,
     private route: ActivatedRoute,
@@ -84,7 +87,7 @@ export class CustomerTableComponent implements OnInit {
   }
 
   listCustomers() {
-    this.customerService.getCustomers().subscribe((data) => {
+    this.listCustomerSubscription = this.customerService.getCustomers().subscribe((data) => {
       this.customers = data;
     });
   }
@@ -109,5 +112,9 @@ export class CustomerTableComponent implements OnInit {
   viewDetailsOnDataHandler(event: { dataItem: any }) {
     // view details of selected row
     this._router.navigateByUrl(`customers/${event.dataItem.id}`);
+  }
+
+  ngOnDestroy(): void {
+    this.listCustomerSubscription.unsubscribe();
   }
 }

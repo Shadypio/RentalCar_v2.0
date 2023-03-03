@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/common/car/car';
 import { AuthService } from 'src/app/services/authentication/auth.service';
@@ -16,11 +16,12 @@ import { MySearch } from '../../my-table/config/search/my-search';
   templateUrl: './car-table.component.html',
   styleUrls: ['./car-table.component.css'],
 })
-export class CarTableComponent implements OnInit {
+export class CarTableComponent implements OnInit, OnDestroy {
   constructor(
     private carService: CarService,
     private _router: Router,
   ) {}
+
 
   idHeader: MyHeaders;
   licensePlateHeader: MyHeaders;
@@ -37,6 +38,8 @@ export class CarTableComponent implements OnInit {
   carTable: MyTableConfig;
 
   cars: Car[] = [];
+
+  listCarSubscription : any;
 
   detailsButton: MyButtonConfig = new MyButtonConfig(
     'action-button-class',
@@ -86,7 +89,7 @@ export class CarTableComponent implements OnInit {
   }
 
   listCars() {
-    this.carService.getCars().subscribe((data) => {
+    this.listCarSubscription = this.carService.getCars().subscribe((data) => {
       this.cars = data;
     });
   }
@@ -110,5 +113,9 @@ export class CarTableComponent implements OnInit {
   viewDetailsOnDataHandler(event: { dataItem: any }) {
     // view details of selected row
     this._router.navigateByUrl(`cars/${event.dataItem.id}`);
+  }
+
+  ngOnDestroy(): void {
+    this.listCarSubscription.unsubscribe();
   }
 }
