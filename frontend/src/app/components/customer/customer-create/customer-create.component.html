@@ -46,8 +46,13 @@
     </div>
 
     <div *ngIf="isCustomerAdded">
-      <h3>New Customer added!</h3>
-      <button class="btn btn-success" (click)="newCustomer()"> + Add More</button>
+      <div class="alert alert-success alert-dismissible fade show">
+        <strong>Success!</strong><br> New Customer added!
+      </div>
+      <div class="text-center">
+        <button class="btn btn-success text-center" (click)="newCustomer()"> + Add More</button>
+      </div>
     </div>
+
   </div>
 </div>

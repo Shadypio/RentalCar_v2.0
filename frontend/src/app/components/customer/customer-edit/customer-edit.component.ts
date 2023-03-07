@@ -11,6 +11,7 @@ import { CustomerService } from 'src/app/services/customer/customer.service';
 export class CustomerEditComponent implements OnInit {
   customerFound: Customer;
   isCustomerEdited = false;
+  fillForm = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -53,7 +54,7 @@ export class CustomerEditComponent implements OnInit {
       !data.password ||
       !data.dateOfBirth
     ) {
-      alert('Please fill forms!');
+      this.fillForm = true;
       return;
     }
 

@@ -5,7 +5,7 @@
 <div style="width: 500px; margin: auto;">
   <div class="submit-form">
     <div *ngIf="!isCarEdited">
-
+      <div class="alert alert-danger" *ngIf="fillForm">Please Fill Form</div>
       <div class="form-group">
         <label for="licensePlate">License Plate</label>
         <input type="text" class="form-control" id="licensePlate" required [(ngModel)]="carFound.licensePlate" name="licensePlate" />
@@ -35,7 +35,9 @@
     </div>
 
     <div *ngIf="isCarEdited">
-      <h3>Car updated successfully</h3>
+      <div class="alert alert-success alert-dismissible fade show">
+        <strong>Success!</strong><br> Car updated successfully!
+      </div>
     </div>
   </div>
 </div>

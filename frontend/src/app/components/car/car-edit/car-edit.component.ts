@@ -11,6 +11,7 @@ import { CarService } from 'src/app/services/car/car.service';
 export class CarEditComponent implements OnInit {
   carFound: Car;
   isCarEdited = false;
+  fillForm = false;
 
   constructor(private route: ActivatedRoute, private carService: CarService) {}
 
@@ -44,7 +45,7 @@ export class CarEditComponent implements OnInit {
       data.year === 0 ||
       !data.category
     ) {
-      alert('Please fill forms!');
+      this.fillForm = true;
       return;
     }
 

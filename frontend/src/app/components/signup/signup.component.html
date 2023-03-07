@@ -36,8 +36,12 @@
     </div>
 
     <div *ngIf="isCustomerAdded">
-      <h3 class="alert alert-success">Your profile has been successfully added to our platform</h3>
-      <button class="btn btn-success" (click)="loginRedirect()"> Login now</button>
+      <div class="alert alert-success alert-dismissible fade show">
+        <strong>Success!</strong><br> Your profile has been successfully added to our platform
+      </div>
+      <div class="text-center">
+        <button class="btn btn-success text-center" (click)="loginRedirect()"> Login now</button>
+      </div>
     </div>
   </div>
 </div>

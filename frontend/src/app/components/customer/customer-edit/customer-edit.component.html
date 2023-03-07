@@ -6,6 +6,7 @@
   <div class="submit-form">
     <div *ngIf="!isCustomerEdited">
 
+      <div class="alert alert-danger" *ngIf="fillForm">Please Fill Form</div>
       <div class="form-group">
         <label for="firstName">First Name</label>
         <input type="text" class="form-control" id="firstName" required [(ngModel)]="customerFound.firstName" name="firstName" />
@@ -35,7 +36,9 @@
     </div>
 
     <div *ngIf="isCustomerEdited">
-      <h3>Customer edited!</h3>
+      <div class="alert alert-success alert-dismissible fade show">
+        <strong>Success!</strong><br> Customer updated successfully!
+      </div>
     </div>
   </div>
 </div>
