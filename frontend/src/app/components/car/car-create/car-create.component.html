@@ -1,4 +1,6 @@
-<h2>Add new Car</h2>
+<div class="jumbotron">
+  <h2 class="text-center font-weight-bold">Add new Car</h2>
+</div>
 
 <div style="width: 500px; margin: auto;">
   <div class="submit-form">
@@ -38,7 +40,7 @@
     </div>
 
     <div *ngIf="isCarAdded">
-      <h3>New Car added!</h3>
+      <h3 class="alert alert-success">New Car added!</h3>
       <button class="btn btn-success" (click)="newCar()"> + Add More</button>
     </div>
   </div>

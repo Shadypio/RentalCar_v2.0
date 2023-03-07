@@ -28,6 +28,8 @@ export class SignupComponent implements OnInit {
     null
   );
   isCustomerAdded = false;
+  fillForm = false;
+  errorOccurred = false;
 
   ngOnInit(): void {
     this.roleService.getRoleById(2).subscribe((data) => {
@@ -56,7 +58,7 @@ export class SignupComponent implements OnInit {
       !data.password ||
       !data.dateOfBirth
     ) {
-      alert('Please fill forms!');
+      this.fillForm = true;
       return;
     }
 
@@ -68,6 +70,7 @@ export class SignupComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+        this.errorOccurred = true;
       }
     );
   }

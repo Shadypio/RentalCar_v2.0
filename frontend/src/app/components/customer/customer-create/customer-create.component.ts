@@ -28,13 +28,25 @@ export class CustomerCreateComponent implements OnInit {
     null
   );
   isCustomerAdded = false;
+  fillForm = false;
+  roles : any
 
   ngOnInit(): void {
+    /*
     this.roleService.getRoleById(2).subscribe((data) => {
       if(data) {
         this.customer.role = data;
       }
-  });
+  });*/
+
+    this.roleService.getRoles().subscribe(
+      (data) =>{
+        if(data){
+          console.log("Roles  found", data)
+          this.roles = data;
+        }
+      }
+    )
 
   }
 
@@ -57,7 +69,7 @@ export class CustomerCreateComponent implements OnInit {
       !data.password ||
       !data.dateOfBirth
     ) {
-      alert('Please fill forms!');
+      this.fillForm = true;
       return;
     }
 

@@ -61,7 +61,7 @@ export class CustomerService {
   }
 
   register(data: any) {
-    return this.httpClient.post("http://localhost:8080/register", data).pipe(
+    return this.httpClient.post("http://localhost:8080/signup", data).pipe(
       catchError(this.handleError)
     );
   }

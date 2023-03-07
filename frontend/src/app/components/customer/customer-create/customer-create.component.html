@@ -1,8 +1,12 @@
-<h2>Add new Customer</h2>
+<div class="jumbotron">
+  <h2 class="text-center font-weight-bold">Add new Customer</h2>
+</div>
 
 <div style="width: 500px; margin: auto;">
   <div class="submit-form">
     <div *ngIf="!isCustomerAdded">
+
+      <div class="alert alert-danger" *ngIf="fillForm">Please Fill Form</div>
 
       <div class="form-group">
         <label for="firstName">First Name</label>
@@ -27,6 +31,15 @@
       <div class="form-group">
         <label for="dateOfBirth">Date Of Birth</label>
         <input type="date" class="form-control" id="dateOfBirth" required [(ngModel)]="customer.dateOfBirth" name="dateOfBirth" />
+      </div>
+
+      <div class="form-group">
+        <label for="role">Role</label><br>
+        <select [(ngModel)]="customer.role">
+          <option *ngFor="let roleToSelect of roles" type="object">
+            {{roleToSelect.roleName}}
+          </option>
+        </select>
       </div>
 
       <button (click)="addCustomer()" class="btn btn-success">Create</button>

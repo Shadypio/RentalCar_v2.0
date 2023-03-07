@@ -15,8 +15,8 @@ export class RoleService {
   constructor(private httpClient: HttpClient) { }
 
   getRoles(): Observable<any> {
-    return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
-      map(response => response._embedded.roles)
+    return this.httpClient.get<Role[]>(this.baseUrl).pipe(
+      map(response => this.rolesData = response)
     )
   }
 
@@ -28,8 +28,3 @@ export class RoleService {
 
 }
 
-interface GetResponse {
-  _embedded: {
-    roles: Role[]
-  }
-}
