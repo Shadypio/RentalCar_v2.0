@@ -42,7 +42,6 @@ export class CustomerCreateComponent implements OnInit {
     this.roleService.getRoles().subscribe(
       (data) =>{
         if(data){
-          console.log("Roles  found", data)
           this.roles = data;
         }
       }
@@ -73,8 +72,9 @@ export class CustomerCreateComponent implements OnInit {
       return;
     }
 
-    console.log("data")
-    console.log(data)
+    console.log("data create")
+    console.log(this.customer.username)
+    console.log(this.customer.role?.id + "-" + this.customer.role?.roleName)
     this.customerService.create(data).subscribe(
       (response) => {
         console.log(response);

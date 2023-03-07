@@ -39,7 +39,9 @@ public class CustomerController {
     public void placeCustomer(@RequestBody Customer customer) {
 
         customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-        customer.setRole(this.roleService.getRoleById(2L));
+        //customer.setRole(this.roleService.getRoleById(2L));
+        System.out.println("nn va");
+        System.out.println(customer.toString());
         this.customerService.placeCustomer(customer);
 
     }

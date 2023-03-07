@@ -34,6 +34,7 @@ import { AuthGuard } from './services/authentication/authguard';
 import { LogoutComponent } from './components/logout/logout.component';
 import { BasicAuthHttpInterceptorService } from './services/authentication/basic-auth-http-interceptor.service';
 import { SignupComponent } from './components/signup/signup.component';
+import { RoleNamePipe } from './pipes/role-name.pipe';
 
 
 const routes: Routes = [
@@ -82,6 +83,7 @@ const routes: Routes = [
     CustomerEditComponent,
     LogoutComponent,
     SignupComponent,
+    RoleNamePipe,
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -35,9 +35,9 @@
 
       <div class="form-group">
         <label for="role">Role</label><br>
-        <select [(ngModel)]="customer.role">
-          <option *ngFor="let roleToSelect of roles" type="object">
-            {{roleToSelect.roleName}}
+        <select name="role" [(ngModel)]="customer.role">
+          <option *ngFor="let roleToSelect of roles" [ngValue]="roleToSelect">
+            {{ roleToSelect | roleName }}
           </option>
         </select>
       </div>
