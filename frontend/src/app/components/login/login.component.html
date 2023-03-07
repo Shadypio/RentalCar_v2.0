@@ -4,6 +4,7 @@
 
   <form action="/action_page.php" method="post">
 
+    <div class="alert alert-danger" *ngIf="badCredentials">Bad Credentials</div>
     <div class="container">
       <label for="username"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" [(ngModel)]="username" name="username" required>

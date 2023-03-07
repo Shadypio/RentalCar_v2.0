@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   password = ''
   invalidLogin = false
   customer: any;
+  badCredentials = false
 
   constructor(private router: Router,
     private loginservice: AuthService,
@@ -27,13 +28,14 @@ export class LoginComponent implements OnInit {
   checkLogin() {
     (this.loginservice.authenticate(this.username, this.password).subscribe(
       data => {
+
         this.router.navigate([''])
         this.getCustomer(this.username);
         this.invalidLogin = false
       },
       error => {
         this.invalidLogin = true
-
+        this.badCredentials = true;
       }
 
     )
@@ -43,14 +45,15 @@ export class LoginComponent implements OnInit {
 
   getCustomer(username: string) {
     this.customerService.getCustomerByUsername(username).subscribe(
-      data => {
-        this.customer = data;
-        sessionStorage.setItem('idUser', this.customer.id)
-        if(this.customer.role.id === 1)
-          sessionStorage.setItem('role', "ADMIN");
-        else
-          sessionStorage.setItem('role', "USER")
-      }
+        data => {
+          this.customer = data;
+          sessionStorage.setItem('idUser', this.customer.id)
+          if(this.customer.role.id === 1)
+            sessionStorage.setItem('role', "ADMIN");
+          else
+            sessionStorage.setItem('role', "USER")
+        }
+
     )
   }
 
