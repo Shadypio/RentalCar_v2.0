@@ -19,7 +19,7 @@ public class Car {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "license_plate")
+    @Column(name = "license_plate", unique=true)
     private String licensePlate;
 
     @Column(name = "brand")
