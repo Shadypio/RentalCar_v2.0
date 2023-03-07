@@ -53,7 +53,24 @@ public class JwtUserDetailsService implements UserDetailsService {
         newUser.setEnabled(true);
         newUser.setDateOfBirth(user.getDateOfBirth());
         // create Admin (1L) or User (2L)
-        newUser.setRole(roleRepository.findById(1L).get());
+        // change with user.getRole();
+        // newUser.setRole(user.getRole());
+        newUser.setRole(roleRepository.findById(2L).get());
+
+        return customerRepository.save(newUser);
+    }
+
+    public Customer signup(CustomerDTO user) {
+        Customer newUser = new Customer();
+
+        newUser.setUsername(user.getUsername());
+        newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
+        newUser.setFirstName(user.getFirstName());
+        newUser.setLastName(user.getLastName());
+        newUser.setEnabled(true);
+        newUser.setDateOfBirth(user.getDateOfBirth());
+        // create Admin (1L) or User (2L)
+        newUser.setRole(roleRepository.findById(2L).get());
 
         return customerRepository.save(newUser);
     }

@@ -16,6 +16,8 @@ public class CustomerDTO {
     private String password;
     private Date dateOfBirth;
 
+    private Role role;
+
     /*
     public String getUsername() {
         return username;
