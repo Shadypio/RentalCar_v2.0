@@ -99,7 +99,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // dont authenticate this particular request
         authorizeRequests()
-                .antMatchers("/authenticate", "/register").permitAll()
+                .antMatchers("/authenticate", "/register", "/register-admin").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/cars/**").access("hasRole('ADMIN')")
                 .antMatchers(HttpMethod.PUT, "/api/cars/**").access("hasRole('ADMIN')")

@@ -52,6 +52,11 @@ public class JwtAuthenticationController {
         return ResponseEntity.ok(userDetailsService.save(user));
     }
 
+    @RequestMapping(value = "/register-admin", method = RequestMethod.POST)
+    public ResponseEntity<?> saveAdmin(@RequestBody CustomerDTO user) throws Exception {
+        return ResponseEntity.ok(userDetailsService.saveAdmin(user));
+    }
+
     private void authenticate(String username, String password) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
