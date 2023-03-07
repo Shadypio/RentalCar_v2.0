@@ -6,6 +6,8 @@ import com.mygroup.rentalcar.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RoleServiceImpl implements IRoleService{
 
@@ -13,7 +15,12 @@ public class RoleServiceImpl implements IRoleService{
     private RoleRepository roleRepository;
 
     @Override
+    public List<Role> getAllRoles() {
+        return this.roleRepository.findAll();
+    }
+
+    @Override
     public Role getRoleById(Long id) {
-        return this.roleRepository.getOne(id);
+        return this.roleRepository.findById(id).get();
     }
 }
