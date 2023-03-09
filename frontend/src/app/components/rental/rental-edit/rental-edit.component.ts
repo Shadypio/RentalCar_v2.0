@@ -11,6 +11,7 @@ import { RentalService } from 'src/app/services/rental/rental.service';
 export class RentalEditComponent implements OnInit {
   rentalFound: Rental;
   isRentalEdited = false;
+  editRentalMessage = "Edit Rental"
 
   constructor(
     private route: ActivatedRoute,

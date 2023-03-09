@@ -31,6 +31,7 @@ export class CustomerCreateComponent implements OnInit {
   isCustomerAdded = false;
   fillForm = false;
   roles : any;
+  addCustomerMessage = "Add New Customer";
   createButton: MyButtonConfig = new MyButtonConfig(
     'btn btn-success',
     'Create',

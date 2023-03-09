@@ -1,6 +1,5 @@
-<div class="jumbotron">
-  <h2 class="text-center font-weight-bold">Fill the Sign Up Form</h2>
-  </div>
+<app-header-form [message]="signUpMessage"></app-header-form>
+
 <div style="width: 500px; margin: auto;">
   <div class="submit-form">
     <div *ngIf="!isCustomerAdded">
@@ -32,7 +31,7 @@
         <input type="date" class="form-control" id="dateOfBirth" required [(ngModel)]="customer.dateOfBirth" name="dateOfBirth" />
       </div>
 
-      <button (click)="addCustomer()" class="btn btn-success">Create</button>
+      <app-my-button [buttonConfig]="signUpButton" (click)="addCustomer()"></app-my-button>
     </div>
 
     <div *ngIf="isCustomerAdded">

@@ -13,6 +13,7 @@ export class CustomerEditComponent implements OnInit {
   customerFound: Customer;
   isCustomerEdited = false;
   fillForm = false;
+  editCustomerMessage = "Edit Customer";
   editButton: MyButtonConfig = new MyButtonConfig(
     'btn btn-success',
     'Edit',

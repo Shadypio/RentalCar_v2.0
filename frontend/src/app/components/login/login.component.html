@@ -1,8 +1,6 @@
 <body>
 
-  <div class="jumbotron">
-    <h2 class="text-center font-weight-bold">Login form</h2>
-  </div>
+  <app-header-form [message]="loginMessage"></app-header-form>
 
   <form action="/action_page.php" method="post">
 
@@ -14,7 +12,7 @@
       <label for="password"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" [(ngModel)]="password" name="password" required>
 
-      <button (click)="checkLogin()" type="submit">Login</button>
+      <app-my-button [buttonConfig]="loginButton" (click)="checkLogin()"></app-my-button>
     </div>
 
   </form>

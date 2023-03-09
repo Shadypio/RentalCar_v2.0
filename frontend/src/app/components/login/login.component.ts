@@ -3,6 +3,7 @@ import { CustomerService } from 'src/app/services/customer/customer.service';
 import { Customer } from 'src/app/common/customer/customer';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/authentication/auth.service';
+import { MyButtonConfig } from '../my-button/config/my-button-config';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,13 @@ export class LoginComponent implements OnInit {
   password = ''
   invalidLogin = false
   customer: any;
-  badCredentials = false
+  badCredentials = false;
+  loginMessage = "Login";
+  loginButton: MyButtonConfig = new MyButtonConfig(
+    'login-button-2',
+    'Login',
+    'fa fa-sign-in'
+  );
 
   constructor(private router: Router,
     private loginservice: AuthService,

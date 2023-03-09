@@ -13,6 +13,7 @@ export class CarEditComponent implements OnInit {
   carFound: Car;
   isCarEdited = false;
   fillForm = false;
+  editCarMessage = "Edit Car"
   editButton: MyButtonConfig = new MyButtonConfig(
     'btn btn-success',
     'Edit',

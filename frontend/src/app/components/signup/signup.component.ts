@@ -3,6 +3,7 @@ import { Route, Router } from '@angular/router';
 import { Customer } from 'src/app/common/customer/customer';
 import { CustomerService } from 'src/app/services/customer/customer.service';
 import { RoleService } from 'src/app/services/role/role.service';
+import { MyButtonConfig } from '../my-button/config/my-button-config';
 
 @Component({
   selector: 'app-signup',
@@ -30,6 +31,12 @@ export class SignupComponent implements OnInit {
   isCustomerAdded = false;
   fillForm = false;
   errorOccurred = false;
+  signUpMessage = "Please Fill the Sign Up Form";
+  signUpButton: MyButtonConfig = new MyButtonConfig(
+    'login-button-2',
+    'Sign Up',
+    'fa fa-user'
+  );
 
   ngOnInit(): void {
     this.roleService.getRoleById(2).subscribe((data) => {

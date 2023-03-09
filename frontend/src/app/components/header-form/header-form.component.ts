@@ -12,7 +12,6 @@ export class HeaderFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("message ", this.message)
   }
 
   @Input() message?: string;

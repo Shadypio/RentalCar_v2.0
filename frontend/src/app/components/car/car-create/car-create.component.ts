@@ -17,7 +17,7 @@ export class CarCreateComponent implements OnInit {
   ];
   carAlreadyIn = false;
   fillForm = false;
-  addCarMessage: 'Add New Car';
+  addCarMessage = "Add New Car";
   createButton: MyButtonConfig = new MyButtonConfig(
     'btn btn-success',
     'Create',

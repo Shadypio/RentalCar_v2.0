@@ -18,6 +18,7 @@ export class RentalCreateComponent implements OnInit {
   carsFound: Car[];
   rental: Rental = new Rental(RentalService.id++, '', '', null, null);
   isRentalAdded = false;
+  addRentalMessage = "Add New Rental"
 
   constructor(
     private rentalService: RentalService,

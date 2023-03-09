@@ -108,6 +108,20 @@
   background-color:#1859c9db;
 }
 
+.login-button-2 {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.login-button-2:hover {
+  opacity: 0.8;
+}
+
 
 .signup-button:hover{
 
