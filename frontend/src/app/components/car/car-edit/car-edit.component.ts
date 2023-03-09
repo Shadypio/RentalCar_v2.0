@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/common/car/car';
 import { CarService } from 'src/app/services/car/car.service';
+import { MyButtonConfig } from '../../my-button/config/my-button-config';
 
 @Component({
   selector: 'app-car-edit',
@@ -12,6 +13,11 @@ export class CarEditComponent implements OnInit {
   carFound: Car;
   isCarEdited = false;
   fillForm = false;
+  editButton: MyButtonConfig = new MyButtonConfig(
+    'btn btn-success',
+    'Edit',
+    'fa fa-edit'
+  );
 
   constructor(private route: ActivatedRoute, private carService: CarService) {}
 

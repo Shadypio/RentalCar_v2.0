@@ -32,7 +32,8 @@
         <input type="date" class="form-control" id="dateOfBirth" required [(ngModel)]="customerFound.dateOfBirth" name="dateOfBirth" />
       </div>
 
-      <button (click)="editCustomer()" class="btn btn-success">Edit</button>
+      <app-my-button [buttonConfig]="editButton" (click)="editCustomer()">
+      </app-my-button>
     </div>
 
     <div *ngIf="isCustomerEdited">

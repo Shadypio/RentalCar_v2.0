@@ -4,6 +4,7 @@ import { Customer } from 'src/app/common/customer/customer';
 import { Role } from 'src/app/common/role/role';
 import { CustomerService } from 'src/app/services/customer/customer.service';
 import { RoleService } from 'src/app/services/role/role.service';
+import { MyButtonConfig } from '../../my-button/config/my-button-config';
 
 @Component({
   selector: 'app-customer-create',
@@ -29,7 +30,17 @@ export class CustomerCreateComponent implements OnInit {
   );
   isCustomerAdded = false;
   fillForm = false;
-  roles : any
+  roles : any;
+  createButton: MyButtonConfig = new MyButtonConfig(
+    'btn btn-success',
+    'Create',
+    'fa fa-check'
+  );
+  createMoreButton: MyButtonConfig = new MyButtonConfig(
+    'btn btn-success',
+    'Add More',
+    'fa fa-plus'
+  );
 
   ngOnInit(): void {
     /*

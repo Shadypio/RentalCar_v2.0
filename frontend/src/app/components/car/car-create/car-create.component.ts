@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/common/car/car';
 import { CarService } from 'src/app/services/car/car.service';
+import { MyButtonConfig } from '../../my-button/config/my-button-config';
 
 @Component({
   selector: 'app-car-create',
@@ -16,6 +17,17 @@ export class CarCreateComponent implements OnInit {
   ];
   carAlreadyIn = false;
   fillForm = false;
+  addCarMessage: 'Add New Car';
+  createButton: MyButtonConfig = new MyButtonConfig(
+    'btn btn-success',
+    'Create',
+    'fa fa-check'
+  );
+  createMoreButton: MyButtonConfig = new MyButtonConfig(
+    'btn btn-success text-center',
+    'Add More',
+    'fa fa-plus'
+  );
 
   constructor(private carService: CarService) {}
 

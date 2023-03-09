@@ -128,7 +128,6 @@ export class MyTableComponent implements OnInit {
   @Output() viewDetailsOnData: EventEmitter<any> = new EventEmitter();
 
   newRow() {
-    console.log('New Row Clicked');
     this.newRowOnData.emit()
   }
 

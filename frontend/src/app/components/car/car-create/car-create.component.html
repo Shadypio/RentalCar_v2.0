@@ -2,49 +2,81 @@
   <h2 class="text-center font-weight-bold">Add new Car</h2>
 </div>
 
-<div style="width: 500px; margin: auto;">
+<div style="width: 500px; margin: auto">
   <div class="submit-form">
     <div *ngIf="!isCarAdded">
-      <div class="alert alert-danger" *ngIf="carAlreadyIn">Car {{car.licensePlate}} already exists</div>
+      <div class="alert alert-danger" *ngIf="carAlreadyIn">
+        Car {{ car.licensePlate }} already exists
+      </div>
       <div class="alert alert-danger" *ngIf="fillForm">Please Fill Form</div>
       <div class="form-group">
         <label for="licensePlate">License Plate</label>
-        <input type="text" class="form-control" id="licensePlate" required [(ngModel)]="car.licensePlate" name="licensePlate" />
+        <input
+          type="text"
+          class="form-control"
+          id="licensePlate"
+          required
+          [(ngModel)]="car.licensePlate"
+          name="licensePlate"
+        />
       </div>
 
       <div class="form-group">
         <label for="brand">Brand</label>
-        <input type="text" class="form-control" id="brand" required [(ngModel)]="car.brand" name="brand" />
+        <input
+          type="text"
+          class="form-control"
+          id="brand"
+          required
+          [(ngModel)]="car.brand"
+          name="brand"
+        />
       </div>
 
       <div class="form-group">
         <label for="model">Model</label>
-        <input type="text" class="form-control" id="model" required [(ngModel)]="car.model" name="model" />
+        <input
+          type="text"
+          class="form-control"
+          id="model"
+          required
+          [(ngModel)]="car.model"
+          name="model"
+        />
       </div>
 
       <div class="form-group">
-        <label for="year">Registration Year</label><br>
+        <label for="year">Registration Year</label><br />
         <select [(ngModel)]="car.year" type="number">
-          <option *ngFor="let yearToSelect of years" type="number" >
-            {{+yearToSelect}}
+          <option *ngFor="let yearToSelect of years" type="number">
+            {{ +yearToSelect }}
           </option>
         </select>
       </div>
 
       <div class="form-group">
         <label for="category">Category</label>
-        <input class="form-control" id="category" required [(ngModel)]="car.category" name="category" />
+        <input
+          class="form-control"
+          id="category"
+          required
+          [(ngModel)]="car.category"
+          name="category"
+        />
       </div>
 
-      <button (click)="addCar()" class="btn btn-success">Create</button>
+      <app-my-button [buttonConfig]="createButton" (click)="addCar()">
+      </app-my-button>
     </div>
 
     <div *ngIf="isCarAdded">
       <div class="alert alert-success alert-dismissible fade show">
-        <strong>Success!</strong><br> New Car added!
+        <strong>Success!</strong><br />
+        New Car added!
       </div>
       <div class="text-center">
-        <button class="btn btn-success text-center" (click)="newCar()"> + Add More</button>
+        <app-my-button [buttonConfig]="createMoreButton" (click)="newCar()">
+        </app-my-button>
       </div>
     </div>
   </div>

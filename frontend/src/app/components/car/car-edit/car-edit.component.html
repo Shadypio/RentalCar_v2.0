@@ -31,7 +31,8 @@
         <input class="form-control" id="category" required [(ngModel)]="carFound.category" name="category" />
       </div>
 
-      <button (click)="editCar()" class="btn btn-success">Edit</button>
+      <app-my-button [buttonConfig]="editButton" (click)="editCar()">
+      </app-my-button>
     </div>
 
     <div *ngIf="isCarEdited">

@@ -35,6 +35,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { BasicAuthHttpInterceptorService } from './services/authentication/basic-auth-http-interceptor.service';
 import { SignupComponent } from './components/signup/signup.component';
 import { RoleNamePipe } from './pipes/role-name.pipe';
+import { HeaderFormComponent } from './components/header-form/header-form.component';
 
 
 const routes: Routes = [
@@ -84,6 +85,7 @@ const routes: Routes = [
     LogoutComponent,
     SignupComponent,
     RoleNamePipe,
+    HeaderFormComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

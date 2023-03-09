@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Customer } from 'src/app/common/customer/customer';
 import { CustomerService } from 'src/app/services/customer/customer.service';
+import { MyButtonConfig } from '../../my-button/config/my-button-config';
 
 @Component({
   selector: 'app-customer-edit',
@@ -12,6 +13,11 @@ export class CustomerEditComponent implements OnInit {
   customerFound: Customer;
   isCustomerEdited = false;
   fillForm = false;
+  editButton: MyButtonConfig = new MyButtonConfig(
+    'btn btn-success',
+    'Edit',
+    'fa fa-edit'
+  );
 
   constructor(
     private route: ActivatedRoute,

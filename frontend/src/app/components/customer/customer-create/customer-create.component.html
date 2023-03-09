@@ -42,7 +42,8 @@
         </select>
       </div>
 
-      <button (click)="addCustomer()" class="btn btn-success">Create</button>
+      <app-my-button [buttonConfig]="createButton" (click)="addCustomer()">
+      </app-my-button>
     </div>
 
     <div *ngIf="isCustomerAdded">
@@ -50,7 +51,8 @@
         <strong>Success!</strong><br> New Customer added!
       </div>
       <div class="text-center">
-        <button class="btn btn-success text-center" (click)="newCustomer()"> + Add More</button>
+        <app-my-button [buttonConfig]="createMoreButton" (click)="newCustomer()">
+        </app-my-button>
       </div>
     </div>
 
